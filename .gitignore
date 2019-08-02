@@ -1,0 +1,6 @@
+.buildpath
+.project
+.idea
+vendor/
+composer.phar
+test.php
