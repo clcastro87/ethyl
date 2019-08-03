@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Flow;
 
 use Ethyl\Core\IteratorStage;
@@ -36,10 +35,9 @@ class BatchAggregator extends IteratorStage
         foreach ($iterator as $item)
         {
             $batch[] = $item;
-            if (++$count == $this->batchSize) {
+            if (++$count % $this->batchSize == 0) {
                 yield $batch;
                 $batch = [];
-                $count = 0;
             }
         }
         yield $batch;

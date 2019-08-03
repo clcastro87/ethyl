@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Ethyl\Flow;
-
 
 use Ethyl\Core\IteratorStage;
 use Iterator;

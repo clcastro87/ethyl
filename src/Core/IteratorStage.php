@@ -4,7 +4,6 @@ namespace Ethyl\Core;
 
 use ArrayIterator;
 use Exception;
-use Generator;
 use Iterator;
 use League\Pipeline\StageInterface;
 
@@ -17,7 +16,7 @@ abstract class IteratorStage implements StageInterface
     /**
      * @{inheritdoc}
      * @param $payload
-     * @return Generator
+     * @return Iterator
      * @throws Exception
      */
     public function __invoke($payload)
@@ -35,7 +34,7 @@ abstract class IteratorStage implements StageInterface
 
     /**
      * @param Iterator $iterator
-     * @return Generator
+     * @return Iterator
      */
     public abstract function iterate(Iterator $iterator);
 }

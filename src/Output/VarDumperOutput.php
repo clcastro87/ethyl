@@ -1,23 +1,23 @@
 <?php
 
-namespace Ethyl\Flow;
+namespace Ethyl\Output;
 
 use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Class ForEachStage
- * @package Ethyl\Flow
+ * Class VarDumperOutput
+ * @package Ethyl\Output
  */
-class ForEachStage extends IteratorStage
+class VarDumperOutput extends IteratorStage
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function iterate(Iterator $iterator)
     {
         foreach ($iterator as $item) {
-            yield $item;
+            print_r($item);
         }
     }
 }
