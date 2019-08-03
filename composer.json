@@ -1,6 +1,6 @@
 {
     "name": "clcastro87/ethyl",
-    "description": "ETL Pipelines\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C \u001b[D\u001b[D\u001b[D\u001b[C\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[Cin a right way",
+    "description": "ETL Pipelines in a right way",
     "require": {
         "league/pipeline": "^1.0",
         "league/csv": "^9.3"
