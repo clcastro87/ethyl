@@ -40,6 +40,8 @@ class BatchAggregator extends IteratorStage
                 $batch = [];
             }
         }
-        yield $batch;
+        if (!empty($batch)) {
+            yield $batch;
+        }
     }
 }
