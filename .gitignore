@@ -4,3 +4,7 @@
 vendor/
 composer.phar
 test.php
+
+test/*.txt
+test/*.csv
+test/*.tsv
