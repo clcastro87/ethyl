@@ -6,10 +6,11 @@ use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Class BatchDisAggregator
+ * De-aggregates an iterator of arrays, flattening those to first level.
+ * 
  * @package Ethyl\Flow
  */
-class BatchDisAggregator extends IteratorStage
+class DeAggregator extends IteratorStage
 {
     /**
      * {@inheritDoc}

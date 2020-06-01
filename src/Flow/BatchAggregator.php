@@ -6,7 +6,8 @@ use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Class BatchAggregator
+ * Aggregates items from an interator into batches and returns an iterator with batches.
+ * 
  * @package Ethyl\Flow
  */
 class BatchAggregator extends IteratorStage

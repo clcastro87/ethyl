@@ -8,7 +8,8 @@ use Iterator;
 use League\Pipeline\StageInterface;
 
 /**
- * Class IteratorStage
+ * Abstract stage who works with iterators/generators.
+ * 
  * @package Ethyl\Core
  */
 abstract class IteratorStage implements StageInterface
