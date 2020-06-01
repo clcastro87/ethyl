@@ -7,7 +7,8 @@ use Iterator;
 use League\Csv\Reader;
 
 /**
- * Class CsvFileInput
+ * CSV File Input
+ * 
  * @package Ethyl\Input
  */
 class CsvFileInput extends CsvStreamInput
@@ -36,7 +37,7 @@ class CsvFileInput extends CsvStreamInput
     {
         $reader = Reader::createFromPath($payload);
         $reader->setDelimiter($this->delimiter)
-            ->setHeaderOffset(0);
+               ->setHeaderOffset(0);
 
         return $reader->getRecords();
     }

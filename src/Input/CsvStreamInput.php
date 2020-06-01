@@ -6,14 +6,18 @@ use Iterator;
 use League\Csv\Reader;
 
 /**
- * Class CsvStreamInput
+ * CSV Stream Input
+ * 
  * @package Ethyl\Input
  */
 class CsvStreamInput extends StreamInput
 {
-    const CSV_DELIMITER_COMMA = ',';
+    /**
+     * Common delimiters for CSV files.
+     */
+    const CSV_DELIMITER_COMMA     = ',';
     const CSV_DELIMITER_SEMICOLON = ';';
-    const CSV_DELIMITER_TAB = "\t";
+    const CSV_DELIMITER_TAB       = "\t";
 
     /**
      * @var string
@@ -22,6 +26,7 @@ class CsvStreamInput extends StreamInput
 
     /**
      * CsvStreamInput constructor.
+     * 
      * @param string $delimiter
      */
     public function __construct(string $delimiter = self::CSV_DELIMITER_COMMA)

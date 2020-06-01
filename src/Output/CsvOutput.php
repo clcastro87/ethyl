@@ -2,17 +2,23 @@
 
 namespace Ethyl\Output;
 
+use League\Csv\CannotInsertRecord;
+use League\Csv\Exception as CsvException;
 use League\Csv\Writer;
 
 /**
- * Class CsvOutput
+ * Abstraction for CSV output using CSV Writer.
+ * 
  * @package Ethyl\Output
  */
-class CsvOutput extends StreamOutput
+abstract class CsvOutput extends StreamOutput
 {
-    const CSV_DELIMITER_COMMA = ',';
+    /**
+     * Common delimiters for CSV files.
+     */
+    const CSV_DELIMITER_COMMA     = ',';
     const CSV_DELIMITER_SEMICOLON = ';';
-    const CSV_DELIMITER_TAB = "\t";
+    const CSV_DELIMITER_TAB       = "\t";
 
     /**
      * @var string
@@ -26,18 +32,19 @@ class CsvOutput extends StreamOutput
 
     /**
      * CsvStreamOutput constructor.
+     * 
      * @param Writer $writer
      * @param string $delimiter
      */
     public function __construct(Writer $writer, string $delimiter = self::CSV_DELIMITER_COMMA)
     {
         $this->delimiter = $delimiter;
-        $this->writer = $writer;
+        $this->writer    = $writer;
     }
 
     /**
      * {@inheritdoc}
-     * @throws \League\Csv\Exception
+     * @throws CsvException
      */
     public function writeHeader($item)
     {
@@ -47,7 +54,7 @@ class CsvOutput extends StreamOutput
 
     /**
      * {@inheritdoc}
-     * @throws \League\Csv\CannotInsertRecord
+     * @throws CannotInsertRecord
      */
     public function writeItem($item)
     {

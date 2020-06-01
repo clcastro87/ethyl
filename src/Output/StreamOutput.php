@@ -6,7 +6,8 @@ use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Class StreamOutput
+ * Abstract implementation for output to stream.
+ * 
  * @package Ethyl\Output
  */
 abstract class StreamOutput extends IteratorStage

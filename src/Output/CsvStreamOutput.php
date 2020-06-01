@@ -5,13 +5,15 @@ namespace Ethyl\Output;
 use League\Csv\Writer;
 
 /**
- * Class CsvStreamOutput
+ * CSV output to stream.
+ * 
  * @package Ethyl\Output
  */
 class CsvStreamOutput extends CsvOutput
 {
     /**
      * CsvStreamOutput constructor.
+     * 
      * @param resource $stream
      * @param string $delimiter
      */

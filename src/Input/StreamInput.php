@@ -7,7 +7,8 @@ use Exception;
 use Iterator;
 
 /**
- * Class StreamInput
+ * Stream input
+ * 
  * @package Ethyl\Input
  */
 abstract class StreamInput extends IteratorStage

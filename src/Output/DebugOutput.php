@@ -6,10 +6,11 @@ use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Class VarDumperOutput
+ * Output for debugging purposes, uses print_r for each item. 
+ * 
  * @package Ethyl\Output
  */
-class VarDumperOutput extends IteratorStage
+class DebugOutput extends IteratorStage
 {
     /**
      * {@inheritdoc}
