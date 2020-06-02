@@ -1,13 +1,17 @@
 {
     "name": "clcastro87/ethyl",
-    "description": "ETL Pipelines in a right way",
+    "description": "Easy ETL Pipelines done right.",
     "require": {
-        "league/pipeline": "^1.0",
         "league/csv": "^9.6",
+        "league/flysystem": "^1.0",
+        "league/pipeline": "^1.0",
         "prewk/xml-string-streamer": "^0.13.0"
     },
     "require-dev": {
         "phpunit/phpunit": "6.4"
+    },
+    "config": {
+        "sort-packages": true
     },
     "license": "MIT",
     "authors": [
