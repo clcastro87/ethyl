@@ -3,7 +3,8 @@
     "description": "ETL Pipelines in a right way",
     "require": {
         "league/pipeline": "^1.0",
-        "league/csv": "^9.6"
+        "league/csv": "^9.6",
+        "prewk/xml-string-streamer": "^0.13.0"
     },
     "require-dev": {
         "phpunit/phpunit": "6.4"
