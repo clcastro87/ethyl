@@ -3,6 +3,7 @@
     "description": "Easy ETL Pipelines done right.",
     "require": {
         "league/csv": "^9.6",
+        "league/event": "^2.2",
         "league/flysystem": "^1.0",
         "league/pipeline": "^1.0",
         "prewk/xml-string-streamer": "^0.13.0"
