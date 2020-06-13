@@ -3,6 +3,7 @@
 namespace Ethyl\Tests\Transform;
 
 use Ethyl\Tests\AbstractTestCase;
+use Ethyl\Transform\TransformerInterface;
 
 /**
  * Value transformer test.
@@ -41,8 +42,6 @@ abstract class ValueTransformerTest extends AbstractTestCase
 
     /**
      * Test debug feature.
-     * 
-     * @dataProvider getTestData
      */
     public function testDebug()
     {
@@ -54,13 +53,15 @@ abstract class ValueTransformerTest extends AbstractTestCase
 
     /**
      * Gets the transform to test.
+     *
+     * @return TransformerInterface
      */
     public abstract function getTransformer();
 
     /**
      * Function to provide test cases.
-     * 
-     * @dataProvider
+     *
+     * @return array
      */
     public abstract function getTestData();
 }

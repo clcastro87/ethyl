@@ -9,12 +9,12 @@ use Ethyl\Core\Traits\CallableAwareTrait;
  *
  * @package Ethyl\Filter
  */
-class FunctionFilter extends IteratorFilter
+class FunctionIteratorFilter extends IteratorFilter
 {
     use CallableAwareTrait;
 
     /**
-     * FunctionFilter constructor.
+     * FunctionIteratorFilter constructor.
      *
      * @param callable $fn
      */

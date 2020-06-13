@@ -32,9 +32,9 @@ class FunctionTransformer extends ValueTransformer
     /**
      * {@inheritDoc}
      */
-    public function jsonSerialize()
+    public function debug()
     {
-        $parent = parent::jsonSerialize();
+        $parent = parent::debug();
 
         return array_merge($parent, ['callable' => 'function']);
     }
