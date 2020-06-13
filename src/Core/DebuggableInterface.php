@@ -7,7 +7,7 @@ interface DebuggableInterface
     /**
      * Returns an associative array with debug information.
      *
-     * @return void
+     * @return array
      */
     public function debug();
 }

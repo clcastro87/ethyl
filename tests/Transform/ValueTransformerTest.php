@@ -3,7 +3,6 @@
 namespace Ethyl\Tests\Transform;
 
 use Ethyl\Tests\AbstractTestCase;
-use Ethyl\Transform\ValueTransformer;
 
 /**
  * Value transformer test.
@@ -12,8 +11,10 @@ abstract class ValueTransformerTest extends AbstractTestCase
 {
     /**
      * Test transform feature.
-     * 
+     *
      * @dataProvider getTestData
+     * @param $input
+     * @param $result
      */
     public function testTransformer($input, $result)
     {
@@ -25,8 +26,10 @@ abstract class ValueTransformerTest extends AbstractTestCase
 
     /**
      * Test invoke feature.
-     * 
+     *
      * @dataProvider getTestData
+     * @param $input
+     * @param $result
      */
     public function testInvoke($input, $result)
     {
@@ -37,16 +40,16 @@ abstract class ValueTransformerTest extends AbstractTestCase
     }
 
     /**
-     * Test invoke feature.
+     * Test debug feature.
      * 
      * @dataProvider getTestData
      */
-    public function testJsonSerialize()
+    public function testDebug()
     {
         $transformer = $this->getTransformer();
-        $jsonValue   = $transformer->jsonSerialize();
+        $debugInfo   = $transformer->debug();
 
-        $this->assertNotEmpty($jsonValue);
+        $this->assertNotEmpty($debugInfo);
     }
 
     /**

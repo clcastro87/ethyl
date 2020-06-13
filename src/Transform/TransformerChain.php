@@ -2,7 +2,7 @@
 
 namespace Ethyl\Transform;
 
-use JsonSerializable;
+use Ethyl\Core\DebuggableInterface;
 
 /**
  * Transformer chain
@@ -41,14 +41,14 @@ class TransformerChain extends ValueTransformer
     /**
      * {@inheritDoc}
      */
-    public function jsonSerialize()
+    public function debug()
     {
-        $parent = parent::jsonSerialize();
+        $parent = parent::debug();
         $chain = array_map(function ($item) {
             /**
-             * @var JsonSerializable $item
+             * @var DebuggableInterface $item
              */
-            return $item->jsonSerialize();
+            return $item->debug();
         }, $this->transformers);
 
         return array_merge($parent, ['chain' => $chain]);

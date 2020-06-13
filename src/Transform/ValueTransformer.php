@@ -2,21 +2,19 @@
 
 namespace Ethyl\Transform;
 
-use JsonSerializable;
+use Ethyl\Core\Traits\DebuggableTrait;
 
 /**
  * Class ValueTransformer
  *
  * @package Ethyl\Transform
  */
-abstract class ValueTransformer implements JsonSerializable
+abstract class ValueTransformer implements TransformerInterface
 {
+    use DebuggableTrait;
+
     /**
-     * Process the payload.
-     *
-     * @param mixed $payload
-     *
-     * @return mixed
+     * {@inheritDoc}
      */
     public function __invoke($payload)
     {
@@ -24,23 +22,7 @@ abstract class ValueTransformer implements JsonSerializable
     }
 
     /**
-     * Transform the payload.
-     *
-     * @param mixed $payload
-     *
-     * @return mixed
-     */
-    public abstract function transform($payload);
-
-    /**
      * {@inheritDoc}
      */
-    public function jsonSerialize()
-    {
-        $className = get_class($this);
-
-        return [
-            'transformer' => substr($className, strrpos($className, '\\') + 1),
-        ];
-    }
+    public abstract function transform($payload);
 }
