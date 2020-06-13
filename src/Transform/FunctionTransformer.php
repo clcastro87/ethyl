@@ -14,7 +14,7 @@ class FunctionTransformer extends ValueTransformer
     /**
      * ExpressionTransformer constructor.
      *
-     * @param string $expression
+     * @param callable $fn
      */
     public function __construct(callable $fn)
     {

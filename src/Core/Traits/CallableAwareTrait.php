@@ -14,6 +14,7 @@ trait CallableAwareTrait
 
     /**
      * Sets the callable function.
+     * @param callable $fn
      */
     protected function setCallable(callable $fn)
     {
@@ -22,6 +23,7 @@ trait CallableAwareTrait
 
     /**
      * Gets the callable function.
+     * @return callable
      */
     protected function getCallable()
     {

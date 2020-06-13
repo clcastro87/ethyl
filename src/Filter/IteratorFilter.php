@@ -3,12 +3,11 @@
 namespace Ethyl\Filter;
 
 use Ethyl\Core\IteratorStage;
-use Exception;
 use Iterator;
 
 /**
  * Iterator filter
- * 
+ *
  * @package Ethyl\Filter
  */
 abstract class IteratorFilter extends IteratorStage
@@ -29,6 +28,7 @@ abstract class IteratorFilter extends IteratorStage
 
     /**
      * Returns if the item pass the filter condition.
+     * @param $value
      */
     public abstract function satisfy($value);
 }

@@ -2,6 +2,7 @@
     "name": "clcastro87/ethyl",
     "description": "Easy ETL Pipelines done right.",
     "require": {
+        "ext-json": "*",
         "league/csv": "^9.6",
         "league/event": "^2.2",
         "league/flysystem": "^1.0",

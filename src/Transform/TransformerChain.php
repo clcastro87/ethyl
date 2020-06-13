@@ -2,6 +2,8 @@
 
 namespace Ethyl\Transform;
 
+use JsonSerializable;
+
 /**
  * Transformer chain
  */
@@ -42,7 +44,7 @@ class TransformerChain extends ValueTransformer
     public function jsonSerialize()
     {
         $parent = parent::jsonSerialize();
-        $chain  = array_map(function ($item) {
+        $chain = array_map(function ($item) {
             /**
              * @var JsonSerializable $item
              */

@@ -5,7 +5,9 @@ namespace Ethyl\Transform;
 use JsonSerializable;
 
 /**
- * Abstract Transform
+ * Class ValueTransformer
+ *
+ * @package Ethyl\Transform
  */
 abstract class ValueTransformer implements JsonSerializable
 {
