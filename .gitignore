@@ -4,6 +4,7 @@
 vendor/
 composer.phar
 test.php
+coverage
 
 test/*.txt
 test/*.csv

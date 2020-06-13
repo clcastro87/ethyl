@@ -36,6 +36,6 @@ class FunctionTransformer extends ValueTransformer
     {
         $parent = parent::jsonSerialize();
 
-        return array_merge($parent, ['expression' => $this->expression]);
+        return array_merge($parent, ['callable' => 'function']);
     }
 }

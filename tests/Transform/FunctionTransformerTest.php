@@ -2,19 +2,31 @@
 
 namespace Ethyl\Tests\Transform;
 
-use Ethyl\Tests\AbstractTestCase;
 use Ethyl\Transform\FunctionTransformer;
 use function strtolower;
 
-class FunctionTransformerTest extends AbstractTestCase
+/**
+ * Test for FunctionTransformer
+ */
+class FunctionTransformerTest extends ValueTransformerTest
 {
-    public function testTransform()
+    /**
+     * {@inheritDoc}
+     */
+    public function getTransformer()
     {
-        $input = 'TesT';
-        $expected = 'test';
-        $transform = new FunctionTransformer(function ($item) { return strtolower($item); });
-        $output = $transform->transform($input);
+        return new FunctionTransformer(function ($item) { return strtolower($item); });
+    }
 
-        $this->assertEquals($expected, $output);
+    /**
+     * {@inheritDoc}
+     */
+    public function getTestData()
+    {
+        return [
+            'Test string'  => ['TesT', 'test'],
+            'Test url'     => ['https://www.google.com/', 'https://www.google.com/'],
+            'Empty string' => ['', '']
+        ];
     }
 }
