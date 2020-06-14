@@ -4,7 +4,6 @@ namespace Ethyl\Core;
 
 use Ethyl\Event\EventAggregator;
 use Ethyl\Event\StageInitializedEvent;
-use JsonSerializable;
 use League\Pipeline\StageInterface;
 
 /**
@@ -12,7 +11,7 @@ use League\Pipeline\StageInterface;
  * 
  * @package Ethyl\Core
  */
-abstract class Stage implements StageInterface, JsonSerializable, DebuggableInterface
+abstract class Stage implements StageInterface, DebuggableInterface
 {
     /**
      * Stage name.
@@ -37,6 +36,7 @@ abstract class Stage implements StageInterface, JsonSerializable, DebuggableInte
         $this->identifier = uniqid();
 
         $this->fireEvent(StageInitializedEvent::class);
+        $this->fireGlobalEvent(StageInitializedEvent::class);
     }
 
     /**
@@ -65,7 +65,7 @@ abstract class Stage implements StageInterface, JsonSerializable, DebuggableInte
      * Fires a local event.
      *
      * @param string $eventClass
-     * @param [mixed] ...$args
+     * @param array $args
      * @return void
      */
     protected function fireEvent(string $eventClass, ...$args)
@@ -82,7 +82,7 @@ abstract class Stage implements StageInterface, JsonSerializable, DebuggableInte
      * Fires an event.
      *
      * @param string $eventClass
-     * @param [mixed] ...$args
+     * @param array $args
      * @return void
      */
     protected function fireGlobalEvent(string $eventClass, ...$args)
@@ -101,16 +101,6 @@ abstract class Stage implements StageInterface, JsonSerializable, DebuggableInte
             'stage'       => $this->stageName,
             'identifier'  => $this->identifier,
             'event_scope' => $this->getStageScope(),
-        ];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function jsonSerialize()
-    {
-        return [
-            'stage' => $this->stageName,
         ];
     }
 }

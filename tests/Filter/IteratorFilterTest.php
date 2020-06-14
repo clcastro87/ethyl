@@ -55,7 +55,7 @@ abstract class IteratorFilterTest extends AbstractTestCase
     }
 
     /**
-     * Gets the transform to test.
+     * Gets the filter to test.
      *
      * @return FilterInterface
      */

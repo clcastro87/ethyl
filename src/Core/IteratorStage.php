@@ -3,7 +3,7 @@
 namespace Ethyl\Core;
 
 use ArrayIterator;
-use Exception;
+use InvalidArgumentException;
 use Iterator;
 use League\Pipeline\StageInterface;
 
@@ -12,13 +12,13 @@ use League\Pipeline\StageInterface;
  * 
  * @package Ethyl\Core
  */
-abstract class IteratorStage implements StageInterface
+abstract class IteratorStage extends Stage
 {
     /**
      * @{inheritdoc}
      * @param $payload
      * @return Iterator
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function __invoke($payload)
     {
@@ -27,7 +27,7 @@ abstract class IteratorStage implements StageInterface
         } else if ($payload instanceof Iterator) {
             $iterator = $payload;
         } else {
-            throw new Exception('This stage is only applicable to iterable objects.');
+            throw new InvalidArgumentException('This stage is only applicable to iterable objects.');
         }
 
         return $this->iterate($iterator);

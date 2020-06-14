@@ -2,15 +2,21 @@
 
 namespace Ethyl\Event;
 
-use League\Event\EventInterface;
+use League\Event\Event;
 
 /**
  * Stage event.
  */
-abstract class StageEvent implements EventInterface
+abstract class StageEvent extends Event
 {
+    /**
+     * Event name.
+     */
     const EVENT_NAME = 'none';
 
+    /**
+     * Event scope.
+     */
     const DEFAULT_SCOPE = 'stage';
 
     /**
@@ -21,8 +27,17 @@ abstract class StageEvent implements EventInterface
     protected $scope = self::DEFAULT_SCOPE;
 
     /**
+     * StageEvent constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->getName());
+    }
+
+    /**
      * Sets the event scope.
      *
+     * @param string $scope
      * @return void
      */
     public function setScope(string $scope)
