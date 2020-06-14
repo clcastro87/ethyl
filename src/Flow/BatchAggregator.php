@@ -6,7 +6,7 @@ use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
- * Aggregates items from an interator into batches and returns an iterator with batches.
+ * Aggregates items from an iterator into batches and returns an iterator with batches.
  * 
  * @package Ethyl\Flow
  */
@@ -23,6 +23,8 @@ class BatchAggregator extends IteratorStage
      */
     public function __construct(int $batchSize)
     {
+        parent::__construct();
+
         $this->batchSize = $batchSize;
     }
 

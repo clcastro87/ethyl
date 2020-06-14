@@ -19,7 +19,10 @@ class DeAggregator extends IteratorStage
     {
         foreach ($iterator as $batch)
         {
-            yield from $batch;
+            foreach ($batch as $item)
+            {
+                yield $item;
+            }
         }
     }
 }

@@ -20,6 +20,8 @@ class FunctionIteratorFilter extends IteratorFilter
      */
     public function __construct(callable $fn)
     {
+        parent::__construct();
+
         $this->setCallable($fn);
     }
 
@@ -28,6 +30,6 @@ class FunctionIteratorFilter extends IteratorFilter
      */
     public function satisfy($item)
     {
-        return $this->getCallable()->__invoke($item);
+        return $this->getCallable()($item);
     }
 }

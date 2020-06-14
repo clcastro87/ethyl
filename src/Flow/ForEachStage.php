@@ -14,11 +14,23 @@ use League\Pipeline\StageInterface;
 class ForEachStage extends IteratorStage
 {
     /**
-     * Substage to run for each item.
+     * Sub stage to run for each item.
      *
      * @var StageInterface
      */
     protected $subStage;
+
+    /**
+     * ForEachStage constructor.
+     *
+     * @param StageInterface $subStage
+     */
+    public function __construct(StageInterface $subStage)
+    {
+        parent::__construct();
+
+        $this->subStage = $subStage;
+    }
 
     /**
      * {@inheritDoc}
@@ -26,8 +38,7 @@ class ForEachStage extends IteratorStage
     public function iterate(Iterator $iterator)
     {
         foreach ($iterator as $item) {
-            $result = $this->subStage->__invoke($item);
-            yield $result;
+            yield $this->subStage->__invoke($item);
         }
 
         yield from [];

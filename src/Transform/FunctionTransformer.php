@@ -26,7 +26,7 @@ class FunctionTransformer extends ValueTransformer
      */
     public function transform($item)
     {
-        return $this->getCallable()->__invoke($item);
+        return $this->getCallable()($item);
     }
 
     /**

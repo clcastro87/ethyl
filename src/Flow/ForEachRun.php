@@ -27,6 +27,8 @@ class ForEachRun extends IteratorStage
      */
     public function __construct(Closure $closure)
     {
+        parent::__construct();
+
         $this->closure = $closure;
     }
 
@@ -36,8 +38,7 @@ class ForEachRun extends IteratorStage
     public function iterate(Iterator $iterator)
     {
         foreach ($iterator as $item) {
-            $result = $this->closure->__invoke($item);
-            yield $result;
+            yield $this->closure->__invoke($item);
         }
 
         yield from [];
