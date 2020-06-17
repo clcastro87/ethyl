@@ -62,9 +62,10 @@ class ArrayFieldsMapper extends AbstractMapper
             return $input;
         }
 
-        $result = [];
+        $result        = [];
+        $mappingConfig = $this->reverseMapping ? array_flip($this->srcDstConfig) : $this->srcDstConfig;
 
-        foreach ($this->srcDstConfig as $inputKey => $outputKey) {
+        foreach ($mappingConfig as $inputKey => $outputKey) {
             if (isset($input[$inputKey])) {
                 $result[$outputKey] = $input[$inputKey];
             } else {
