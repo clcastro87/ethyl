@@ -5,7 +5,6 @@ namespace Ethyl\Core;
 use ArrayIterator;
 use InvalidArgumentException;
 use Iterator;
-use League\Pipeline\StageInterface;
 
 /**
  * Abstract stage who works with iterators/generators.

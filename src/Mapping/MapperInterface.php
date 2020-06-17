@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Ethyl\Transform;
+namespace Ethyl\Mapping;
 
 use Ethyl\Core\DebuggableInterface;
 
 /**
- * Transformer Interface
- * @package Ethyl\Transform
+ * Mapper Interface
+ * @package Ethyl\Mapping
  */
-interface TransformerInterface extends DebuggableInterface
+interface MapperInterface extends DebuggableInterface
 {
     /**
-     * Applies a transformation to a value.
+     * Maps a value into another.
      * @param $value
      * @return bool
      */
@@ -25,5 +25,5 @@ interface TransformerInterface extends DebuggableInterface
      *
      * @return mixed
      */
-    public function transform($payload);
+    public function map($payload);
 }
