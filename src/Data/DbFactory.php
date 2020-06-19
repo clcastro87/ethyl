@@ -4,7 +4,6 @@ namespace Ethyl\Data;
 
 use PDO;
 use ReflectionClass;
-use ReflectionException;
 
 /**
  * PDO Db Factory Class
@@ -18,7 +17,6 @@ final class DbFactory
      * @param array  $arguments
      * @param array  $options
      * @return Db
-     * @throws ReflectionException
      */
     public function create(string $dsn, array $arguments = [], array $options = [])
     {
@@ -27,8 +25,7 @@ final class DbFactory
          */
         $reflector = new ReflectionClass(PDO::class);
         $pdoConn   = $reflector->newInstanceArgs(array_merge([$dsn], $arguments));
-        $db        = new Db($pdoConn, $options);
 
-        return $db;
+        return new Db($pdoConn, $options);
     }
 }
