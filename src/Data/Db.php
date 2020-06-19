@@ -52,7 +52,7 @@ class Db
      * @param array  $params
      * @return bool
      */
-    public function execute(string $query, array $params)
+    public function execute(string $query, array $params = [])
     {
         $statement = $this->db->prepare($query);
 

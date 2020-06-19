@@ -66,7 +66,23 @@ class DbTest extends AbstractTestCase
      */
     protected function getDb()
     {
-        $file = __DIR__ . '/../Resources/Chinook.db';
-        return (new DbFactory())->create('sqlite:' . $file);
+        $db = (new DbFactory())->create('sqlite::memory:');
+        $operations = [
+            '
+                CREATE TABLE "Artist" (
+                    "ArtistId"	INTEGER NOT NULL,
+                    "Name"	NVARCHAR(120),
+                    CONSTRAINT "PK_Artist" PRIMARY KEY("ArtistId")
+                );
+            ',
+            'INSERT INTO "Artist" VALUES (1, "Test 1");',
+            'INSERT INTO "Artist" VALUES (2, "Test 2");',
+            'INSERT INTO "Artist" VALUES (3, "Test 3");',
+        ];
+        foreach ($operations as $op) {
+            $db->execute($op);
+        }
+
+        return $db;
     }
 }
