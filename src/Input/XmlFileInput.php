@@ -2,7 +2,7 @@
 
 namespace Ethyl\Input;
 
-use Exception;
+use InvalidArgumentException;
 use Iterator;
 
 /**
@@ -15,14 +15,14 @@ class XmlFileInput extends XmlStreamInput
      *
      * @param $payload
      * @return Iterator
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function __invoke($payload)
     {
         if (is_string($payload)) {
             $iterator = $this->getIterator($payload);
         } else {
-            throw new Exception('This stage is only applicable to a string input.');
+            throw new InvalidArgumentException('This stage is only applicable to a string input.');
         }
 
         return $this->iterate($iterator);

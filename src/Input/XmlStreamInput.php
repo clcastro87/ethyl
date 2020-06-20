@@ -29,6 +29,8 @@ class XmlStreamInput extends StreamInput
      */
     public function __construct(string $itemTag = 'item', bool $cleanNamespaces = true)
     {
+        parent::__construct();
+
         $this->itemTag         = $itemTag;
         $this->cleanNamespaces = $cleanNamespaces;
     }
@@ -39,12 +41,11 @@ class XmlStreamInput extends StreamInput
      * @param $payload
      * @return Iterator
      */
-    protected function getIterator($payload)
+    public function getIterator($payload)
     {
-        $options    = [
+        $options = [
             'uniqueNode' => $this->itemTag,
         ];
-        $hasResults = false;
 
         $streamer = XmlStringStreamer::createUniqueNodeParser($payload, $options);
         // Iterate through the `<item>` nodes
@@ -55,14 +56,11 @@ class XmlStreamInput extends StreamInput
             $node = @simplexml_load_string($node, null, LIBXML_NOCDATA | LIBXML_NOBLANKS | LIBXML_NOEMPTYTAG);
             $node = json_decode(json_encode($node), true);
             if (!empty($node)) {
-                $hasResults = true;
                 yield $node;
             }
         }
 
-        if (!$hasResults) {
-            return new EmptyIterator();
-        }
+        yield from [];
     }
 
     /**
