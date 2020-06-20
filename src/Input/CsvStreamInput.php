@@ -4,6 +4,7 @@ namespace Ethyl\Input;
 
 use Iterator;
 use League\Csv\Reader;
+use League\Csv\Exception as CsvException;
 
 /**
  * CSV Stream Input
@@ -31,6 +32,8 @@ class CsvStreamInput extends StreamInput
      */
     public function __construct(string $delimiter = self::CSV_DELIMITER_COMMA)
     {
+        parent::__construct();
+
         $this->delimiter = $delimiter;
     }
 
@@ -39,7 +42,7 @@ class CsvStreamInput extends StreamInput
      *
      * @param $payload
      * @return Iterator
-     * @throws \League\Csv\Exception
+     * @throws CsvException
      */
     public function getIterator($payload)
     {

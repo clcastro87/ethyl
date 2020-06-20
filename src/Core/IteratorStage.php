@@ -23,7 +23,7 @@ abstract class IteratorStage extends Stage
     {
         if (is_array($payload)) {
             $iterator = new ArrayIterator($payload);
-        } else if ($payload instanceof Iterator) {
+        } elseif ($payload instanceof Iterator) {
             $iterator = $payload;
         } else {
             throw new InvalidArgumentException('This stage is only applicable to iterable objects.');

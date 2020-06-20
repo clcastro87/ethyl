@@ -4,7 +4,7 @@ namespace Ethyl\Input;
 
 use ArrayIterator;
 use Ethyl\Core\IteratorStage;
-use Exception;
+use InvalidArgumentException;
 use Iterator;
 
 /**
@@ -18,14 +18,14 @@ class ArrayInput extends IteratorStage
      * @{inheritdoc}
      * @param $payload
      * @return Iterator
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function __invoke($payload)
     {
         if (is_array($payload)) {
             $iterator = new ArrayIterator($payload);
         } else {
-            throw new Exception('This stage is only applicable to array objects.');
+            throw new InvalidArgumentException('This stage is only applicable to array objects.');
         }
 
         return $this->iterate($iterator);

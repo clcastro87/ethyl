@@ -3,6 +3,7 @@
 namespace Ethyl\Input;
 
 use Exception;
+use InvalidArgumentException;
 use Iterator;
 use League\Csv\Reader;
 
@@ -24,7 +25,7 @@ class CsvFileInput extends CsvStreamInput
         if (is_string($payload)) {
             $iterator = $this->getIterator($payload);
         } else {
-            throw new Exception('This stage is only applicable to string objects.');
+            throw new InvalidArgumentException('This stage is only applicable to string objects.');
         }
 
         return $this->iterate($iterator);
