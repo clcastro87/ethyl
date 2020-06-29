@@ -2,8 +2,9 @@
 
 namespace Ethyl\Input;
 
-use Exception;
+use InvalidArgumentException;
 use League\Flysystem\AdapterInterface;
+use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use League\Pipeline\StageInterface;
@@ -30,12 +31,13 @@ class FlySystemInput implements StageInterface
 
     /**
      * {@inheritDoc}
-     * @throws Exception
+     * @throws InvalidArgumentException
+     * @throws FileNotFoundException
      */
     public function __invoke($payload)
     {
         if (!is_string($payload)) {
-            throw new Exception('This stage is only applicable to a path input.');
+            throw new InvalidArgumentException('This stage is only applicable to a path input.');
         }
 
         return $this->fileSystem->readStream($payload);

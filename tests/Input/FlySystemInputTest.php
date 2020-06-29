@@ -4,26 +4,30 @@ namespace Ethyl\Tests\Input;
 
 use Ethyl\Input\CsvFileInput;
 use Ethyl\Input\CsvStreamInput;
+use Ethyl\Input\FlySystemInput;
 use Ethyl\Tests\AbstractTestCase;
 use Exception;
 use InvalidArgumentException;
+use League\Flysystem\Adapter\Local;
 
 /**
  * CsvStreamInput Test
  *
  * @package Ethyl\Tests\Input
  */
-class CsvStreamInputTest extends AbstractTestCase
+class FlySystemInputTest extends AbstractTestCase
 {
     /**
      * Tests the CsvStreamInput specifying a file stream.
      *
      * @throws Exception
      */
-    public function testInputFileStream()
+    public function testInputFilePath()
     {
+        $adapter = new Local('/');
+        $streamInput = new FlySystemInput($adapter);
         $input = new CsvStreamInput(CsvFileInput::CSV_DELIMITER_COMMA);
-        $iterator = $input($this->getFileStream());
+        $iterator = $input($streamInput($this->getFilePath()));
         $data = iterator_to_array($iterator);
         $this->assertNotEmpty($data);
     }
@@ -35,20 +39,19 @@ class CsvStreamInputTest extends AbstractTestCase
      */
     public function testInputInvalidInput()
     {
-        $input = new CsvStreamInput(CsvFileInput::CSV_DELIMITER_COMMA);
+        $adapter = new Local('/');
+        $streamInput = new FlySystemInput($adapter);
         $this->expectException(InvalidArgumentException::class);
-        $input([$this->getFileStream()]);
+        $streamInput([$this->getFilePath()]);
     }
 
     /**
-     * Returns the test file stream.
+     * Returns the test file path.
      *
      * @return string
      */
-    protected function getFileStream()
+    protected function getFilePath()
     {
-        $path = __DIR__ . '/../Resources/sales.csv';
-
-        return fopen($path, 'r');
+        return __DIR__ . '/../Resources/sales.csv';
     }
 }
