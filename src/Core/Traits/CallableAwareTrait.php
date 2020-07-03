@@ -3,7 +3,9 @@
 namespace Ethyl\Core\Traits;
 
 /**
- * Callable Aware Trait
+ * Callable Aware Trait.
+ *
+ * @package Ethyl\Core\Traits
  */
 trait CallableAwareTrait 
 {
@@ -14,6 +16,7 @@ trait CallableAwareTrait
 
     /**
      * Sets the callable function.
+     *
      * @param callable $fn
      */
     protected function setCallable(callable $fn)
@@ -23,6 +26,7 @@ trait CallableAwareTrait
 
     /**
      * Gets the callable function.
+     *
      * @return callable
      */
     protected function getCallable()

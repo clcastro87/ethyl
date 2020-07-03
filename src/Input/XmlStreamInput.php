@@ -2,12 +2,12 @@
 
 namespace Ethyl\Input;
 
-use EmptyIterator;
-use Iterator;
 use Prewk\XmlStringStreamer;
 
 /**
- * Xml Stream Input
+ * Xml Stream Input.
+ *
+ * @package Ethyl\Input
  */
 class XmlStreamInput extends StreamInput
 {
@@ -36,10 +36,7 @@ class XmlStreamInput extends StreamInput
     }
 
     /**
-     * Returns an iterator for accessing to the stream input
-     *
-     * @param $payload
-     * @return Iterator
+     * {@inheritDoc}
      */
     public function getIterator($payload)
     {
@@ -48,7 +45,7 @@ class XmlStreamInput extends StreamInput
         ];
 
         $streamer = XmlStringStreamer::createUniqueNodeParser($payload, $options);
-        // Iterate through the `<item>` nodes
+        // Iterate through the `<xxx>` nodes
         while ($node = $streamer->getNode()) {
             if ($this->cleanNamespaces) {
                 $node = $this->applyNamespaceCleanup($node);

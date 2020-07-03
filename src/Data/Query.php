@@ -27,7 +27,7 @@ class Query
      */
     public function __construct(string $statement, array $parameters = [])
     {
-        $this->statement = $statement;
+        $this->statement  = $statement;
         $this->parameters = $parameters;
     }
 

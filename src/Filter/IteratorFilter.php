@@ -7,7 +7,7 @@ use Ethyl\Core\Traits\DebuggableTrait;
 use Iterator;
 
 /**
- * Iterator filter
+ * Iterator filter.
  *
  * @package Ethyl\Filter
  */

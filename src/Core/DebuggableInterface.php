@@ -2,6 +2,11 @@
 
 namespace Ethyl\Core;
 
+/**
+ * Interface DebuggableInterface
+ *
+ * @package Ethyl\Core
+ */
 interface DebuggableInterface
 {
     /**

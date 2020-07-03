@@ -5,7 +5,7 @@ namespace Ethyl\Transform;
 use Ethyl\Core\Traits\DebuggableTrait;
 
 /**
- * Class ValueTransformer
+ * Value Transformer.
  *
  * @package Ethyl\Transform
  */
@@ -25,4 +25,14 @@ abstract class ValueTransformer implements TransformerInterface
      * {@inheritDoc}
      */
     public abstract function transform($payload);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function debug()
+    {
+        return [
+            'transform' => $this->getClassName(),
+        ];
+    }
 }

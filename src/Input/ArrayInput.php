@@ -15,10 +15,7 @@ use Iterator;
 class ArrayInput extends IteratorStage
 {
     /**
-     * @{inheritdoc}
-     * @param $payload
-     * @return Iterator
-     * @throws InvalidArgumentException
+     * {@inheritDoc}
      */
     public function __invoke($payload)
     {
@@ -32,7 +29,7 @@ class ArrayInput extends IteratorStage
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function iterate(Iterator $iterator)
     {

@@ -3,19 +3,16 @@
 namespace Ethyl\Input;
 
 use InvalidArgumentException;
-use Iterator;
 
 /**
- * Xml File Input
+ * Xml File Input.
+ *
+ * @package Ethyl\Input
  */
 class XmlFileInput extends XmlStreamInput
 {
     /**
-     * @{inheritdoc}
-     *
-     * @param $payload
-     * @return Iterator
-     * @throws InvalidArgumentException
+     * {@inheritDoc}
      */
     public function __invoke($payload)
     {

@@ -6,7 +6,9 @@ use Closure;
 use stdClass;
 
 /**
- * Allows to maps using a function
+ * Allows to maps using a function.
+ *
+ * @package Ethyl\Mapping
  */
 class FunctionMapper extends AbstractMapper
 {

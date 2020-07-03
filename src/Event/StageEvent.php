@@ -6,6 +6,8 @@ use League\Event\Event;
 
 /**
  * Stage event.
+ *
+ * @package Ethyl\Event
  */
 abstract class StageEvent extends Event
 {

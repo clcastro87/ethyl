@@ -14,8 +14,7 @@ use Iterator;
 abstract class IteratorStage extends Stage
 {
     /**
-     * @{inheritdoc}
-     * @param $payload
+     * {@inheritDoc}
      * @return Iterator
      * @throws InvalidArgumentException
      */
@@ -33,6 +32,8 @@ abstract class IteratorStage extends Stage
     }
 
     /**
+     * Iterates through items on iterator and returns a new iterator with data processed.
+     *
      * @param Iterator $iterator
      * @return Iterator
      */

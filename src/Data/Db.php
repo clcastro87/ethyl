@@ -8,7 +8,9 @@ use PDO;
 use PDOStatement;
 
 /**
- * PDO Db wrapper class
+ * PDO Db wrapper class.
+ *
+ * @package Ethyl\Data
  */
 class Db
 {

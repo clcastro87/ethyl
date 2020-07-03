@@ -5,7 +5,9 @@ namespace Ethyl\Transform;
 use Ethyl\Core\DebuggableInterface;
 
 /**
- * Transformer chain
+ * Transformer chain.
+ *
+ * @package Ethyl\Transform
  */
 class TransformerChain extends ValueTransformer
 {

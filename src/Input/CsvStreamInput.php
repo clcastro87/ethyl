@@ -2,12 +2,11 @@
 
 namespace Ethyl\Input;
 
-use Iterator;
 use League\Csv\Reader;
 use League\Csv\Exception as CsvException;
 
 /**
- * CSV Stream Input
+ * CSV Stream Input.
  * 
  * @package Ethyl\Input
  */
@@ -40,8 +39,7 @@ class CsvStreamInput extends StreamInput
     /**
      * Returns an iterator for accessing to the stream input
      *
-     * @param $payload
-     * @return Iterator
+     * {@inheritDoc}
      * @throws CsvException
      */
     public function getIterator($payload)

@@ -4,20 +4,17 @@ namespace Ethyl\Input;
 
 use Exception;
 use InvalidArgumentException;
-use Iterator;
 use League\Csv\Reader;
 
 /**
- * CSV File Input
+ * CSV File Input.
  * 
  * @package Ethyl\Input
  */
 class CsvFileInput extends CsvStreamInput
 {
     /**
-     * @{inheritdoc}
-     * @param $payload
-     * @return Iterator
+     * {@inheritDoc}
      * @throws Exception
      */
     public function __invoke($payload)
@@ -32,7 +29,7 @@ class CsvFileInput extends CsvStreamInput
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getIterator($payload)
     {

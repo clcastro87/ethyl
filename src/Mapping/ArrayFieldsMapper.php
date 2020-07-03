@@ -5,7 +5,9 @@ namespace Ethyl\Mapping;
 use InvalidArgumentException;
 
 /**
- * Array field mapper
+ * Array field mapper.
+ *
+ * @package Ethyl\Mapping
  */
 class ArrayFieldsMapper extends AbstractMapper
 {
@@ -25,7 +27,7 @@ class ArrayFieldsMapper extends AbstractMapper
     protected $reverseMapping;
 
     /**
-     * ArrayFieldMapper constructor.
+     * ArrayFieldsMapper constructor.
      *
      * @param array $config
      * @param int $policy
@@ -33,8 +35,8 @@ class ArrayFieldsMapper extends AbstractMapper
      */
     public function __construct(array $config, int $policy = self::MAP_FILL_WITH_EMPTY, bool $reverseMapping = false)
     {
-        $this->srcDstConfig = $config;
-        $this->mappingPolicy = $policy;
+        $this->srcDstConfig   = $config;
+        $this->mappingPolicy  = $policy;
         $this->reverseMapping = $reverseMapping;
     }
 

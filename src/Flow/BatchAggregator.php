@@ -19,6 +19,7 @@ class BatchAggregator extends IteratorStage
 
     /**
      * BatchAggregator constructor.
+     *
      * @param int $batchSize
      */
     public function __construct(int $batchSize)

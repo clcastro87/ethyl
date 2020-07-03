@@ -10,7 +10,9 @@ use League\Flysystem\FilesystemInterface;
 use League\Pipeline\StageInterface;
 
 /**
- * Filesystem abstraction for remote local/remote inputs. Returns an stream that can be used by other stream input processors.
+ * Filesystem abstraction for remote local/remote inputs. Returns an stream that can be used by other input stream processors.
+ *
+ * @package Ethyl\Input
  */
 class FlySystemInput implements StageInterface
 {

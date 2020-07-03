@@ -38,12 +38,14 @@ abstract class CsvOutput extends StreamOutput
      */
     public function __construct(Writer $writer, string $delimiter = self::CSV_DELIMITER_COMMA)
     {
+        parent::__construct();
+
         $this->delimiter = $delimiter;
         $this->writer    = $writer;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      * @throws CsvException
      */
     public function writeHeader($item)
@@ -53,7 +55,7 @@ abstract class CsvOutput extends StreamOutput
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      * @throws CannotInsertRecord
      */
     public function writeItem($item)

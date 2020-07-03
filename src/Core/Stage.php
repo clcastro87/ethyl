@@ -2,17 +2,20 @@
 
 namespace Ethyl\Core;
 
+use Ethyl\Core\Traits\DebuggableTrait;
 use Ethyl\Event\EventAggregator;
 use Ethyl\Event\StageInitializedEvent;
 use League\Pipeline\StageInterface;
 
 /**
- * Abstract stage who works with iterators/generators.
+ * Abstract stage.
  * 
  * @package Ethyl\Core
  */
 abstract class Stage implements StageInterface, DebuggableInterface
 {
+    use DebuggableTrait;
+
     /**
      * Stage name.
      *
@@ -46,9 +49,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
      */
     protected function getStageName()
     {   
-        $className = get_class($this);
-     
-        return substr($className, strrpos($className, '\\') + 1);
+        return $this->getClassName();
     }
 
     /**

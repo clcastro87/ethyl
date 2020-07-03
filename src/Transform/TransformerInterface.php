@@ -1,18 +1,19 @@
 <?php
 
-
 namespace Ethyl\Transform;
 
 use Ethyl\Core\DebuggableInterface;
 
 /**
- * Transformer Interface
+ * Transformer Interface.
+ *
  * @package Ethyl\Transform
  */
 interface TransformerInterface extends DebuggableInterface
 {
     /**
      * Applies a transformation to a value.
+     *
      * @param $value
      * @return bool
      */
@@ -22,7 +23,6 @@ interface TransformerInterface extends DebuggableInterface
      * Transform the payload.
      *
      * @param mixed $payload
-     *
      * @return mixed
      */
     public function transform($payload);

@@ -5,7 +5,9 @@ namespace Ethyl\Event;
 use League\Event\Emitter;
 
 /**
- * Event aggregator
+ * Event aggregator.
+ *
+ * @package Ethyl\Event
  */
 final class EventAggregator extends Emitter
 {

@@ -33,10 +33,7 @@ class PdoQueryInput extends IteratorStage
     }
 
     /**
-     * @{inheritdoc}
-     * @param $payload
-     * @return Iterator
-     * @throws InvalidArgumentException
+     * {@inheritDoc}
      */
     public function __invoke($payload)
     {
@@ -52,7 +49,7 @@ class PdoQueryInput extends IteratorStage
         }
 
         $pdoStatement = $this->db->query($query->getStatement(), $query->getParameters());
-        $iterator = $this->processStatement($pdoStatement);
+        $iterator     = $this->processStatement($pdoStatement);
 
         return $this->iterate($iterator);
     }

@@ -5,13 +5,14 @@ namespace Ethyl\Mapping;
 use Ethyl\Transform\ValueTransformer;
 
 /**
- * Class AbstractMapper
+ * Abstract Mapper
+ *
  * @package Ethyl\Mapping
  */
 abstract class AbstractMapper extends ValueTransformer implements MapperInterface
 {
     /**
-     * Policy for treating missing fields
+     * Mapping policy.
      */
     const MAP_IGNORE_MISSING  = 0;
     const MAP_FILL_WITH_NULL  = 1;
@@ -47,18 +48,13 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
      */
     public function debug()
     {
-        $className = get_class($this);
-
         return [
-            'mapper' => substr($className, strrpos($className, '\\') + 1),
+            'mapper' => $this->getClassName(),
         ];
     }
 
     /**
-     * Maps an input to an output
-     *
-     * @param $input
-     * @return mixed
+     * {@inheritDoc}
      */
     public abstract function map($input);
 }

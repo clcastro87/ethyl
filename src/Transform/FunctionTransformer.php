@@ -5,7 +5,9 @@ namespace Ethyl\Transform;
 use Ethyl\Core\Traits\CallableAwareTrait;
 
 /**
- * Function transformer
+ * Function transformer.
+ *
+ * @package Ethyl\Transform
  */
 class FunctionTransformer extends ValueTransformer
 {

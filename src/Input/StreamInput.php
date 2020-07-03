@@ -7,17 +7,14 @@ use InvalidArgumentException;
 use Iterator;
 
 /**
- * Stream input
+ * Stream input.
  * 
  * @package Ethyl\Input
  */
 abstract class StreamInput extends IteratorStage
 {
     /**
-     * @{inheritdoc}
-     * @param $payload
-     * @return Iterator
-     * @throws InvalidArgumentException
+     * {@inheritDoc}
      */
     public function __invoke($payload)
     {
@@ -39,7 +36,7 @@ abstract class StreamInput extends IteratorStage
     public abstract function getIterator($payload);
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function iterate(Iterator $iterator)
     {

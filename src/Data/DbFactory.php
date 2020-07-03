@@ -6,7 +6,9 @@ use PDO;
 use ReflectionClass;
 
 /**
- * PDO Db Factory Class
+ * PDO Db Factory Class.
+ *
+ * @package Ethyl\Data
  */
 final class DbFactory
 {
