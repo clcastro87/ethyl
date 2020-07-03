@@ -1,5 +1,7 @@
 {
     "name": "clcastro87/ethyl",
+    "version": "0.1",
+    "type": "library",
     "description": "Easy ETL Pipelines done right.",
     "require": {
         "ext-json": "*",
