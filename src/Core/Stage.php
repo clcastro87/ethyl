@@ -3,8 +3,6 @@
 namespace Ethyl\Core;
 
 use Ethyl\Core\Traits\DebuggableTrait;
-use Ethyl\Event\EventAggregator;
-use Ethyl\Event\StageInitializedEvent;
 use League\Pipeline\StageInterface;
 
 /**
@@ -37,9 +35,6 @@ abstract class Stage implements StageInterface, DebuggableInterface
     {
         $this->stageName  = $this->getStageName();
         $this->identifier = uniqid();
-
-        $this->fireEvent(StageInitializedEvent::class);
-        $this->fireGlobalEvent(StageInitializedEvent::class);
     }
 
     /**
@@ -53,55 +48,13 @@ abstract class Stage implements StageInterface, DebuggableInterface
     }
 
     /**
-     * Returns event scope.
-     *
-     * @return string
-     */
-    protected function getStageScope()
-    {
-        return sprintf("event.stage.%s.%s", strtolower($this->stageName), $this->identifier);
-    }
-
-    /**
-     * Fires a local event.
-     *
-     * @param string $eventClass
-     * @param array $args
-     * @return void
-     */
-    protected function fireEvent(string $eventClass, ...$args)
-    {
-        $event = new $eventClass(...$args);
-        if (method_exists($event, 'setScope')) {
-            $event->setScope($this->getStageScope());
-        }
-
-        EventAggregator::getInstance()->emit($event);
-    }
-
-    /**
-     * Fires an event.
-     *
-     * @param string $eventClass
-     * @param array $args
-     * @return void
-     */
-    protected function fireGlobalEvent(string $eventClass, ...$args)
-    {
-        $event = new $eventClass(...$args);
-
-        EventAggregator::getInstance()->emit($event);
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function debug()
     {
         return [
-            'stage'       => $this->stageName,
-            'identifier'  => $this->identifier,
-            'event_scope' => $this->getStageScope(),
+            'stage'      => $this->stageName,
+            'identifier' => $this->identifier,
         ];
     }
 }
