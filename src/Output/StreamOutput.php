@@ -2,7 +2,6 @@
 
 namespace Ethyl\Output;
 
-use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
@@ -10,10 +9,10 @@ use Iterator;
  * 
  * @package Ethyl\Output
  */
-abstract class StreamOutput extends IteratorStage
+abstract class StreamOutput extends AbstractOutput
 {
     /**
-     * {@inheritdoc
+     * {@inheritdoc}
      */
     public function iterate(Iterator $iterator)
     {
@@ -25,7 +24,12 @@ abstract class StreamOutput extends IteratorStage
                 $isHeader = false;
             }
             $this->writeItem($item);
+            if (!$this->drain) {
+                yield $item;
+            }
         }
+
+        yield from [];
     }
 
     /**

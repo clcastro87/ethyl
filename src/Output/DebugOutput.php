@@ -2,7 +2,6 @@
 
 namespace Ethyl\Output;
 
-use Ethyl\Core\IteratorStage;
 use Iterator;
 
 /**
@@ -10,7 +9,7 @@ use Iterator;
  * 
  * @package Ethyl\Output
  */
-class DebugOutput extends IteratorStage
+class DebugOutput extends AbstractOutput
 {
     /**
      * {@inheritdoc}
@@ -19,6 +18,11 @@ class DebugOutput extends IteratorStage
     {
         foreach ($iterator as $item) {
             print_r($item);
+            if (!$this->drain) {
+                yield $item;
+            }
         }
+
+        yield from [];
     }
 }
