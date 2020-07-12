@@ -6,6 +6,7 @@ namespace Ethyl\Tests\Flow;
 use Closure;
 use Ethyl\Flow\ForEachRun;
 use Ethyl\Tests\Core\IteratorStageTest;
+use stdClass;
 
 /**
  * Class ForEachRunTest
@@ -18,9 +19,9 @@ class ForEachRunTest extends IteratorStageTest
      */
     public function getIteratorStage()
     {
-        $closure = Closure::fromCallable(function ($item) {
+        $closure = Closure::bind(function ($item) {
             return $item * 2;
-        });
+        }, new stdClass());
 
         return new ForEachRun($closure);
     }
@@ -32,6 +33,7 @@ class ForEachRunTest extends IteratorStageTest
     {
         return [
             'Array' => [range(0, 5), [0, 2, 4, 6, 8, 10]],
+            'Empty' => [[], []],
         ];
     }
 

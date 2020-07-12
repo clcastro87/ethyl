@@ -34,6 +34,7 @@ class ForEachStageTest extends IteratorStageTest
     {
         return [
             'Array' => [range(0, 5), [0, 2, 4, 6, 8, 10]],
+            'Empty' => [[], []],
         ];
     }
 
