@@ -95,11 +95,13 @@ class CsvFileOutputTest extends AbstractTestCase
     {
         $tmpFilePath = $this->getTempFilePath();
 
-        $input = new CsvFileOutput($tmpFilePath);
-        $this->expectException(InvalidArgumentException::class);
-        $input(new stdClass());
-
-        unlink($tmpFilePath);
+        try {
+            $input = new CsvFileOutput($tmpFilePath);
+            $this->expectException(InvalidArgumentException::class);
+            $input(new stdClass());
+        } finally {
+            unlink($tmpFilePath);
+        }
     }
 
     /**

@@ -62,6 +62,36 @@ class Db
     }
 
     /**
+     * Begins a new transaction.
+     *
+     * @return bool
+     */
+    public function beginTransaction()
+    {
+        return $this->db->beginTransaction();
+    }
+
+    /**
+     * Commits the current transaction.
+     *
+     * @return bool
+     */
+    public function commit()
+    {
+        return $this->db->commit();
+    }
+
+    /**
+     * Rollback the current transaction.
+     *
+     * @return bool
+     */
+    public function rollback()
+    {
+        return $this->db->rollBack();
+    }
+
+    /**
      * Runs a query and returns result
      *
      * @param string $query
