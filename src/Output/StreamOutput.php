@@ -16,13 +16,29 @@ abstract class StreamOutput extends AbstractOutput
      */
     public function iterate(Iterator $iterator)
     {
-        $isHeader = true;
+        $this->writeHeader($iterator);
+        $iterator->rewind();
 
+        return $this->writeContent($iterator);
+    }
+
+    /**
+     * Writes a header to the output stream
+     *
+     * @param Iterator $iterator
+     * @return void
+     */
+    public function writeHeader(Iterator $iterator) {}
+
+    /**
+     * Writes the content of a file.
+     *
+     * @param Iterator $iterator
+     * @return Iterator
+     */
+    public function writeContent(Iterator $iterator)
+    {
         foreach ($iterator as $item) {
-            if ($isHeader) {
-                $this->writeHeader($item);
-                $isHeader = false;
-            }
             $this->writeItem($item);
             if (!$this->drain) {
                 yield $item;
@@ -31,14 +47,6 @@ abstract class StreamOutput extends AbstractOutput
 
         yield from [];
     }
-
-    /**
-     * Writes a header to the output stream
-     *
-     * @param $item
-     * @return void
-     */
-    public function writeHeader($item) {}
 
     /**
      * Writes an item to the output stream

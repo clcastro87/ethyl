@@ -2,13 +2,14 @@
 
 namespace Ethyl\Output;
 
+use Iterator;
 use League\Csv\CannotInsertRecord;
 use League\Csv\Exception as CsvException;
 use League\Csv\Writer;
 
 /**
  * Abstraction for CSV output using CSV Writer.
- * 
+ *
  * @package Ethyl\Output
  */
 abstract class CsvOutput extends StreamOutput
@@ -32,7 +33,7 @@ abstract class CsvOutput extends StreamOutput
 
     /**
      * CsvStreamOutput constructor.
-     * 
+     *
      * @param Writer $writer
      * @param string $delimiter
      */
@@ -48,10 +49,12 @@ abstract class CsvOutput extends StreamOutput
      * {@inheritDoc}
      * @throws CsvException
      */
-    public function writeHeader($item)
+    public function writeHeader(Iterator $iterator)
     {
         $this->writer->setDelimiter($this->delimiter);
-        $this->writer->insertOne(array_keys($item));
+        if ($iterator->valid() && !empty($iterator->current()) && is_array($iterator->current())) {
+            $this->writer->insertOne(array_keys($iterator->current()));
+        }
     }
 
     /**
