@@ -2,6 +2,7 @@
 
 namespace Ethyl\Output;
 
+use EmptyIterator;
 use Iterator;
 
 /**
@@ -18,11 +19,13 @@ class DebugOutput extends AbstractOutput
     {
         foreach ($iterator as $item) {
             print_r($item);
-            if (!$this->drain) {
-                yield $item;
-            }
         }
 
-        yield from [];
+        if (!$this->drain) {
+            $iterator->rewind();
+            return $iterator;
+        } else {
+            return new EmptyIterator();
+        }
     }
 }

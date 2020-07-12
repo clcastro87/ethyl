@@ -36,10 +36,11 @@ abstract class CsvOutput extends StreamOutput
      *
      * @param Writer $writer
      * @param string $delimiter
+     * @param bool $drain
      */
-    public function __construct(Writer $writer, string $delimiter = self::CSV_DELIMITER_COMMA)
+    public function __construct(Writer $writer, string $delimiter = self::CSV_DELIMITER_COMMA, bool $drain = true)
     {
-        parent::__construct();
+        parent::__construct($drain);
 
         $this->delimiter = $delimiter;
         $this->writer    = $writer;

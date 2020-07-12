@@ -23,10 +23,28 @@ class DebugOutputTest extends AbstractTestCase
     public function testArrayInput()
     {
         $input = new DebugOutput(false);
+        ob_start();
         $iterator = $input([1, 2, 3]);
+        ob_get_clean();
 
         $count = iterator_count($iterator);
         $this->assertEquals(3, $count);
+    }
+
+    /**
+     * Tests array input drain.
+     *
+     * @throws InvalidArgumentException
+     */
+    public function testArrayDrainInput()
+    {
+        $input = new DebugOutput();
+        ob_start();
+        $iterator = $input([1, 2, 3]);
+        ob_get_clean();
+
+        $count = iterator_count($iterator);
+        $this->assertEquals(0, $count);
     }
 
     /**
