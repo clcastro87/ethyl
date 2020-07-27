@@ -1,12 +1,12 @@
 <?php
 
-
 namespace Ethyl\Tests\Filter;
 
 use Ethyl\Filter\FunctionIteratorFilter;
 
 /**
  * FunctionIteratorFilter Test
+ *
  * @package Ethyl\Tests\Filter
  */
 class FunctionIteratorFilterTest extends IteratorFilterTest
@@ -41,7 +41,7 @@ class FunctionIteratorFilterTest extends IteratorFilterTest
     {
         return [
             'Even number' => [2, true],
-            'Odd number' => [1, false],
+            'Odd number'  => [1, false],
         ];
     }
 }

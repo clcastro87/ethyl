@@ -22,9 +22,9 @@ class XmlFileInputTest extends AbstractTestCase
      */
     public function testInputFilePath()
     {
-        $input = new XmlFileInput('book');
+        $input    = new XmlFileInput('book');
         $iterator = $input($this->getFilePath());
-        $data = iterator_to_array($iterator);
+        $data     = iterator_to_array($iterator);
         $this->assertNotEmpty($data);
     }
 

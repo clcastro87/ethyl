@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Output;
 
 use Ethyl\Output\DebugOutput;

@@ -21,10 +21,10 @@ class PdoQueryInputTest extends AbstractTestCase
      */
     public function testQueryAsString()
     {
-        $query = 'SELECT * from Artist';
-        $input = $this->getPdoInput();
+        $query  = 'SELECT * from Artist';
+        $input  = $this->getPdoInput();
         $output = $input($query);
-        $arr = iterator_to_array($output);
+        $arr    = iterator_to_array($output);
         $this->assertNotEmpty($arr);
     }
 
@@ -33,10 +33,10 @@ class PdoQueryInputTest extends AbstractTestCase
      */
     public function testQuery()
     {
-        $query = 'SELECT * from Artist WHERE ArtistId = :id';
-        $input = $this->getPdoInput();
+        $query  = 'SELECT * from Artist WHERE ArtistId = :id';
+        $input  = $this->getPdoInput();
         $output = $input(new Query($query, ['id' => 1]));
-        $arr = iterator_to_array($output);
+        $arr    = iterator_to_array($output);
         $this->assertNotEmpty($arr);
     }
 
@@ -70,7 +70,7 @@ class PdoQueryInputTest extends AbstractTestCase
     private function getConnection()
     {
         $factory = new DbFactory();
-        $file = __DIR__ . '/../Resources/Chinook.db';
+        $file    = __DIR__ . '/../Resources/Chinook.db';
         return $factory->create('sqlite:' . $file);
     }
 }

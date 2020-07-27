@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Core;
 
 use ArrayIterator;
@@ -11,6 +10,7 @@ use Iterator;
 
 /**
  * IteratorStage Test
+ *
  * @package Ethyl\Tests\Core
  */
 class IteratorStageTest extends AbstractTestCase
@@ -24,7 +24,7 @@ class IteratorStageTest extends AbstractTestCase
      */
     public function testIterate($input, $result)
     {
-        $stage = $this->getIteratorStage();
+        $stage  = $this->getIteratorStage();
         $output = $this->convertToArray($stage($input));
 
         $this->assertEquals($output, $result);
@@ -66,7 +66,7 @@ class IteratorStageTest extends AbstractTestCase
      */
     public function testDebug()
     {
-        $filter = $this->getIteratorStage();
+        $filter    = $this->getIteratorStage();
         $debugInfo = $filter->debug();
 
         $this->assertNotEmpty($debugInfo);
@@ -90,8 +90,8 @@ class IteratorStageTest extends AbstractTestCase
     public function getTestData()
     {
         return [
-            'Array' => [range(0, 10), range(0, 10)],
-            'Iterator' => [new ArrayIterator(range(0, 10)), range(0, 10)],
+            'Array'       => [range(0, 10), range(0, 10)],
+            'Iterator'    => [new ArrayIterator(range(0, 10)), range(0, 10)],
             'Wrong Input' => ['test', '', InvalidArgumentException::class],
         ];
     }

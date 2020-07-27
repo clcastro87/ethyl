@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Filter;
 
 
@@ -9,6 +8,7 @@ use Ethyl\Tests\AbstractTestCase;
 
 /**
  * IteratorFilter Test
+ *
  * @package Ethyl\Tests\Filter
  */
 abstract class IteratorFilterTest extends AbstractTestCase
@@ -48,7 +48,7 @@ abstract class IteratorFilterTest extends AbstractTestCase
      */
     public function testDebug()
     {
-        $filter = $this->getFilter();
+        $filter    = $this->getFilter();
         $debugInfo = $filter->debug();
 
         $this->assertNotEmpty($debugInfo);

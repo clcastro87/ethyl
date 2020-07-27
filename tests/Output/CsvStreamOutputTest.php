@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Output;
 
 use Ethyl\Output\CsvStreamOutput;
@@ -23,17 +22,17 @@ class CsvStreamOutputTest extends AbstractTestCase
     public function testArrayInput()
     {
         $stream = fopen('php://temp', 'w');
-        $input = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA);
+        $input  = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA);
         $input([
-            [
-                'id' => 1,
-                'name' => 'Test 1',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Test 2',
-            ]
-        ]);
+                   [
+                       'id'   => 1,
+                       'name' => 'Test 1',
+                   ],
+                   [
+                       'id'   => 2,
+                       'name' => 'Test 2',
+                   ]
+               ]);
 
         $this->assertNotEmpty($stream);
     }
@@ -45,18 +44,18 @@ class CsvStreamOutputTest extends AbstractTestCase
      */
     public function testArrayInputNotDrain()
     {
-        $stream = fopen('php://temp', 'w');
-        $input = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA, false);
+        $stream   = fopen('php://temp', 'w');
+        $input    = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA, false);
         $iterator = $input([
-            [
-                'id' => 1,
-                'name' => 'Test 1',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Test 2',
-            ]
-        ]);
+                               [
+                                   'id'   => 1,
+                                   'name' => 'Test 1',
+                               ],
+                               [
+                                   'id'   => 2,
+                                   'name' => 'Test 2',
+                               ]
+                           ]);
 
         $this->assertNotEmpty($stream);
         $count = iterator_count($iterator);
@@ -71,7 +70,7 @@ class CsvStreamOutputTest extends AbstractTestCase
     public function testArrayEmptyInput()
     {
         $stream = fopen('php://temp', 'w');
-        $input = new CsvStreamOutput($stream);
+        $input  = new CsvStreamOutput($stream);
         $input([]);
 
         $this->assertNotEmpty($stream);
@@ -85,7 +84,7 @@ class CsvStreamOutputTest extends AbstractTestCase
     public function testInvalidInput()
     {
         $stream = fopen('php://temp', 'w');
-        $input = new CsvStreamOutput($stream);
+        $input  = new CsvStreamOutput($stream);
         $this->expectException(InvalidArgumentException::class);
         $input(new stdClass());
     }

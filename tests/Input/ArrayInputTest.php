@@ -21,7 +21,7 @@ class ArrayInputTest extends AbstractTestCase
      */
     public function testArrayInput()
     {
-        $input = new ArrayInput();
+        $input    = new ArrayInput();
         $iterator = $input([1, 2, 3]);
 
         $count = iterator_count($iterator);

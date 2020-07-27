@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Flow;
 
 use Closure;
@@ -10,7 +9,8 @@ use Ethyl\Flow\ForEachStage;
 use Ethyl\Tests\Core\IteratorStageTest;
 
 /**
- * Class ForEachStageTest
+ * ForEachStage Test
+ *
  * @package Ethyl\Tests\Flow
  */
 class ForEachStageTest extends IteratorStageTest
@@ -21,7 +21,7 @@ class ForEachStageTest extends IteratorStageTest
     public function getIteratorStage()
     {
         $stage = new FunctionStage(function ($item) {
-           return $item * 2;
+            return $item * 2;
         });
 
         return new ForEachStage($stage);

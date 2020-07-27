@@ -22,9 +22,9 @@ class CsvStreamInputTest extends AbstractTestCase
      */
     public function testInputFileStream()
     {
-        $input = new CsvStreamInput(CsvFileInput::CSV_DELIMITER_COMMA);
+        $input    = new CsvStreamInput(CsvFileInput::CSV_DELIMITER_COMMA);
         $iterator = $input($this->getFileStream());
-        $data = iterator_to_array($iterator);
+        $data     = iterator_to_array($iterator);
         $this->assertNotEmpty($data);
     }
 

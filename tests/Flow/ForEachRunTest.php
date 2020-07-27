@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Flow;
 
 use Closure;
@@ -9,7 +8,8 @@ use Ethyl\Tests\Core\IteratorStageTest;
 use stdClass;
 
 /**
- * Class ForEachRunTest
+ * ForEachRun Test
+ *
  * @package Ethyl\Tests\Flow
  */
 class ForEachRunTest extends IteratorStageTest

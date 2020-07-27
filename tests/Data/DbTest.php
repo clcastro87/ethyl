@@ -8,6 +8,7 @@ use Ethyl\Tests\AbstractTestCase;
 
 /**
  * Db Test
+ *
  * @package Ethyl\Tests\Data
  */
 class DbTest extends AbstractTestCase
@@ -30,7 +31,7 @@ class DbTest extends AbstractTestCase
         $conn = $this->getDb();
         $this->assertNotEmpty($conn);
         $iterator = $conn->getResult('SELECT * from Artist WHERE ArtistId = :id', ['id' => 3]);
-        $count = iterator_count($iterator);
+        $count    = iterator_count($iterator);
         $this->assertEquals(1, $count);
     }
 
@@ -42,7 +43,7 @@ class DbTest extends AbstractTestCase
         $conn = $this->getDb();
         $this->assertNotEmpty($conn);
         $iterator = $conn->getResult('SELECT * from Artist WHERE ArtistId = :id', ['id' => 0]);
-        $count = iterator_count($iterator);
+        $count    = iterator_count($iterator);
         $this->assertEquals(0, $count);
     }
 
@@ -66,7 +67,7 @@ class DbTest extends AbstractTestCase
      */
     protected function getDb()
     {
-        $db = (new DbFactory())->create('sqlite::memory:');
+        $db         = (new DbFactory())->create('sqlite::memory:');
         $operations = [
             '
                 CREATE TABLE "Artist" (

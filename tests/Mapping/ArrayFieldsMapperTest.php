@@ -7,6 +7,7 @@ use InvalidArgumentException;
 
 /**
  * ArrayFieldsMapper Test
+ *
  * @package Ethyl\Tests\Mapping
  */
 class ArrayFieldsMapperTest extends AbstractMapperTest
@@ -17,10 +18,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     public function getMapper()
     {
         return new ArrayFieldsMapper([
-            'id' => 'id',
-            'name' => 'title',
-            'missing' => 'missed',
-        ]);
+                                         'id'      => 'id',
+                                         'name'    => 'title',
+                                         'missing' => 'missed',
+                                     ]);
     }
 
     /**
@@ -31,13 +32,13 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
         return [
             'Main' => [
                 [
-                    'id' => 1,
+                    'id'   => 1,
                     'name' => 'lola',
-                    'age' => 10,
+                    'age'  => 10,
                 ],
                 [
-                    'id' => 1,
-                    'title' => 'lola',
+                    'id'     => 1,
+                    'title'  => 'lola',
                     'missed' => '',
                 ],
             ]
@@ -50,10 +51,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     public function getReverseMapper()
     {
         return new ArrayFieldsMapper([
-            'id' => 'id',
-            'name' => 'title',
-            'missing' => 'missed',
-        ], ArrayFieldsMapper::MAP_FILL_WITH_NULL, true);
+                                         'id'      => 'id',
+                                         'name'    => 'title',
+                                         'missing' => 'missed',
+                                     ], ArrayFieldsMapper::MAP_FILL_WITH_NULL, true);
     }
 
     /**
@@ -79,13 +80,13 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
         return [
             'Main' => [
                 [
-                    'id' => 1,
+                    'id'    => 1,
                     'title' => 'lola',
-                    'age' => 10,
+                    'age'   => 10,
                 ],
                 [
-                    'id' => 1,
-                    'name' => 'lola',
+                    'id'      => 1,
+                    'name'    => 'lola',
                     'missing' => '',
                 ],
             ]
@@ -124,10 +125,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     public function testIgnoreMissing($input, $result)
     {
         $mapper = new ArrayFieldsMapper([
-            'id' => 'id',
-            'name' => 'title',
-            'missing' => 'missed',
-        ], ArrayFieldsMapper::MAP_IGNORE_MISSING);
+                                            'id'      => 'id',
+                                            'name'    => 'title',
+                                            'missing' => 'missed',
+                                        ], ArrayFieldsMapper::MAP_IGNORE_MISSING);
         $output = $mapper->map($input);
 
         $this->assertEquals($result, $output);
@@ -141,12 +142,12 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
         return [
             'Main' => [
                 [
-                    'id' => 1,
+                    'id'   => 1,
                     'name' => 'lola',
-                    'age' => 10,
+                    'age'  => 10,
                 ],
                 [
-                    'id' => 1,
+                    'id'    => 1,
                     'title' => 'lola',
                 ],
             ]

@@ -7,6 +7,7 @@ use Ethyl\Tests\AbstractTestCase;
 
 /**
  * DbFactory Test
+ *
  * @package Ethyl\Tests\Data
  */
 class DbFactoryTest extends AbstractTestCase
@@ -17,8 +18,8 @@ class DbFactoryTest extends AbstractTestCase
     public function testCreateSqlite()
     {
         $factory = new DbFactory();
-        $file = __DIR__ . '/../Resources/Chinook.db';
-        $conn = $factory->create('sqlite:' . $file);
+        $file    = __DIR__ . '/../Resources/Chinook.db';
+        $conn    = $factory->create('sqlite:' . $file);
 
         $this->assertNotEmpty($conn);
         $this->assertNotEmpty($conn->query('SELECT * from Artist'));

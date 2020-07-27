@@ -27,12 +27,4 @@ class ArrayInput extends IteratorStage
 
         return $this->iterate($iterator);
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function iterate(Iterator $iterator)
-    {
-        return $iterator;
-    }
 }

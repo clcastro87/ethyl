@@ -6,6 +6,7 @@ use Ethyl\Mapping\FunctionMapper;
 
 /**
  * FunctionMapper Test
+ *
  * @package Ethyl\Tests\Mapping
  */
 class FunctionMapperTest extends AbstractMapperTest
@@ -31,13 +32,13 @@ class FunctionMapperTest extends AbstractMapperTest
             'Person' => [
                 [
                     'name' => 'Test',
-                    'age' => 2,
+                    'age'  => 2,
                     'size' => 1.80,
                 ],
                 [
-                    'name' => 'Test',
-                    'age' => 4,
-                    'size' => 1.80,
+                    'name'  => 'Test',
+                    'age'   => 4,
+                    'size'  => 1.80,
                     'class' => 44,
                 ]
             ]

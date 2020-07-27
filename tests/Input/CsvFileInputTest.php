@@ -21,9 +21,9 @@ class CsvFileInputTest extends AbstractTestCase
      */
     public function testInputFilePath()
     {
-        $input = new CsvFileInput(CsvFileInput::CSV_DELIMITER_COMMA);
+        $input    = new CsvFileInput(CsvFileInput::CSV_DELIMITER_COMMA);
         $iterator = $input($this->getFilePath());
-        $data = iterator_to_array($iterator);
+        $data     = iterator_to_array($iterator);
         $this->assertNotEmpty($data);
     }
 

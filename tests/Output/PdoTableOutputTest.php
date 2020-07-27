@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Ethyl\Tests\Output;
 
 use ArrayIterator;
@@ -28,7 +27,7 @@ class PdoTableOutputTest extends AbstractTestCase
     {
         list($tmpFilePath, $db) = $this->getTestDb();
 
-        $input = new PdoTableOutput($db, 'test_table', 10);
+        $input    = new PdoTableOutput($db, 'test_table', 10);
         $iterator = $this->getTestIterator(1300);
         $input($iterator);
 
@@ -46,8 +45,8 @@ class PdoTableOutputTest extends AbstractTestCase
     {
         list($tmpFilePath, $db) = $this->getTestDb();
 
-        $input = new PdoTableOutput($db, 'test_table', 100,
-            PdoTableOutput::FLAG_TRANSACTIONAL | PdoTableOutput::FLAG_USE_TEMP, false);
+        $input    = new PdoTableOutput($db, 'test_table', 100,
+                                       PdoTableOutput::FLAG_TRANSACTIONAL | PdoTableOutput::FLAG_USE_TEMP, false);
         $iterator = $input($this->getTestIterator());
 
         $count = iterator_count($iterator);
@@ -65,7 +64,7 @@ class PdoTableOutputTest extends AbstractTestCase
     {
         list($tmpFilePath, $db) = $this->getTestDb();
 
-        $input = new PdoTableOutput($db, 'test_table');
+        $input    = new PdoTableOutput($db, 'test_table');
         $iterator = $input(new EmptyIterator());
 
         $count = iterator_count($iterator);
@@ -122,7 +121,7 @@ class PdoTableOutputTest extends AbstractTestCase
 
         for ($i = 1; $i <= $size; $i++) {
             $items[] = [
-                'age' => rand(0, 99),
+                'age'  => rand(0, 99),
                 'name' => 'Test ' . $i,
             ];
         }
@@ -138,8 +137,8 @@ class PdoTableOutputTest extends AbstractTestCase
     private function getTestDb()
     {
         $factory = new DbFactory();
-        $file = __DIR__ . '/../Resources/Output.db';
-        $temp = '/tmp/Output-' . uniqid() . '.db';
+        $file    = __DIR__ . '/../Resources/Output.db';
+        $temp    = '/tmp/Output-' . uniqid() . '.db';
         copy($file, $temp);
         $conn = $factory->create('sqlite:' . $temp);
 

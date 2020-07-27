@@ -7,6 +7,8 @@ use Ethyl\Tests\AbstractTestCase;
 
 /**
  * Abstract mapper test.
+ *
+ * @package Ethyl\Tests\Mapping
  */
 abstract class AbstractMapperTest extends AbstractTestCase
 {

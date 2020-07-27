@@ -34,12 +34,4 @@ abstract class StreamInput extends IteratorStage
      * @return Iterator
      */
     public abstract function getIterator($payload);
-
-    /**
-     * {@inheritDoc}
-     */
-    public function iterate(Iterator $iterator)
-    {
-        return $iterator;
-    }
 }
