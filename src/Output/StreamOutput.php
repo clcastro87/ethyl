@@ -27,9 +27,7 @@ abstract class StreamOutput extends AbstractOutput
      * @param Iterator $iterator
      * @return void
      */
-    public function writeHeader(Iterator $iterator)
-    {
-    }
+    public abstract function writeHeader(Iterator $iterator);
 
     /**
      * Writes the content of a file.
