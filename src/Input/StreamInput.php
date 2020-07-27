@@ -8,7 +8,7 @@ use Iterator;
 
 /**
  * Stream input.
- * 
+ *
  * @package Ethyl\Input
  */
 abstract class StreamInput extends IteratorStage

@@ -8,7 +8,7 @@ use League\Pipeline\StageInterface;
 
 /**
  * Runs a stage for each item present on the iterator.
- * 
+ *
  * @package Ethyl\Flow
  */
 class ForEachStage extends IteratorStage

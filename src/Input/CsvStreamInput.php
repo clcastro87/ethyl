@@ -7,7 +7,7 @@ use League\Csv\Exception as CsvException;
 
 /**
  * CSV Stream Input.
- * 
+ *
  * @package Ethyl\Input
  */
 class CsvStreamInput extends StreamInput
@@ -26,7 +26,7 @@ class CsvStreamInput extends StreamInput
 
     /**
      * CsvStreamInput constructor.
-     * 
+     *
      * @param string $delimiter
      */
     public function __construct(string $delimiter = self::CSV_DELIMITER_COMMA)

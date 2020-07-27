@@ -25,7 +25,7 @@ class XmlStreamInput extends StreamInput
      * XmlStreamInput constructor.
      *
      * @param string $itemTag
-     * @param bool   $cleanNamespaces
+     * @param bool $cleanNamespaces
      */
     public function __construct(string $itemTag = 'item', bool $cleanNamespaces = true)
     {

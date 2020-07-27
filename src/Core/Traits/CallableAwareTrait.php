@@ -7,7 +7,7 @@ namespace Ethyl\Core\Traits;
  *
  * @package Ethyl\Core\Traits
  */
-trait CallableAwareTrait 
+trait CallableAwareTrait
 {
     /**
      * @var callable

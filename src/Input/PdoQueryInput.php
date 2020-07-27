@@ -23,6 +23,7 @@ class PdoQueryInput extends IteratorStage
 
     /**
      * PdoQueryInput constructor.
+     *
      * @param Db $db
      */
     public function __construct(Db $db)

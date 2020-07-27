@@ -16,8 +16,8 @@ final class DbFactory
      * Creates an instance of a Db object
      *
      * @param string $dsn
-     * @param array  $arguments
-     * @param array  $options
+     * @param array $arguments
+     * @param array $options
      * @return Db
      */
     public function create(string $dsn, array $arguments = [], array $options = [])

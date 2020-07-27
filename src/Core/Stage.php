@@ -7,7 +7,7 @@ use League\Pipeline\StageInterface;
 
 /**
  * Abstract stage.
- * 
+ *
  * @package Ethyl\Core
  */
 abstract class Stage implements StageInterface, DebuggableInterface
@@ -43,7 +43,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
      * @return string
      */
     protected function getStageName()
-    {   
+    {
         return $this->getClassName();
     }
 

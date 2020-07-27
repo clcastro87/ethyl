@@ -6,7 +6,7 @@ use League\Csv\Writer;
 
 /**
  * CSV output to stream.
- * 
+ *
  * @package Ethyl\Output
  */
 class CsvStreamOutput extends CsvOutput

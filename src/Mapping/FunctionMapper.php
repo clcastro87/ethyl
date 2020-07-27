@@ -26,7 +26,7 @@ class FunctionMapper extends AbstractMapper
      * Function mapper constructor with a callable as argument.
      *
      * @param callable $closure
-     * @param array    $extraArguments
+     * @param array $extraArguments
      */
     public function __construct(callable $closure, array $extraArguments)
     {

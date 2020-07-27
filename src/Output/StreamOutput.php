@@ -7,7 +7,7 @@ use Iterator;
 
 /**
  * Abstract implementation for output to stream.
- * 
+ *
  * @package Ethyl\Output
  */
 abstract class StreamOutput extends AbstractOutput
@@ -27,7 +27,9 @@ abstract class StreamOutput extends AbstractOutput
      * @param Iterator $iterator
      * @return void
      */
-    public function writeHeader(Iterator $iterator) {}
+    public function writeHeader(Iterator $iterator)
+    {
+    }
 
     /**
      * Writes the content of a file.

@@ -8,7 +8,7 @@ use League\Csv\Reader;
 
 /**
  * CSV File Input.
- * 
+ *
  * @package Ethyl\Input
  */
 class CsvFileInput extends CsvStreamInput

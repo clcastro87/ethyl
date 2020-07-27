@@ -37,7 +37,7 @@ class Db
     /**
      * Db constructor.
      *
-     * @param PDO   $connection
+     * @param PDO $connection
      * @param array $options
      */
     public function __construct(PDO $connection, array $options = [])
@@ -51,7 +51,7 @@ class Db
      * Executes a parametrized query and return results.
      *
      * @param string $query
-     * @param array  $params
+     * @param array $params
      * @return bool
      */
     public function execute(string $query, array $params = [])
@@ -95,7 +95,7 @@ class Db
      * Runs a query and returns result
      *
      * @param string $query
-     * @param array  $params
+     * @param array $params
      * @return bool|PDOStatement
      */
     public function query(string $query, array $params = [])
@@ -110,7 +110,7 @@ class Db
      * Returns an associative array from a query executed.
      *
      * @param string $query
-     * @param array  $params
+     * @param array $params
      * @return Iterator
      */
     public function getResult(string $query, array $params = [])

@@ -8,7 +8,7 @@ use Iterator;
 
 /**
  * Runs a function for each item present on the iterator.
- * 
+ *
  * @package Ethyl\Flow
  */
 class ForEachRun extends IteratorStage

@@ -6,8 +6,8 @@ use EmptyIterator;
 use Iterator;
 
 /**
- * Output for debugging purposes, uses print_r for each item. 
- * 
+ * Output for debugging purposes, uses print_r for each item.
+ *
  * @package Ethyl\Output
  */
 class DebugOutput extends AbstractOutput

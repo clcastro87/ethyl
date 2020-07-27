@@ -23,7 +23,7 @@ class PdoTableOutput extends AbstractOutput
      * Flags.
      */
     const FLAG_TRANSACTIONAL = 2;
-    const FLAG_USE_TEMP = 4;
+    const FLAG_USE_TEMP      = 4;
 
     /**
      * @var Db
@@ -68,10 +68,10 @@ class PdoTableOutput extends AbstractOutput
     ) {
         parent::__construct($drain);
 
-        $this->connection = $connection;
-        $this->table = $table;
-        $this->useTempTable = ($flags & self::FLAG_USE_TEMP) === self::FLAG_USE_TEMP;
-        $this->batchSize = $batchSize;
+        $this->connection    = $connection;
+        $this->table         = $table;
+        $this->useTempTable  = ($flags & self::FLAG_USE_TEMP) === self::FLAG_USE_TEMP;
+        $this->batchSize     = $batchSize;
         $this->transactional = ($flags & self::FLAG_TRANSACTIONAL) === self::FLAG_TRANSACTIONAL;
     }
 
@@ -113,28 +113,28 @@ class PdoTableOutput extends AbstractOutput
      */
     protected function internalIterate(Iterator $iterator)
     {
-        $first = $iterator->current();
+        $first  = $iterator->current();
         $fields = array_keys($first);
-        $table = $this->table; // TODO: Temp table.
+        $table  = $this->table; // TODO: Temp table.
         $insert = sprintf('INSERT INTO `%s` (%s) VALUES ', $table, implode(', ', $fields));
 
         $insertParams = [];
-        $bindData = [];
-        $count = 0;
+        $bindData     = [];
+        $count        = 0;
         foreach ($iterator as $row) {
             $params = [];
             foreach ($row as $columnName => $columnValue) {
-                $param = ":{$columnName}_{$count}";
-                $params[] = $param;
+                $param            = ":{$columnName}_{$count}";
+                $params[]         = $param;
                 $bindData[$param] = $columnValue;
             }
-            $paramsStr = implode(', ', $params);
+            $paramsStr      = implode(', ', $params);
             $insertParams[] = "({$paramsStr})";
 
             if ((++$count % $this->batchSize) === 0) {
                 $this->processBatch($insertParams, $bindData, $insert);
                 $insertParams = [];
-                $bindData = [];
+                $bindData     = [];
             }
         }
 

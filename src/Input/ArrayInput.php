@@ -9,7 +9,7 @@ use Iterator;
 
 /**
  * Iterates over the items on an array.
- * 
+ *
  * @package Ethyl\Input
  */
 class ArrayInput extends IteratorStage

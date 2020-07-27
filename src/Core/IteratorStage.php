@@ -8,7 +8,7 @@ use Iterator;
 
 /**
  * Abstract stage who works with iterators/generators.
- * 
+ *
  * @package Ethyl\Core
  */
 abstract class IteratorStage extends Stage
