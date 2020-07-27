@@ -29,7 +29,8 @@ class PdoTableOutputTest extends AbstractTestCase
         list($tmpFilePath, $db) = $this->getTestDb();
 
         $input = new PdoTableOutput($db, 'test_table', 10);
-        $input($this->getTestIterator(13));
+        $iterator = $this->getTestIterator(1300);
+        $input($iterator);
 
         $this->assertNotEmpty(file_get_contents($tmpFilePath));
 
@@ -140,7 +141,7 @@ class PdoTableOutputTest extends AbstractTestCase
         $file = __DIR__ . '/../Resources/Output.db';
         $temp = '/tmp/Output-' . uniqid() . '.db';
         copy($file, $temp);
-        $conn = $factory->create('sqlite:' . $file);
+        $conn = $factory->create('sqlite:' . $temp);
 
         return [$temp, $conn];
     }

@@ -131,7 +131,7 @@ class PdoTableOutput extends AbstractOutput
             $paramsStr = implode(', ', $params);
             $insertParams[] = "({$paramsStr})";
 
-            if (++$count % $this->batchSize == 0) {
+            if ((++$count % $this->batchSize) === 0) {
                 $this->processBatch($insertParams, $bindData, $insert);
                 $insertParams = [];
                 $bindData = [];
