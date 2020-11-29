@@ -14,7 +14,7 @@
         "prewk/xml-string-streamer": "^0.13.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "6.4"
+        "phpunit/phpunit": "9.*"
     },
     "config": {
         "sort-packages": true
@@ -40,5 +40,8 @@
         "test": [
             "vendor/bin/phpunit"
         ]
+    },
+    "archive": {
+        "exclude": ["/examples"]
     }
 }
