@@ -2,8 +2,10 @@
 
 namespace Ethyl\Tests\Filter;
 
-
+use ArrayIterator;
 use Ethyl\Filter\FilterInterface;
+use Ethyl\Filter\FunctionFilter;
+use Ethyl\Filter\IteratorFilter;
 use Ethyl\Tests\AbstractTestCase;
 
 /**
@@ -11,21 +13,21 @@ use Ethyl\Tests\AbstractTestCase;
  *
  * @package Ethyl\Tests\Filter
  */
-abstract class IteratorFilterTest extends AbstractTestCase
+class IteratorFilterTest extends AbstractTestCase
 {
     /**
      * Test filter feature.
      *
-     * @dataProvider getFilterTestData
+     * @dataProvider getTestData
      * @param $input
      * @param $result
      */
     public function testFilter($input, $result)
     {
-        $filter = $this->getFilter();
-        $output = $filter->satisfy($input);
+        $iteratorFilter = $this->getIteratorFilter();
+        $output         = $iteratorFilter->iterate(new ArrayIterator($input));
 
-        $this->assertEquals($result, $output);
+        $this->assertEquals($result, iterator_to_array($output));
     }
 
     /**
@@ -37,10 +39,10 @@ abstract class IteratorFilterTest extends AbstractTestCase
      */
     public function testInvoke($input, $result)
     {
-        $filter = $this->getFilter();
-        $output = iterator_to_array($filter($input));
+        $iteratorFilter = $this->getIteratorFilter();
+        $output         = $iteratorFilter->iterate(new ArrayIterator($input));
 
-        $this->assertEquals($result, $output);
+        $this->assertEquals($result, iterator_to_array($output));
     }
 
     /**
@@ -48,7 +50,7 @@ abstract class IteratorFilterTest extends AbstractTestCase
      */
     public function testDebug()
     {
-        $filter    = $this->getFilter();
+        $filter    = $this->getIteratorFilter();
         $debugInfo = $filter->debug();
 
         $this->assertNotEmpty($debugInfo);
@@ -59,19 +61,31 @@ abstract class IteratorFilterTest extends AbstractTestCase
      *
      * @return FilterInterface
      */
-    public abstract function getFilter();
+    public function getFilter(): FilterInterface
+    {
+        return new FunctionFilter(function ($item) {
+            return $item % 2 == 0;
+        });
+    }
 
     /**
-     * Function to provide test cases.
+     * Returns the iterator filter.
      *
-     * @return array
+     * @return IteratorFilter
      */
-    public abstract function getTestData();
+    public function getIteratorFilter(): IteratorFilter
+    {
+        return new IteratorFilter($this->getFilter());
+    }
 
     /**
-     * Function to provide test cases.
-     *
-     * @return array
+     * Get test data.
      */
-    public abstract function getFilterTestData();
+    public function getTestData(): array
+    {
+        return [
+            'Even numbers' => [range(0, 10), [0, 2, 4, 6, 8, 10]],
+            'Empty'        => [[], []],
+        ];
+    }
 }

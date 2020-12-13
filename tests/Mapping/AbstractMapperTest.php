@@ -80,5 +80,5 @@ abstract class AbstractMapperTest extends AbstractTestCase
      *
      * @return array
      */
-    protected abstract function getTestData(): array;
+    public abstract function getTestData(): array;
 }

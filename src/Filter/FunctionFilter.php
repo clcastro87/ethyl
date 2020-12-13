@@ -5,31 +5,29 @@ namespace Ethyl\Filter;
 use Ethyl\Core\Traits\CallableAwareTrait;
 
 /**
- * Runs a filter expression for each item present on the iterator.
+ * Runs a filter function over a value and returns if satisfies the condition to be fulfilled.
  *
  * @package Ethyl\Filter
  */
-class FunctionIteratorFilter extends IteratorFilter
+class FunctionFilter extends ValueFilter
 {
     use CallableAwareTrait;
 
     /**
-     * FunctionIteratorFilter constructor.
+     * FunctionFilter constructor.
      *
      * @param callable $fn
      */
     public function __construct(callable $fn)
     {
-        parent::__construct();
-
         $this->setCallable($fn);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function satisfy($item)
+    public function satisfy($value): bool
     {
-        return $this->getCallable()($item);
+        return $this->getCallable()($value);
     }
 }

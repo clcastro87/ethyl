@@ -28,7 +28,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * {@inheritDoc}
      */
-    protected function getTestData(): array
+    public function getTestData(): array
     {
         return [
             'Main' => [

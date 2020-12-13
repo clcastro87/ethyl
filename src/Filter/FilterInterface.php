@@ -17,7 +17,7 @@ interface FilterInterface extends DebuggableInterface
      * @param $value
      * @return bool
      */
-    public function __invoke($value);
+    public function __invoke($value): bool;
 
     /**
      * Returns if the item pass the filter condition.
@@ -25,5 +25,5 @@ interface FilterInterface extends DebuggableInterface
      * @param $value
      * @return bool
      */
-    public function satisfy($value);
+    public function satisfy($value): bool;
 }

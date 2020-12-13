@@ -2,21 +2,22 @@
 
 namespace Ethyl\Tests\Filter;
 
-use Ethyl\Filter\FunctionIteratorFilter;
+use Ethyl\Filter\FilterInterface;
+use Ethyl\Filter\FunctionFilter;
 
 /**
- * FunctionIteratorFilter Test
+ * FunctionFilter Test
  *
  * @package Ethyl\Tests\Filter
  */
-class FunctionIteratorFilterTest extends IteratorFilterTest
+class FunctionFilterTest extends ValueFilterTest
 {
     /**
      * {@inheritDoc}
      */
-    public function getFilter()
+    public function getFilter(): FilterInterface
     {
-        return new FunctionIteratorFilter(function ($item) {
+        return new FunctionFilter(function ($item) {
             return $item % 2 == 0;
         });
     }
@@ -24,11 +25,11 @@ class FunctionIteratorFilterTest extends IteratorFilterTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
-            'Even numbers' => [range(0, 10), [0, 2, 4, 6, 8, 10]],
-            'Empty'        => [[], []],
+            'Even number' => [2, true],
+            'Odd number'  => [1, false],
         ];
     }
 
@@ -37,7 +38,7 @@ class FunctionIteratorFilterTest extends IteratorFilterTest
      *
      * @return array
      */
-    public function getFilterTestData()
+    public function getFilterTestData(): array
     {
         return [
             'Even number' => [2, true],
