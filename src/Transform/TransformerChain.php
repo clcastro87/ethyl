@@ -27,7 +27,7 @@ class TransformerChain extends ValueTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function transform($value)
     {
@@ -41,7 +41,7 @@ class TransformerChain extends ValueTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {

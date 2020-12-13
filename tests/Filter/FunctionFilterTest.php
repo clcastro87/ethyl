@@ -13,7 +13,7 @@ use Ethyl\Filter\FunctionFilter;
 class FunctionFilterTest extends ValueFilterTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getFilter(): FilterInterface
     {
@@ -23,7 +23,7 @@ class FunctionFilterTest extends ValueFilterTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {

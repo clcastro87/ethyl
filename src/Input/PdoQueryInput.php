@@ -34,7 +34,7 @@ class PdoQueryInput extends IteratorStage
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($payload): Iterator
     {
@@ -56,7 +56,7 @@ class PdoQueryInput extends IteratorStage
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

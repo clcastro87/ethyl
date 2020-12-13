@@ -14,7 +14,7 @@ abstract class ValueTransformer implements TransformerInterface
     use DebuggableTrait;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($value)
     {
@@ -22,12 +22,12 @@ abstract class ValueTransformer implements TransformerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public abstract function transform($value);
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {

@@ -28,7 +28,7 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($value)
     {
@@ -36,7 +36,7 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function transform($value)
     {
@@ -44,7 +44,7 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {
@@ -54,7 +54,7 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public abstract function map($value);
 }

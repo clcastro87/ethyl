@@ -13,7 +13,7 @@ use Iterator;
 class DeAggregator extends IteratorStage
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

@@ -40,7 +40,7 @@ class CsvStreamInput extends StreamInput
     /**
      * Returns an iterator for accessing to the stream input
      *
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws CsvException
      */
     public function getIterator($payload): Iterator

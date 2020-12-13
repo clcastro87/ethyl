@@ -37,7 +37,7 @@ class XmlStreamInput extends StreamInput
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIterator($payload): Iterator
     {

@@ -13,7 +13,7 @@ use Ethyl\Tests\Core\IteratorStageTest;
 class DeAggregatorTest extends IteratorStageTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorStage()
     {
@@ -21,7 +21,7 @@ class DeAggregatorTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {
@@ -32,7 +32,7 @@ class DeAggregatorTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorData(): array
     {

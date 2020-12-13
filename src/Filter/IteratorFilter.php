@@ -25,7 +25,7 @@ class IteratorFilter extends IteratorStage
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

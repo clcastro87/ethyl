@@ -13,7 +13,7 @@ use Iterator;
 class DebugOutput extends AbstractOutput
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

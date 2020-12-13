@@ -13,7 +13,7 @@ use Ethyl\Mapping\MapperInterface;
 class FunctionMapperTest extends AbstractMapperTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getMapper(): MapperInterface
     {
@@ -25,7 +25,7 @@ class FunctionMapperTest extends AbstractMapperTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {

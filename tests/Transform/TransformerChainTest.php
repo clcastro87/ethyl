@@ -14,7 +14,7 @@ use function strtolower;
 class TransformerChainTest extends ValueTransformerTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTransformer(): TransformerInterface
     {
@@ -25,7 +25,7 @@ class TransformerChainTest extends ValueTransformerTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {

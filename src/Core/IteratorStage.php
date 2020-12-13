@@ -14,7 +14,7 @@ use Iterator;
 abstract class IteratorStage extends Stage
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @return Iterator
      * @throws InvalidArgumentException
      */

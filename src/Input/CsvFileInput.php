@@ -15,7 +15,7 @@ use League\Csv\Reader;
 class CsvFileInput extends CsvStreamInput
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws Exception
      */
     public function __invoke($payload): Iterator
@@ -30,7 +30,7 @@ class CsvFileInput extends CsvStreamInput
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIterator($payload): Iterator
     {

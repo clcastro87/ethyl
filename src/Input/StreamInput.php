@@ -14,7 +14,7 @@ use Iterator;
 abstract class StreamInput extends IteratorStage
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($payload): Iterator
     {

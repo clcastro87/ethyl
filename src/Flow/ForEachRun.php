@@ -33,7 +33,7 @@ class ForEachRun extends IteratorStage
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

@@ -48,7 +48,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {

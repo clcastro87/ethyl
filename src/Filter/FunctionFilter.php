@@ -24,7 +24,7 @@ class FunctionFilter extends ValueFilter
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function satisfy($value): bool
     {

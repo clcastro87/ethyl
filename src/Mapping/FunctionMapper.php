@@ -35,7 +35,7 @@ class FunctionMapper extends AbstractMapper
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function map($value)
     {

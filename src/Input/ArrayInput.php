@@ -15,7 +15,7 @@ use Iterator;
 class ArrayInput extends IteratorStage
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($payload): Iterator
     {

@@ -30,7 +30,7 @@ class BatchAggregator extends IteratorStage
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

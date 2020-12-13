@@ -14,7 +14,7 @@ use Ethyl\Tests\Core\IteratorStageTest;
 class ForEachStageTest extends IteratorStageTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorStage()
     {
@@ -26,7 +26,7 @@ class ForEachStageTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {
@@ -37,7 +37,7 @@ class ForEachStageTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorData(): array
     {

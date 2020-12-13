@@ -15,7 +15,7 @@ use stdClass;
 class ForEachRunTest extends IteratorStageTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorStage()
     {
@@ -27,7 +27,7 @@ class ForEachRunTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {
@@ -38,7 +38,7 @@ class ForEachRunTest extends IteratorStageTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getIteratorData(): array
     {

@@ -24,7 +24,7 @@ class FunctionTransformer extends ValueTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function transform($value)
     {
@@ -32,7 +32,7 @@ class FunctionTransformer extends ValueTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {

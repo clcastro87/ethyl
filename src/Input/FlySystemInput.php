@@ -32,7 +32,7 @@ class FlySystemInput implements StageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws InvalidArgumentException
      * @throws FileNotFoundException
      */

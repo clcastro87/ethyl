@@ -41,7 +41,7 @@ class ArrayFieldsMapper extends AbstractMapper
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function map($value): array
     {
@@ -89,7 +89,7 @@ class ArrayFieldsMapper extends AbstractMapper
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function debug(): array
     {

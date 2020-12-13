@@ -13,7 +13,7 @@ use Iterator;
 class XmlFileInput extends XmlStreamInput
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($payload): Iterator
     {

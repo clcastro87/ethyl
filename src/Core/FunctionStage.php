@@ -26,7 +26,7 @@ class FunctionStage extends Stage
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function __invoke($payload)
     {

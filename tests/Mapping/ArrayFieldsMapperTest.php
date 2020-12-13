@@ -14,7 +14,7 @@ use InvalidArgumentException;
 class ArrayFieldsMapperTest extends AbstractMapperTest
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function getMapper(): MapperInterface
     {
@@ -26,7 +26,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getTestData(): array
     {

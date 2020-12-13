@@ -13,7 +13,7 @@ use Iterator;
 abstract class StreamOutput extends AbstractOutput
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function iterate(Iterator $iterator): Iterator
     {

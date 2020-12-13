@@ -47,7 +47,7 @@ abstract class CsvOutput extends StreamOutput
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws CsvException
      */
     public function writeHeader(Iterator $iterator)
@@ -59,7 +59,7 @@ abstract class CsvOutput extends StreamOutput
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws CannotInsertRecord
      */
     public function writeItem($item)
