@@ -29,7 +29,7 @@ class ForEachRunTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Array' => [range(0, 5), [0, 2, 4, 6, 8, 10]],
@@ -40,7 +40,7 @@ class ForEachRunTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getIteratorData()
+    public function getIteratorData(): array
     {
         return $this->getTestData();
     }

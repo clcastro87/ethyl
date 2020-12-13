@@ -4,6 +4,7 @@ namespace Ethyl\Input;
 
 use Exception;
 use InvalidArgumentException;
+use Iterator;
 use League\Csv\Reader;
 
 /**
@@ -17,7 +18,7 @@ class CsvFileInput extends CsvStreamInput
      * {@inheritDoc}
      * @throws Exception
      */
-    public function __invoke($payload)
+    public function __invoke($payload): Iterator
     {
         if (is_string($payload)) {
             $iterator = $this->getIterator($payload);
@@ -31,7 +32,7 @@ class CsvFileInput extends CsvStreamInput
     /**
      * {@inheritDoc}
      */
-    public function getIterator($payload)
+    public function getIterator($payload): Iterator
     {
         $reader = Reader::createFromPath($payload);
         $reader->setDelimiter($this->delimiter)

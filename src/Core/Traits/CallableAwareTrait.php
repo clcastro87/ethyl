@@ -29,7 +29,7 @@ trait CallableAwareTrait
      *
      * @return callable
      */
-    protected function getCallable()
+    protected function getCallable(): callable
     {
         return $this->callable;
     }

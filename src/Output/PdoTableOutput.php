@@ -79,7 +79,7 @@ class PdoTableOutput extends AbstractOutput
      * {@inheritDoc}
      * @throws Exception
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         if ($iterator->valid() && !empty($iterator->current())) {
             try {

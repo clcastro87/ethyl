@@ -2,7 +2,6 @@
 
 namespace Ethyl\Tests\Input;
 
-use Ethyl\Input\CsvFileInput;
 use Ethyl\Input\XmlFileInput;
 use Ethyl\Tests\AbstractTestCase;
 use Exception;
@@ -45,7 +44,7 @@ class XmlFileInputTest extends AbstractTestCase
      *
      * @return string
      */
-    protected function getFilePath()
+    protected function getFilePath(): string
     {
         return __DIR__ . '/../Resources/books.xml';
     }

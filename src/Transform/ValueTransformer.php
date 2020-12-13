@@ -16,20 +16,20 @@ abstract class ValueTransformer implements TransformerInterface
     /**
      * {@inheritDoc}
      */
-    public function __invoke($payload)
+    public function __invoke($value)
     {
-        return $this->transform($payload);
+        return $this->transform($value);
     }
 
     /**
      * {@inheritDoc}
      */
-    public abstract function transform($payload);
+    public abstract function transform($value);
 
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         return [
             'transform' => $this->getClassName(),

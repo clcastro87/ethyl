@@ -3,6 +3,7 @@
 namespace Ethyl\Tests\Mapping;
 
 use Ethyl\Mapping\FunctionMapper;
+use Ethyl\Mapping\MapperInterface;
 
 /**
  * FunctionMapper Test
@@ -14,7 +15,7 @@ class FunctionMapperTest extends AbstractMapperTest
     /**
      * {@inheritDoc}
      */
-    public function getMapper()
+    public function getMapper(): MapperInterface
     {
         return new FunctionMapper(function ($item, $classNumber) {
             $item['age']   = $item['age'] * 2;
@@ -26,7 +27,7 @@ class FunctionMapperTest extends AbstractMapperTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Person' => [

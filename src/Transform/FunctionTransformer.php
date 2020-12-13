@@ -26,15 +26,15 @@ class FunctionTransformer extends ValueTransformer
     /**
      * {@inheritDoc}
      */
-    public function transform($item)
+    public function transform($value)
     {
-        return $this->getCallable()($item);
+        return $this->getCallable()($value);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         $parent = parent::debug();
 

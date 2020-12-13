@@ -56,7 +56,7 @@ class PdoQueryInputTest extends AbstractTestCase
      *
      * @return PdoQueryInput
      */
-    private function getPdoInput()
+    private function getPdoInput(): PdoQueryInput
     {
         $db = $this->getConnection();
         return new PdoQueryInput($db);
@@ -67,7 +67,7 @@ class PdoQueryInputTest extends AbstractTestCase
      *
      * @return Db
      */
-    private function getConnection()
+    private function getConnection(): Db
     {
         $factory = new DbFactory();
         $file    = __DIR__ . '/../Resources/Chinook.db';

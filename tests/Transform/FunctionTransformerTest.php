@@ -3,6 +3,7 @@
 namespace Ethyl\Tests\Transform;
 
 use Ethyl\Transform\FunctionTransformer;
+use Ethyl\Transform\TransformerInterface;
 use function strtolower;
 
 /**
@@ -13,7 +14,7 @@ class FunctionTransformerTest extends ValueTransformerTest
     /**
      * {@inheritDoc}
      */
-    public function getTransformer()
+    public function getTransformer(): TransformerInterface
     {
         return new FunctionTransformer(function ($item) { return strtolower($item); });
     }
@@ -21,7 +22,7 @@ class FunctionTransformerTest extends ValueTransformerTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Test string'  => ['TesT', 'test'],

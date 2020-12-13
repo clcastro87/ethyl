@@ -17,7 +17,7 @@ class ArrayInput extends IteratorStage
     /**
      * {@inheritDoc}
      */
-    public function __invoke($payload)
+    public function __invoke($payload): Iterator
     {
         if (is_array($payload)) {
             $iterator = new ArrayIterator($payload);

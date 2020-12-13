@@ -54,7 +54,7 @@ class Db
      * @param array $params
      * @return bool
      */
-    public function execute(string $query, array $params = [])
+    public function execute(string $query, array $params = []): bool
     {
         $statement = $this->db->prepare($query);
 
@@ -66,7 +66,7 @@ class Db
      *
      * @return bool
      */
-    public function beginTransaction()
+    public function beginTransaction(): bool
     {
         return $this->db->beginTransaction();
     }
@@ -76,7 +76,7 @@ class Db
      *
      * @return bool
      */
-    public function commit()
+    public function commit(): bool
     {
         return $this->db->commit();
     }
@@ -86,7 +86,7 @@ class Db
      *
      * @return bool
      */
-    public function rollback()
+    public function rollback(): bool
     {
         return $this->db->rollBack();
     }

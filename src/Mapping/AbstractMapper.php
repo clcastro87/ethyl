@@ -30,23 +30,23 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     /**
      * {@inheritDoc}
      */
-    public function __invoke($payload)
+    public function __invoke($value)
     {
-        return $this->map($payload);
+        return $this->map($value);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function transform($payload)
+    public function transform($value)
     {
-        return $this->map($payload);
+        return $this->map($value);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         return [
             'mapper' => $this->getClassName(),
@@ -56,5 +56,5 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     /**
      * {@inheritDoc}
      */
-    public abstract function map($input);
+    public abstract function map($value);
 }

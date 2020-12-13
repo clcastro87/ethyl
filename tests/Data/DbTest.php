@@ -65,7 +65,7 @@ class DbTest extends AbstractTestCase
      *
      * @return Db
      */
-    protected function getDb()
+    protected function getDb(): Db
     {
         $db         = (new DbFactory())->create('sqlite::memory:');
         $operations = [

@@ -16,7 +16,7 @@ abstract class StreamInput extends IteratorStage
     /**
      * {@inheritDoc}
      */
-    public function __invoke($payload)
+    public function __invoke($payload): Iterator
     {
         if (is_resource($payload) && get_resource_type($payload) === 'stream') {
             $iterator = $this->getIterator($payload);
@@ -33,5 +33,5 @@ abstract class StreamInput extends IteratorStage
      * @param $payload
      * @return Iterator
      */
-    public abstract function getIterator($payload);
+    public abstract function getIterator($payload): Iterator;
 }

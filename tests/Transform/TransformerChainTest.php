@@ -4,6 +4,7 @@ namespace Ethyl\Tests\Transform;
 
 use Ethyl\Transform\FunctionTransformer;
 use Ethyl\Transform\TransformerChain;
+use Ethyl\Transform\TransformerInterface;
 use function sha1;
 use function strtolower;
 
@@ -15,7 +16,7 @@ class TransformerChainTest extends ValueTransformerTest
     /**
      * {@inheritDoc}
      */
-    public function getTransformer()
+    public function getTransformer(): TransformerInterface
     {
         $toLower = new FunctionTransformer(function ($item) { return strtolower($item); });
         $sha1    = new FunctionTransformer(function ($item) { return sha1($item); });
@@ -26,7 +27,7 @@ class TransformerChainTest extends ValueTransformerTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Test string' => ['TesT', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3'],

@@ -2,6 +2,7 @@
 
 namespace Ethyl\Input;
 
+use Iterator;
 use Prewk\XmlStringStreamer;
 
 /**
@@ -38,7 +39,7 @@ class XmlStreamInput extends StreamInput
     /**
      * {@inheritDoc}
      */
-    public function getIterator($payload)
+    public function getIterator($payload): Iterator
     {
         $options = [
             'uniqueNode' => $this->itemTag,

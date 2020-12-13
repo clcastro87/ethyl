@@ -18,7 +18,7 @@ class TestIteratorStage extends IteratorStage
      * @param Iterator $iterator
      * @return Iterator
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
             yield $item;

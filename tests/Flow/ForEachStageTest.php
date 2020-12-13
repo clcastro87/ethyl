@@ -2,9 +2,7 @@
 
 namespace Ethyl\Tests\Flow;
 
-use Closure;
 use Ethyl\Core\FunctionStage;
-use Ethyl\Flow\ForEachRun;
 use Ethyl\Flow\ForEachStage;
 use Ethyl\Tests\Core\IteratorStageTest;
 
@@ -30,7 +28,7 @@ class ForEachStageTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Array' => [range(0, 5), [0, 2, 4, 6, 8, 10]],
@@ -41,7 +39,7 @@ class ForEachStageTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getIteratorData()
+    public function getIteratorData(): array
     {
         return $this->getTestData();
     }

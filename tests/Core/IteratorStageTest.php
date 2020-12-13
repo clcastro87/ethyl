@@ -43,7 +43,7 @@ class IteratorStageTest extends AbstractTestCase
         $stage = $this->getIteratorStage();
         if (!empty($exception)) {
             $this->expectException($exception);
-            $output = $this->convertToArray($stage($input));
+            $this->convertToArray($stage($input));
         } else {
             $output = $this->convertToArray($stage($input));
             $this->assertEquals($result, $output);
@@ -56,7 +56,7 @@ class IteratorStageTest extends AbstractTestCase
      * @param Iterator $iterator
      * @return array
      */
-    protected function convertToArray(Iterator $iterator)
+    protected function convertToArray(Iterator $iterator): array
     {
         return iterator_to_array($iterator);
     }
@@ -87,7 +87,7 @@ class IteratorStageTest extends AbstractTestCase
      *
      * @return array
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Array'       => [range(0, 10), range(0, 10)],
@@ -101,7 +101,7 @@ class IteratorStageTest extends AbstractTestCase
      *
      * @return array
      */
-    public function getIteratorData()
+    public function getIteratorData(): array
     {
         return [
             'Iterator' => [new ArrayIterator(range(0, 10)), range(0, 10)],

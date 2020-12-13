@@ -43,7 +43,7 @@ class CsvStreamInputTest extends AbstractTestCase
     /**
      * Returns the test file stream.
      *
-     * @return string
+     * @return resource
      */
     protected function getFileStream()
     {

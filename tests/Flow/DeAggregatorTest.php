@@ -2,7 +2,6 @@
 
 namespace Ethyl\Tests\Flow;
 
-use Ethyl\Flow\BatchAggregator;
 use Ethyl\Flow\DeAggregator;
 use Ethyl\Tests\Core\IteratorStageTest;
 
@@ -24,7 +23,7 @@ class DeAggregatorTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Array' => [[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10]], range(0, 10)],
@@ -35,7 +34,7 @@ class DeAggregatorTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getIteratorData()
+    public function getIteratorData(): array
     {
         return $this->getTestData();
     }

@@ -15,7 +15,7 @@ abstract class StreamOutput extends AbstractOutput
     /**
      * {@inheritdoc}
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         $this->writeHeader($iterator);
         return $this->writeContent($iterator);

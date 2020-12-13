@@ -18,7 +18,7 @@ abstract class IteratorStage extends Stage
      * @return Iterator
      * @throws InvalidArgumentException
      */
-    public function __invoke($payload)
+    public function __invoke($payload): Iterator
     {
         if (is_array($payload)) {
             $iterator = new ArrayIterator($payload);
@@ -37,7 +37,7 @@ abstract class IteratorStage extends Stage
      * @param Iterator $iterator
      * @return Iterator
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         return $iterator;
     }

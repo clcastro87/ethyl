@@ -43,13 +43,13 @@ class ArrayFieldsMapper extends AbstractMapper
     /**
      * {@inheritDoc}
      */
-    public function map($input)
+    public function map($value): array
     {
-        if (!is_array($input)) {
+        if (!is_array($value)) {
             throw new InvalidArgumentException('The input must be an array.');
         }
 
-        return $this->mapArray($input);
+        return $this->mapArray($value);
     }
 
     /**
@@ -58,7 +58,7 @@ class ArrayFieldsMapper extends AbstractMapper
      * @param array $input
      * @return array
      */
-    protected function mapArray(array $input)
+    protected function mapArray(array $input): array
     {
         if (empty($input) || empty($this->srcDstConfig)) {
             return $input;
@@ -91,7 +91,7 @@ class ArrayFieldsMapper extends AbstractMapper
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         $info   = parent::debug();
         $config = [

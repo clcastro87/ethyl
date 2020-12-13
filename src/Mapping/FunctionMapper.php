@@ -37,8 +37,8 @@ class FunctionMapper extends AbstractMapper
     /**
      * {@inheritDoc}
      */
-    public function map($input)
+    public function map($value)
     {
-        return call_user_func_array($this->closure, array_merge([$input], $this->arguments));
+        return call_user_func_array($this->closure, array_merge([$value], $this->arguments));
     }
 }

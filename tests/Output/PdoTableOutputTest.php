@@ -8,6 +8,7 @@ use Ethyl\Data\DbFactory;
 use Ethyl\Output\PdoTableOutput;
 use Ethyl\Tests\AbstractTestCase;
 use InvalidArgumentException;
+use Iterator;
 use PDOException;
 use stdClass;
 
@@ -115,7 +116,7 @@ class PdoTableOutputTest extends AbstractTestCase
      * @param int $size
      * @return ArrayIterator
      */
-    private function getTestIterator(int $size = 2)
+    private function getTestIterator(int $size = 2): Iterator
     {
         $items = [];
 
@@ -134,7 +135,7 @@ class PdoTableOutputTest extends AbstractTestCase
      *
      * @return array
      */
-    private function getTestDb()
+    private function getTestDb(): array
     {
         $factory = new DbFactory();
         $file    = __DIR__ . '/../Resources/Output.db';

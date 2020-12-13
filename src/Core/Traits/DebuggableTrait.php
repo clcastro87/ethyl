@@ -14,7 +14,7 @@ trait DebuggableTrait
      *
      * @return array
      */
-    public function debug()
+    public function debug(): array
     {
         return [
             'class' => $this->getClassName(),
@@ -26,7 +26,7 @@ trait DebuggableTrait
      *
      * @return string
      */
-    protected function getClassName()
+    protected function getClassName(): string
     {
         $className = get_class($this);
 

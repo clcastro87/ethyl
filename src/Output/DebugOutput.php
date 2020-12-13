@@ -15,7 +15,7 @@ class DebugOutput extends AbstractOutput
     /**
      * {@inheritdoc}
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
             print_r($item);

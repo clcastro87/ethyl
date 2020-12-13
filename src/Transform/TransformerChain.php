@@ -29,9 +29,9 @@ class TransformerChain extends ValueTransformer
     /**
      * {@inheritDoc}
      */
-    public function transform($input)
+    public function transform($value)
     {
-        $result = $input;
+        $result = $value;
 
         foreach ($this->transformers as $transformer) {
             $result = $transformer->transform($result);
@@ -43,7 +43,7 @@ class TransformerChain extends ValueTransformer
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         $parent = parent::debug();
         $chain  = array_map(function ($item) {

@@ -15,15 +15,15 @@ interface TransformerInterface extends DebuggableInterface
      * Applies a transformation to a value.
      *
      * @param $value
-     * @return bool
+     * @return mixed
      */
     public function __invoke($value);
 
     /**
-     * Transform the payload.
+     * Transform the value.
      *
-     * @param mixed $payload
+     * @param mixed $value
      * @return mixed
      */
-    public function transform($payload);
+    public function transform($value);
 }

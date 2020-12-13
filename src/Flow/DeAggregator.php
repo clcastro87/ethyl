@@ -15,7 +15,7 @@ class DeAggregator extends IteratorStage
     /**
      * {@inheritDoc}
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $batch) {
             foreach ($batch as $item) {

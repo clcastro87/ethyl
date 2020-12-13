@@ -14,16 +14,16 @@ interface MapperInterface extends DebuggableInterface
     /**
      * Maps a value into another.
      *
-     * @param $value
-     * @return bool
+     * @param mixed $value
+     * @return mixed
      */
     public function __invoke($value);
 
     /**
-     * Transform the payload.
+     * Map a value into another.
      *
-     * @param mixed $payload
+     * @param mixed $value
      * @return mixed
      */
-    public function map($payload);
+    public function map($value);
 }

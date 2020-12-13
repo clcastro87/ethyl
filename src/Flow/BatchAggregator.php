@@ -32,7 +32,7 @@ class BatchAggregator extends IteratorStage
     /**
      * {@inheritDoc}
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         $batch = [];
         $count = 0;
@@ -46,5 +46,7 @@ class BatchAggregator extends IteratorStage
         if (!empty($batch)) {
             yield $batch;
         }
+
+        yield from [];
     }
 }

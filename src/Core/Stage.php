@@ -42,7 +42,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
      *
      * @return string
      */
-    protected function getStageName()
+    protected function getStageName(): string
     {
         return $this->getClassName();
     }
@@ -50,7 +50,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
     /**
      * {@inheritDoc}
      */
-    public function debug()
+    public function debug(): array
     {
         return [
             'stage'      => $this->stageName,

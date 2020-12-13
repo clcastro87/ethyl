@@ -35,7 +35,7 @@ class ForEachRun extends IteratorStage
     /**
      * {@inheritDoc}
      */
-    public function iterate(Iterator $iterator)
+    public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
             yield $this->closure->__invoke($item);

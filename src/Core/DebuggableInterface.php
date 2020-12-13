@@ -14,5 +14,5 @@ interface DebuggableInterface
      *
      * @return array
      */
-    public function debug();
+    public function debug(): array;
 }

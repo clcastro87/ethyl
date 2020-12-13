@@ -4,6 +4,7 @@ namespace Ethyl\Tests\Data;
 
 use Ethyl\Data\DbFactory;
 use Ethyl\Tests\AbstractTestCase;
+use ReflectionException;
 
 /**
  * DbFactory Test
@@ -14,6 +15,7 @@ class DbFactoryTest extends AbstractTestCase
 {
     /**
      * Tests factory create for SQLite.
+     * @throws ReflectionException
      */
     public function testCreateSqlite()
     {

@@ -3,6 +3,7 @@
 namespace Ethyl\Tests\Mapping;
 
 use Ethyl\Mapping\ArrayFieldsMapper;
+use Ethyl\Mapping\MapperInterface;
 use InvalidArgumentException;
 
 /**
@@ -15,7 +16,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * {@inheritDoc}
      */
-    public function getMapper()
+    protected function getMapper(): MapperInterface
     {
         return new ArrayFieldsMapper([
                                          'id'      => 'id',
@@ -27,7 +28,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    protected function getTestData(): array
     {
         return [
             'Main' => [
@@ -48,7 +49,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * Test reverse mapping.
      */
-    public function getReverseMapper()
+    public function getReverseMapper(): MapperInterface
     {
         return new ArrayFieldsMapper([
                                          'id'      => 'id',
@@ -75,7 +76,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * Get test data for reverse mapping.
      */
-    public function getReverseTestData()
+    public function getReverseTestData(): array
     {
         return [
             'Main' => [
@@ -137,7 +138,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     /**
      * Get test data for missing fields.
      */
-    public function getTestMissingData()
+    public function getTestMissingData(): array
     {
         return [
             'Main' => [

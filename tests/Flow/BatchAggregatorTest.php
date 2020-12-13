@@ -23,7 +23,7 @@ class BatchAggregatorTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getTestData()
+    public function getTestData(): array
     {
         return [
             'Array' => [range(0, 10), [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10]]],
@@ -34,7 +34,7 @@ class BatchAggregatorTest extends IteratorStageTest
     /**
      * {@inheritDoc}
      */
-    public function getIteratorData()
+    public function getIteratorData(): array
     {
         return $this->getTestData();
     }

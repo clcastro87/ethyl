@@ -2,6 +2,7 @@
 
 namespace Ethyl\Input;
 
+use Iterator;
 use League\Csv\Reader;
 use League\Csv\Exception as CsvException;
 
@@ -42,7 +43,7 @@ class CsvStreamInput extends StreamInput
      * {@inheritDoc}
      * @throws CsvException
      */
-    public function getIterator($payload)
+    public function getIterator($payload): Iterator
     {
         $reader = Reader::createFromStream($payload);
         $reader->setDelimiter($this->delimiter)

@@ -108,7 +108,7 @@ class CsvFileOutputTest extends AbstractTestCase
      *
      * @return string
      */
-    private function getTempFilePath()
+    private function getTempFilePath(): string
     {
         return tempnam("/tmp", "TEST");
     }

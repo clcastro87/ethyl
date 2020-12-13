@@ -50,7 +50,7 @@ class FlySystemInputTest extends AbstractTestCase
      *
      * @return string
      */
-    protected function getFilePath()
+    protected function getFilePath(): string
     {
         return __DIR__ . '/../Resources/sales.csv';
     }

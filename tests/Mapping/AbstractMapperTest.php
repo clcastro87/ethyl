@@ -73,12 +73,12 @@ abstract class AbstractMapperTest extends AbstractTestCase
      *
      * @return MapperInterface
      */
-    public abstract function getMapper();
+    protected abstract function getMapper(): MapperInterface;
 
     /**
      * Function to provide test cases.
      *
      * @return array
      */
-    public abstract function getTestData();
+    protected abstract function getTestData(): array;
 }

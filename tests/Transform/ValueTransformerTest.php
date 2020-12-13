@@ -56,12 +56,12 @@ abstract class ValueTransformerTest extends AbstractTestCase
      *
      * @return TransformerInterface
      */
-    public abstract function getTransformer();
+    public abstract function getTransformer(): TransformerInterface;
 
     /**
      * Function to provide test cases.
      *
      * @return array
      */
-    public abstract function getTestData();
+    public abstract function getTestData(): array;
 }
