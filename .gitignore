@@ -6,8 +6,6 @@ composer.phar
 test.php
 coverage
 
-test/*.txt
-test/*.csv
-test/*.tsv
+test/*
 
 .phpunit.*
