@@ -22,5 +22,7 @@ class DeAggregator extends IteratorStage
                 yield $item;
             }
         }
+
+        yield from [];
     }
 }

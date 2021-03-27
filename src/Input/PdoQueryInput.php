@@ -56,14 +56,6 @@ class PdoQueryInput extends IteratorStage
     }
 
     /**
-     * @inheritDoc
-     */
-    public function iterate(Iterator $iterator): Iterator
-    {
-        return $iterator;
-    }
-
-    /**
      * Processes the statement
      *
      * @param PDOStatement $statement

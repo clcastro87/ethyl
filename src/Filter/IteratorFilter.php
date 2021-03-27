@@ -18,9 +18,8 @@ class IteratorFilter extends IteratorStage
     protected $filter;
 
     /**
-     * Iterator Filter Constructor
+     * Iterator Filter Constructor.
      *
-     * IteratorFilter constructor.
      * @param FilterInterface $filter
      */
     public function __construct(FilterInterface $filter)
