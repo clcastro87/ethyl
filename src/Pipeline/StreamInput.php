@@ -19,11 +19,10 @@ class StreamInput extends Input
      *
      * @param string $resource
      * @param Stage $input
-     * @param Stage|null $processor
      */
-    public function __construct(string $resource, Stage $input, Stage $processor = null)
+    public function __construct(string $resource, Stage $input)
     {
-        parent::__construct($input, $processor);
+        parent::__construct($input);
 
         $this->resource = $resource;
     }

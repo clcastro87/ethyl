@@ -18,20 +18,13 @@ class Input
     private $input;
 
     /**
-     * @var Stage|null
-     */
-    private $formatProcessor;
-
-    /**
      * Input constructor.
      *
      * @param Stage $input
-     * @param Stage|null $formatProcessor
      */
-    public function __construct(Stage $input, Stage $formatProcessor = null)
+    public function __construct(Stage $input)
     {
         $this->input = $input;
-        $this->formatProcessor = $formatProcessor;
     }
 
     /**
@@ -42,9 +35,7 @@ class Input
      */
     public function extract($payload = null): Iterator
     {
-        $data = $this->input->__invoke($payload);
-
-        return empty($this->formatProcessor) ? $data : $this->formatProcessor->__invoke($data);
+        return $this->input->__invoke($payload);
     }
 
     /**
