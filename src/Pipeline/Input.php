@@ -20,30 +20,41 @@ class Input
     /**
      * @var Stage|null
      */
-    private $processor;
+    private $formatProcessor;
 
     /**
      * Input constructor.
      *
      * @param Stage $input
-     * @param Stage|null $processor
+     * @param Stage|null $formatProcessor
      */
-    public function __construct(Stage $input, Stage $processor = null)
+    public function __construct(Stage $input, Stage $formatProcessor = null)
     {
         $this->input = $input;
-        $this->processor = $processor;
+        $this->formatProcessor = $formatProcessor;
     }
 
     /**
      * Extracts the input.
      *
-     * @param null $payload
+     * @param mixed|null $payload
      * @return Iterator
      */
     public function extract($payload = null): Iterator
     {
         $data = $this->input->__invoke($payload);
 
-        return empty($this->processor) ? $data : $this->processor->__invoke($data);
+        return empty($this->formatProcessor) ? $data : $this->formatProcessor->__invoke($data);
+    }
+
+    /**
+     * Handles invoke of the object as a function.
+     *
+     * @param mixed|null $payload
+     * @return Iterator
+     */
+    public function __invoke($payload = null): Iterator
+    {
+        return $this->extract($payload);
     }
 }

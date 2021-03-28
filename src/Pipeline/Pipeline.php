@@ -4,7 +4,9 @@
 namespace Ethyl\Pipeline;
 
 use Exception;
+use League\Pipeline\FingersCrossedProcessor;
 use League\Pipeline\Pipeline as BasePipeline;
+use League\Pipeline\PipelineBuilder;
 
 /**
  * ETL Pipeline
@@ -34,12 +36,18 @@ class Pipeline
     protected $transforms;
 
     /**
+     * @var PipelineBuilder
+     */
+    protected $pipelineBuilder;
+
+    /**
      * Pipeline constructor.
      */
     public function __construct()
     {
         $this->ran = false;
         $this->transforms = [];
+        $this->pipelineBuilder = new PipelineBuilder();
     }
 
     public function setInput(Input $input)
@@ -89,8 +97,15 @@ class Pipeline
             throw new Exception('Empty output');
         }
 
-        $inputIterator = $this->input->extract();
-        $transformed = (new BasePipeline(null, ...$this->transforms))->process($inputIterator);
-        $this->output->load($transformed);
+        // Add stages
+        $this->pipelineBuilder->add($this->input);
+        foreach ($this->transforms as $transform) {
+            $this->pipelineBuilder->add($transform);
+        }
+        $this->pipelineBuilder->add($this->output);
+        // Build pipeline
+        $pipeline = $this->pipelineBuilder->build(new FingersCrossedProcessor());
+        // Run
+        $pipeline(null);
     }
 }

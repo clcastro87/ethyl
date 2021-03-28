@@ -20,18 +20,18 @@ class Output
     /**
      * @var Stage|null
      */
-    private $processor;
+    private $formatProcessor;
 
     /**
      * Output constructor.
      *
      * @param Stage $output
-     * @param Stage|null $processor
+     * @param Stage|null $formatProcessor
      */
-    public function __construct(Stage $output, Stage $processor = null)
+    public function __construct(Stage $output, Stage $formatProcessor = null)
     {
         $this->output = $output;
-        $this->processor = $processor;
+        $this->formatProcessor = $formatProcessor;
     }
 
     /**
@@ -41,8 +41,18 @@ class Output
      */
     public function load(Iterator $data): void
     {
-        $data = empty($this->processor) ? $data : $this->processor->__invoke($data);
+        $data = empty($this->formatProcessor) ? $data : $this->formatProcessor->__invoke($data);
 
         $this->output->__invoke($data);
+    }
+
+    /**
+     * Handles invoke of the object as a function.
+     *
+     * @param Iterator $data
+     */
+    public function __invoke(Iterator $data): void
+    {
+        $this->load($data);
     }
 }
