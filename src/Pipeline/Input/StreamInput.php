@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Ethyl\Pipeline;
+namespace Ethyl\Pipeline\Input;
 
 
 use Ethyl\Core\Stage;
+use Ethyl\Pipeline\Input;
 use Iterator;
 
 class StreamInput extends Input
@@ -17,10 +18,10 @@ class StreamInput extends Input
     /**
      * StreamInput constructor.
      *
-     * @param string $resource
+     * @param resource $resource
      * @param Stage $input
      */
-    public function __construct(string $resource, Stage $input)
+    public function __construct($resource, Stage $input)
     {
         parent::__construct($input);
 
