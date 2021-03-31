@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ethyl\Input;
 
 use Ethyl\Core\IteratorStage;

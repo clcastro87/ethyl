@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Ethyl\Pipeline;
 
 use Exception;
 use League\Pipeline\FingersCrossedProcessor;
-use League\Pipeline\Pipeline as BasePipeline;
 use League\Pipeline\PipelineBuilder;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Ethyl\Pipeline\Input;
-
 
 use Ethyl\Core\Stage;
 use Ethyl\Pipeline\Input;
