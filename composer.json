@@ -1,6 +1,6 @@
 {
     "name": "clcastro87/ethyl",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "type": "library",
     "description": "Easy ETL Pipelines done right.",
     "require": {
