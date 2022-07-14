@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Mapping;
 
-use Closure;
-use stdClass;
+use Ethyl\Core\Traits\CallableAwareTrait;
 
 /**
  * Allows to maps using a function.
@@ -14,10 +13,7 @@ use stdClass;
  */
 class FunctionMapper extends AbstractMapper
 {
-    /**
-     * @var Closure
-     */
-    protected $closure;
+    use CallableAwareTrait;
 
     /**
      * @var array
@@ -27,12 +23,12 @@ class FunctionMapper extends AbstractMapper
     /**
      * Function mapper constructor with a callable as argument.
      *
-     * @param callable $closure
+     * @param callable $callable
      * @param array $extraArguments
      */
-    public function __construct(callable $closure, array $extraArguments)
+    public function __construct(callable $callable, array $extraArguments)
     {
-        $this->closure   = Closure::bind($closure, new stdClass());
+        $this->callable  = $callable;
         $this->arguments = $extraArguments;
     }
 
@@ -41,6 +37,6 @@ class FunctionMapper extends AbstractMapper
      */
     public function map($value)
     {
-        return call_user_func_array($this->closure, array_merge([$value], $this->arguments));
+        return call_user_func_array($this->callable, array_merge([$value], $this->arguments));
     }
 }

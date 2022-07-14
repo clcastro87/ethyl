@@ -36,6 +36,7 @@ class IteratorFilter extends IteratorStage
      */
     public function iterate(Iterator $iterator): Iterator
     {
+        // TODO: Optimize with SPL internals
         foreach ($iterator as $item) {
             if ($this->filter->satisfy($item)) {
                 yield $item;

@@ -31,8 +31,8 @@ class DbTest extends AbstractTestCase
         $conn = $this->getDb();
         $this->assertNotEmpty($conn);
         $iterator = $conn->getResult('SELECT * from Artist WHERE ArtistId = :id', ['id' => 3]);
-        $count    = iterator_count($iterator);
-        $this->assertEquals(1, $count);
+        $arr = iterator_to_array($iterator);
+        $this->assertEquals(1, count($arr));
     }
 
     /**
@@ -43,8 +43,8 @@ class DbTest extends AbstractTestCase
         $conn = $this->getDb();
         $this->assertNotEmpty($conn);
         $iterator = $conn->getResult('SELECT * from Artist WHERE ArtistId = :id', ['id' => 0]);
-        $count    = iterator_count($iterator);
-        $this->assertEquals(0, $count);
+        $arr = iterator_to_array($iterator);
+        $this->assertEquals(0, count($arr));
     }
 
     /**

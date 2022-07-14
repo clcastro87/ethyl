@@ -6,6 +6,7 @@ namespace Ethyl\Data;
 
 use EmptyIterator;
 use Iterator;
+use IteratorIterator;
 use PDO;
 use PDOStatement;
 
@@ -115,18 +116,14 @@ class Db
      * @param array $params
      * @return Iterator
      */
-    public function getResult(string $query, array $params = [])
+    public function getResult(string $query, array $params = []): Iterator
     {
-        $dbResult  = $this->query($query, $params);
-        $hasResult = false;
+        $dbResult = $this->query($query, $params);
 
-        while ($item = $dbResult->fetch()) {
-            $hasResult = true;
-            yield $item;
-        }
-
-        if (!$hasResult) {
+        if (!$dbResult) {
             return new EmptyIterator();
+        } else {
+            return new IteratorIterator($dbResult);
         }
     }
 
