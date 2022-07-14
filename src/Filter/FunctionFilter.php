@@ -22,7 +22,7 @@ class FunctionFilter extends ValueFilter
      */
     public function __construct(callable $fn)
     {
-        $this->setCallable($fn);
+        $this->callable = $fn;
     }
 
     /**
@@ -30,6 +30,6 @@ class FunctionFilter extends ValueFilter
      */
     public function satisfy($value): bool
     {
-        return $this->getCallable()($value);
+        return call_user_func($this->callable, $value);
     }
 }

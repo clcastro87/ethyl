@@ -22,7 +22,7 @@ class FunctionTransformer extends ValueTransformer
      */
     public function __construct(callable $fn)
     {
-        $this->setCallable($fn);
+        $this->callable = $fn;
     }
 
     /**
@@ -30,7 +30,7 @@ class FunctionTransformer extends ValueTransformer
      */
     public function transform($value)
     {
-        return $this->getCallable()($value);
+        return call_user_func($this->callable, $value);
     }
 
     /**

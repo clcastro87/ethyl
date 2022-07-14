@@ -22,7 +22,7 @@ class FunctionStage extends Stage
      */
     public function __construct(callable $fn)
     {
-        $this->setCallable($fn);
+        $this->callable = $fn;
 
         parent::__construct();
     }
@@ -32,6 +32,6 @@ class FunctionStage extends Stage
      */
     public function __invoke($payload)
     {
-        return $this->getCallable()($payload);
+        return call_user_func($this->callable, $payload);
     }
 }
