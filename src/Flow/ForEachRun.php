@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ethyl\Flow;
 
 use Ethyl\Core\IteratorStage;
-use Closure;
+use Ethyl\Core\Traits\CallableAwareTrait;
 use Iterator;
 
 /**
@@ -15,23 +15,18 @@ use Iterator;
  */
 class ForEachRun extends IteratorStage
 {
-    /**
-     * fn to run for each item.
-     *
-     * @var Closure
-     */
-    protected $closure;
+    use CallableAwareTrait;
 
     /**
      * ForEachRun constructor.
      *
-     * @param Closure $closure
+     * @param callable $callable
      */
-    public function __construct(Closure $closure)
+    public function __construct(callable $callable)
     {
         parent::__construct();
 
-        $this->closure = $closure;
+        $this->callable = $callable;
     }
 
     /**
@@ -40,7 +35,7 @@ class ForEachRun extends IteratorStage
     public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
-            yield $this->closure->__invoke($item);
+            yield call_user_func($this->callable, $item);
         }
 
         yield from [];

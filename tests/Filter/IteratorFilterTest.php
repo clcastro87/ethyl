@@ -25,7 +25,7 @@ class IteratorFilterTest extends AbstractTestCase
     public function testFilter($input, $result)
     {
         $iteratorFilter = $this->getIteratorFilter();
-        $output         = $iteratorFilter->iterate(new ArrayIterator($input));
+        $output         = $iteratorFilter($input);
 
         $this->assertEquals($result, iterator_to_array($output));
     }

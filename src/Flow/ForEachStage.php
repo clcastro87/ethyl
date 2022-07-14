@@ -40,7 +40,7 @@ class ForEachStage extends IteratorStage
     public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
-            yield $this->subStage->__invoke($item);
+            yield call_user_func($this->subStage, $item);
         }
 
         yield from [];
