@@ -38,7 +38,7 @@ class IteratorFilter extends IteratorStage
     {
         // TODO: Optimize with SPL internals
         foreach ($iterator as $item) {
-            if ($this->filter->satisfy($item)) {
+            if ($this->filter->accept($item)) {
                 yield $item;
             }
         }

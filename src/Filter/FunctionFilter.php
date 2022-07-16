@@ -28,8 +28,8 @@ class FunctionFilter extends ValueFilter
     /**
      * @inheritDoc
      */
-    public function satisfy($value): bool
+    public function accept($value): bool
     {
-        return call_user_func($this->callable, $value);
+        return (bool) call_user_func($this->callable, $value);
     }
 }

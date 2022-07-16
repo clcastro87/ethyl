@@ -27,5 +27,5 @@ interface FilterInterface extends DebuggableInterface
      * @param $value
      * @return bool
      */
-    public function satisfy($value): bool;
+    public function accept($value): bool;
 }

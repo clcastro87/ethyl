@@ -20,13 +20,13 @@ abstract class ValueFilter implements FilterInterface
      */
     public function __invoke($value): bool
     {
-        return $this->satisfy($value);
+        return $this->accept($value);
     }
 
     /**
      * @inheritDoc
      */
-    public abstract function satisfy($value): bool;
+    public abstract function accept($value): bool;
 
     /**
      * @inheritDoc

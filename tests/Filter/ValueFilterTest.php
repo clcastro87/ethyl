@@ -23,7 +23,7 @@ abstract class ValueFilterTest extends AbstractTestCase
     public function testFilter($input, $result)
     {
         $filter = $this->getFilter();
-        $output = $filter->satisfy($input);
+        $output = $filter->accept($input);
 
         $this->assertEquals($result, $output);
     }

@@ -40,7 +40,6 @@ class PdoQueryInput extends IteratorStage
      */
     public function __invoke($payload): Iterator
     {
-        $query = null;
         if (is_a($payload, Query::class)) {
             $query = $payload;
         } else {
@@ -51,24 +50,8 @@ class PdoQueryInput extends IteratorStage
             }
         }
 
-        $pdoStatement = $this->db->query($query->getStatement(), $query->getParameters());
-        $iterator     = $this->processStatement($pdoStatement);
+        $iterator = $this->db->getResult($query->getStatement(), $query->getParameters());
 
         return $this->iterate($iterator);
-    }
-
-    /**
-     * Processes the statement
-     *
-     * @param PDOStatement $statement
-     * @return Iterator
-     */
-    protected function processStatement(PDOStatement $statement)
-    {
-        while ($item = $statement->fetch()) {
-            yield $item;
-        }
-
-        yield from [];
     }
 }
