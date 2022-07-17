@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Core;
 
-use ArrayIterator;
+use Exception;
 use InvalidArgumentException;
 use Iterator;
 
@@ -19,15 +19,22 @@ abstract class IteratorStage extends Stage
      * @inheritDoc
      * @return Iterator
      * @throws InvalidArgumentException
+     * @throws Exception
      */
     public function __invoke($payload): Iterator
     {
-        if (is_array($payload)) {
-            $iterator = new ArrayIterator($payload);
-        } elseif ($payload instanceof Iterator) {
-            $iterator = $payload;
-        } else {
+        if (!is_iterable($payload)) {
             throw new InvalidArgumentException('This stage is only applicable to iterable objects.');
+        }
+
+        if (is_array($payload)) {
+            $iterator = new \ArrayIterator($payload);
+        } else if ($payload instanceof \IteratorAggregate) {
+            $iterator = $payload->getIterator();
+        } else if (!$payload instanceof \Iterator) {
+            $iterator = new \IteratorIterator($payload);
+        } else {
+            $iterator = $payload;
         }
 
         return $this->iterate($iterator);
