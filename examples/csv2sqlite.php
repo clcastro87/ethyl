@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 include_once(__DIR__ . '/../vendor/autoload.php');
 
-$input = new \Ethyl\Pipeline\StreamInput(
+$input = new \Ethyl\Pipeline\Input\StreamInput(
     __DIR__ . '/../test/Zulily_Criteo.csv',
     new \Ethyl\Input\CsvFileInput(\Ethyl\Input\CsvFileInput::CSV_DELIMITER_TAB)
 );

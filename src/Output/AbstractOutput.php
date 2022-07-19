@@ -25,7 +25,7 @@ abstract class AbstractOutput extends IteratorStage
      *
      * @param bool $drain
      */
-    public function __construct($drain = true)
+    public function __construct(bool $drain = true)
     {
         parent::__construct();
 

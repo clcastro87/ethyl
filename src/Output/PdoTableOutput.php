@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Output;
 
+use CachingIterator;
 use EmptyIterator;
 use Ethyl\Data\Db;
 use Exception;
