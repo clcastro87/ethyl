@@ -29,13 +29,19 @@ $closure = function ($item) use ($mapper) {
     return $mapper($item);
 };
 
+
+// DB
+$db      = (new \Ethyl\Data\DbFactory())->create('sqlite:' . __DIR__ . '/../test/Zulily.db');
+$output = new \Ethyl\Pipeline\Output(new \Ethyl\Output\PdoTableOutput($db, 'products'));
+
 (new \Ethyl\Pipeline\Pipeline())
     ->setInput($input)
     ->setOutput($output)
     ->pipe(new \Ethyl\Flow\ForEachRun($closure))
     ->run();
 
-exit(0);
+echo memory_get_peak_usage(true) / 1024 / 1024 . PHP_EOL;
+die();
 
 $temp    = '/tmp/Output.csv';
 $db      = (new \Ethyl\Data\DbFactory())->create('sqlite:' . __DIR__ . '/../test/Zulily.db');

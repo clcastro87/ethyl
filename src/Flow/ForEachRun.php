@@ -35,12 +35,10 @@ class ForEachRun extends IteratorStage
      */
     public function iterate(Iterator $iterator): Iterator
     {
-//        foreach ($iterator as $item) {
-//            yield call_user_func($this->callable, $item);
-//        }
-//
-//        yield from [];
+        foreach ($iterator as $item) {
+            yield call_user_func($this->callable, $item);
+        }
 
-        return new MappingIterator($iterator, $this->callable);
+        yield from [];
     }
 }

@@ -67,7 +67,7 @@ class PdoTableOutput extends AbstractOutput
         string $table,
         int $batchSize = self::BATCH_SIZE_DEFAULT,
         int $flags = self::FLAG_TRANSACTIONAL | self::FLAG_USE_TEMP,
-        $drain = true
+        bool $drain = true
     ) {
         parent::__construct($drain);
 
@@ -84,7 +84,7 @@ class PdoTableOutput extends AbstractOutput
      */
     public function iterate(Iterator $iterator): Iterator
     {
-        if ($iterator->valid() && !empty($iterator->current())) {
+        if ($iterator->valid()) {
             try {
                 if ($this->transactional) {
                     $this->connection->beginTransaction();
