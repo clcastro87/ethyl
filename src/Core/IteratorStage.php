@@ -27,17 +27,7 @@ abstract class IteratorStage extends Stage
             throw new InvalidArgumentException('This stage is only applicable to iterable objects.');
         }
 
-        if (is_array($payload)) {
-            $iterator = new \ArrayIterator($payload);
-        } else if ($payload instanceof \IteratorAggregate) {
-            $iterator = $payload->getIterator();
-        } else if (!$payload instanceof \Iterator) {
-            $iterator = new \IteratorIterator($payload);
-        } else {
-            $iterator = $payload;
-        }
-
-        return $this->iterate($iterator);
+        return $this->iterate($this->convertToIterator($payload));
     }
 
     /**
@@ -49,5 +39,35 @@ abstract class IteratorStage extends Stage
     public function iterate(Iterator $iterator): Iterator
     {
         return $iterator;
+    }
+
+    /**
+     * Converts an iterable to an iterator.
+     *
+     * @param iterable $iterable
+     * @return Iterator
+     * @throws Exception
+     */
+    protected function convertToIterator(iterable $iterable): Iterator
+    {
+        if (is_array($iterable)) {
+            if (empty($iterable)) {
+                $iterable = new \EmptyIterator();
+            } else {
+                $iterable = new \ArrayIterator($iterable);
+            }
+
+            return $iterable;
+        }
+
+        if ($iterable instanceof \IteratorAggregate) {
+            $iterable = $iterable->getIterator();
+        }
+
+        if (!$iterable instanceof \Iterator) {
+            $iterable = new \IteratorIterator($iterable);
+        }
+
+        return $iterable;
     }
 }

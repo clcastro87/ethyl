@@ -21,13 +21,11 @@ class DebugOutput extends AbstractOutput
     {
         foreach ($iterator as $item) {
             print_r($item);
+            if (!$this->drain) {
+                yield $item;
+            }
         }
 
-        if (!$this->drain) {
-            $iterator->rewind();
-            return $iterator;
-        } else {
-            return new EmptyIterator();
-        }
+        yield from [];
     }
 }

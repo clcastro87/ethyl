@@ -27,7 +27,7 @@ class IteratorFilterTest extends AbstractTestCase
         $iteratorFilter = $this->getIteratorFilter();
         $output         = $iteratorFilter($input);
 
-        $this->assertEquals($result, iterator_to_array($output));
+        $this->assertEquals($result, iterator_to_array($output, false));
     }
 
     /**
@@ -42,7 +42,7 @@ class IteratorFilterTest extends AbstractTestCase
         $iteratorFilter = $this->getIteratorFilter();
         $output         = $iteratorFilter->iterate(new ArrayIterator($input));
 
-        $this->assertEquals($result, iterator_to_array($output));
+        $this->assertEquals($result, iterator_to_array($output, false));
     }
 
     /**

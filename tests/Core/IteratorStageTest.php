@@ -24,7 +24,7 @@ class IteratorStageTest extends AbstractTestCase
      */
     public function testIterate($input, $result)
     {
-        $stage  = $this->getIteratorStage();
+        $stage = $this->getIteratorStage();
         $output = $this->convertToArray($stage($input));
 
         $this->assertEquals($result, $output);
@@ -66,7 +66,7 @@ class IteratorStageTest extends AbstractTestCase
      */
     public function testDebug()
     {
-        $filter    = $this->getIteratorStage();
+        $filter     = $this->getIteratorStage();
         $debugInfo = $filter->debug();
 
         $this->assertNotEmpty($debugInfo);

@@ -32,9 +32,19 @@ class MappingIterator extends IteratorIterator
     public function current()
     {
         if (!$this->valid()) {
-            return parent::current();
+            return $this->getInnerIterator()->current();
         } else {
-            return call_user_func($this->callable, parent::current());
+            $val = $this->getInnerIterator()->current();
+
+            return call_user_func($this->callable, $val);
         }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function valid(): bool
+    {
+        return $this->getInnerIterator()->valid();
     }
 }

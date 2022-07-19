@@ -41,14 +41,12 @@ abstract class StreamOutput extends AbstractOutput
     {
         foreach ($iterator as $item) {
             $this->writeItem($item);
+            if (!$this->drain) {
+                yield $item;
+            }
         }
 
-        if (!$this->drain) {
-            $iterator->rewind();
-            return $iterator;
-        } else {
-            return new EmptyIterator();
-        }
+        yield from [];
     }
 
     /**
