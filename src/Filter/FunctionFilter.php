@@ -30,6 +30,6 @@ class FunctionFilter extends ValueFilter
      */
     public function accept($value): bool
     {
-        return (bool) call_user_func($this->callable, $value);
+        return (bool) ($this->callable)($value);
     }
 }

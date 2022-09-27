@@ -29,6 +29,11 @@ class ArrayFieldsMapper extends AbstractMapper
     protected $reverseMapping;
 
     /**
+     * @var array
+     */
+    protected $mappingConfig;
+
+    /**
      * ArrayFieldsMapper constructor.
      *
      * @param array $config
@@ -37,9 +42,10 @@ class ArrayFieldsMapper extends AbstractMapper
      */
     public function __construct(array $config, int $policy = self::MAP_FILL_WITH_EMPTY, bool $reverseMapping = false)
     {
-        $this->srcDstConfig   = $config;
+        $this->srcDstConfig    = $config;
         $this->mappingPolicy  = $policy;
         $this->reverseMapping = $reverseMapping;
+        $this->mappingConfig   = $this->reverseMapping ? array_flip($this->srcDstConfig) : $this->srcDstConfig;
     }
 
     /**
@@ -49,6 +55,10 @@ class ArrayFieldsMapper extends AbstractMapper
     {
         if (!is_array($value)) {
             throw new InvalidArgumentException('The input must be an array.');
+        }
+
+        if (empty($value) || empty($this->srcDstConfig)) {
+            return $value;
         }
 
         return $this->mapArray($value);
@@ -62,14 +72,9 @@ class ArrayFieldsMapper extends AbstractMapper
      */
     protected function mapArray(array $input): array
     {
-        if (empty($input) || empty($this->srcDstConfig)) {
-            return $input;
-        }
+        $result = [];
 
-        $result        = [];
-        $mappingConfig = $this->reverseMapping ? array_flip($this->srcDstConfig) : $this->srcDstConfig;
-
-        foreach ($mappingConfig as $inputKey => $outputKey) {
+        foreach ($this->mappingConfig as $inputKey => $outputKey) {
             if (isset($input[$inputKey])) {
                 $result[$outputKey] = $input[$inputKey];
             } else {
@@ -95,7 +100,7 @@ class ArrayFieldsMapper extends AbstractMapper
      */
     public function debug(): array
     {
-        $info   = parent::debug();
+        $info  = parent::debug();
         $config = [
             'mappings'       => $this->srcDstConfig,
             'policy'         => self::POLICY_NAMES[$this->mappingPolicy],

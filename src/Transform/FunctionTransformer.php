@@ -30,7 +30,7 @@ class FunctionTransformer extends ValueTransformer
      */
     public function transform($value)
     {
-        return call_user_func($this->callable, $value);
+        return ($this->callable)($value);
     }
 
     /**

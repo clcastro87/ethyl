@@ -36,7 +36,7 @@ class ForEachRun extends IteratorStage
     public function iterate(Iterator $iterator): Iterator
     {
         foreach ($iterator as $item) {
-            yield call_user_func($this->callable, $item);
+            yield ($this->callable)($item);
         }
 
         yield from [];
