@@ -4,6 +4,7 @@ namespace Ethyl\Tests\Filter;
 
 use ArrayIterator;
 use Ethyl\Filter\FilterInterface;
+use Ethyl\Filter\FilterIterator;
 use Ethyl\Filter\FunctionFilter;
 use Ethyl\Filter\IteratorFilter;
 use Ethyl\Tests\AbstractTestCase;

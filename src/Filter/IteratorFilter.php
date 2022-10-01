@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ethyl\Filter;
 
 use Ethyl\Core\IteratorStage;
-use Ethyl\Mapping\MappingIterator;
 use Iterator;
 
 /**
@@ -37,6 +36,10 @@ class IteratorFilter extends IteratorStage
      */
     public function iterate(Iterator $iterator): Iterator
     {
+        /*return new FilterIterator($iterator, function ($val) {
+           ($this->filter)($val);
+        });*/
+
         // TODO: Optimize with SPL internals
         foreach ($iterator as $item) {
             if ($this->filter->accept($item)) {

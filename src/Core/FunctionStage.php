@@ -32,6 +32,6 @@ class FunctionStage extends Stage
      */
     public function __invoke($payload)
     {
-        return call_user_func($this->callable, $payload);
+        return ($this->callable)($payload);
     }
 }
