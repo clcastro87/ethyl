@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ethyl\Input;
 
-use ArrayIterator;
 use Ethyl\Core\IteratorStage;
+use Ethyl\Helper\IteratorTools;
 use InvalidArgumentException;
 use Iterator;
 
@@ -22,11 +22,9 @@ class ArrayInput extends IteratorStage
     public function __invoke($payload): Iterator
     {
         if (is_array($payload)) {
-            $iterator = new ArrayIterator($payload);
+            return IteratorTools::convertToIterator($payload);
         } else {
             throw new InvalidArgumentException('This stage is only applicable to array objects.');
         }
-
-        return $this->iterate($iterator);
     }
 }

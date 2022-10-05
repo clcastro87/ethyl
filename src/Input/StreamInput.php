@@ -26,7 +26,7 @@ abstract class StreamInput extends IteratorStage
             throw new InvalidArgumentException('This stage is only applicable to stream objects.');
         }
 
-        return $this->iterate($iterator);
+        return $iterator;
     }
 
     /**

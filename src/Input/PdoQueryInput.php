@@ -50,8 +50,6 @@ class PdoQueryInput extends IteratorStage
             }
         }
 
-        $iterator = $this->db->getResult($query->getStatement(), $query->getParameters());
-
-        return $this->iterate($iterator);
+        return $this->db->getResult($query->getStatement(), $query->getParameters());
     }
 }

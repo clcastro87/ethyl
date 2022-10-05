@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Core;
 
+use Ethyl\Helper\IteratorTools;
 use Exception;
 use InvalidArgumentException;
 use Iterator;
@@ -27,7 +28,7 @@ abstract class IteratorStage extends Stage
             throw new InvalidArgumentException('This stage is only applicable to iterable objects.');
         }
 
-        return $this->iterate($this->convertToIterator($payload));
+        return $this->iterate(IteratorTools::convertToIterator($payload));
     }
 
     /**
@@ -39,35 +40,5 @@ abstract class IteratorStage extends Stage
     public function iterate(Iterator $iterator): Iterator
     {
         return $iterator;
-    }
-
-    /**
-     * Converts an iterable to an iterator.
-     *
-     * @param iterable $iterable
-     * @return Iterator
-     * @throws Exception
-     */
-    protected function convertToIterator(iterable $iterable): Iterator
-    {
-        if (is_array($iterable)) {
-            if (empty($iterable)) {
-                $iterable = new \EmptyIterator();
-            } else {
-                $iterable = new \ArrayIterator($iterable);
-            }
-
-            return $iterable;
-        }
-
-        if ($iterable instanceof \IteratorAggregate) {
-            $iterable = $iterable->getIterator();
-        }
-
-        if (!$iterable instanceof \Iterator) {
-            $iterable = new \IteratorIterator($iterable);
-        }
-
-        return $iterable;
     }
 }

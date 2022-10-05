@@ -28,7 +28,7 @@ class CsvFileInput extends CsvStreamInput
             throw new InvalidArgumentException('This stage is only applicable to string objects.');
         }
 
-        return $this->iterate($iterator);
+        return $iterator;
     }
 
     /**

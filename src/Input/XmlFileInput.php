@@ -25,6 +25,6 @@ class XmlFileInput extends XmlStreamInput
             throw new InvalidArgumentException('This stage is only applicable to a string input.');
         }
 
-        return $this->iterate($iterator);
+        return $iterator;
     }
 }
