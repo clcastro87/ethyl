@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Mapping;
 
+use Ethyl\Helper\Reflection;
 use Ethyl\Transform\ValueTransformer;
 
 /**
@@ -51,7 +52,7 @@ abstract class AbstractMapper extends ValueTransformer implements MapperInterfac
     public function debug(): array
     {
         return [
-            'mapper' => $this->getClassName(),
+            'mapper' => Reflection::getClassName(static::class),
         ];
     }
 

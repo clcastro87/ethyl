@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Filter;
 
-use Ethyl\Core\Traits\DebuggableTrait;
+use Ethyl\Helper\Reflection;
 
 /**
  * Value filter abstraction.
@@ -13,8 +13,6 @@ use Ethyl\Core\Traits\DebuggableTrait;
  */
 abstract class ValueFilter implements FilterInterface
 {
-    use DebuggableTrait;
-
     /**
      * @inheritDoc
      */
@@ -34,7 +32,7 @@ abstract class ValueFilter implements FilterInterface
     public function debug(): array
     {
         return [
-            'filter' => $this->getClassName(),
+            'filter' => Reflection::getClassName(static::class),
         ];
     }
 }

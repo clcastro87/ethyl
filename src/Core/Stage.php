@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Core;
 
-use Ethyl\Core\Traits\DebuggableTrait;
+use Ethyl\Helper\Reflection;
 use League\Pipeline\StageInterface;
 
 /**
@@ -14,8 +14,6 @@ use League\Pipeline\StageInterface;
  */
 abstract class Stage implements StageInterface, DebuggableInterface
 {
-    use DebuggableTrait;
-
     /**
      * Stage name.
      *
@@ -46,7 +44,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
      */
     protected function getStageName(): string
     {
-        return $this->getClassName();
+        return Reflection::getClassName(static::class);
     }
 
     /**

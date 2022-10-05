@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ethyl\Transform;
 
-use Ethyl\Core\Traits\DebuggableTrait;
+use Ethyl\Helper\Reflection;
 
 /**
  * Value Transformer.
@@ -13,8 +13,6 @@ use Ethyl\Core\Traits\DebuggableTrait;
  */
 abstract class ValueTransformer implements TransformerInterface
 {
-    use DebuggableTrait;
-
     /**
      * @inheritDoc
      */
@@ -34,7 +32,7 @@ abstract class ValueTransformer implements TransformerInterface
     public function debug(): array
     {
         return [
-            'transform' => $this->getClassName(),
+            'transform' => Reflection::getClassName(static::class),
         ];
     }
 }
