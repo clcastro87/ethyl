@@ -20,12 +20,12 @@ class Db
     /**
      * Default timeout for queries.
      */
-    const DEFAULT_TIMEOUT = 60; // 60 seconds top.
+    public const DEFAULT_TIMEOUT = 60; // 60 seconds top.
 
     /**
      * Default options.
      */
-    const DEFAULT_OPTIONS = [
+    public const DEFAULT_OPTIONS = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_TIMEOUT            => self::DEFAULT_TIMEOUT,
         PDO::ATTR_EMULATE_PREPARES   => false,

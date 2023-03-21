@@ -43,4 +43,3 @@ class FunctionTransformer extends ValueTransformer
         return array_merge($parent, ['callable' => 'function']);
     }
 }
-

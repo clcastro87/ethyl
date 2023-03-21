@@ -2,8 +2,8 @@
 
 namespace Ethyl\Helper;
 
-use \Exception;
-use \Iterator;
+use Exception;
+use Iterator;
 
 final class IteratorTools
 {

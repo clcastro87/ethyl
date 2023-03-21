@@ -2,7 +2,7 @@
 
 namespace Ethyl\Filter;
 
-use \FilterIterator as BaseFilterIterator;
+use FilterIterator as BaseFilterIterator;
 use Iterator;
 
 /**

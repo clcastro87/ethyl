@@ -24,7 +24,7 @@ abstract class ValueTransformer implements TransformerInterface
     /**
      * @inheritDoc
      */
-    public abstract function transform($value);
+    abstract public function transform($value);
 
     /**
      * @inheritDoc

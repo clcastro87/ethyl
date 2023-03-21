@@ -60,4 +60,3 @@ class TransformerChain extends ValueTransformer
         return $debugInfo;
     }
 }
-

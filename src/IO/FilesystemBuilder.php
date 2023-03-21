@@ -7,7 +7,6 @@ namespace Ethyl\IO;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\FilesystemNotFoundException;
 
-
 final class FilesystemBuilder
 {
     private const DRIVERS = [

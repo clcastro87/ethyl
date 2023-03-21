@@ -18,9 +18,9 @@ class CsvStreamInput extends StreamInput
     /**
      * Common delimiters for CSV files.
      */
-    const CSV_DELIMITER_COMMA     = ',';
-    const CSV_DELIMITER_SEMICOLON = ';';
-    const CSV_DELIMITER_TAB       = "\t";
+    public const CSV_DELIMITER_COMMA     = ',';
+    public const CSV_DELIMITER_SEMICOLON = ';';
+    public const CSV_DELIMITER_TAB       = "\t";
 
     /**
      * @var string

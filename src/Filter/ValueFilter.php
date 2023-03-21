@@ -24,7 +24,7 @@ abstract class ValueFilter implements FilterInterface
     /**
      * @inheritDoc
      */
-    public abstract function accept($value): bool;
+    abstract public function accept($value): bool;
 
     /**
      * @inheritDoc

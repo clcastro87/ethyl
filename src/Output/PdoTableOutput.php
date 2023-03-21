@@ -20,13 +20,13 @@ class PdoTableOutput extends AbstractOutput
     /**
      * Batch size.
      */
-    const BATCH_SIZE_DEFAULT = 1000;
+    public const BATCH_SIZE_DEFAULT = 1000;
 
     /**
      * Flags.
      */
-    const FLAG_TRANSACTIONAL = 2;
-    const FLAG_USE_TEMP      = 4;
+    public const FLAG_TRANSACTIONAL = 2;
+    public const FLAG_USE_TEMP      = 4;
 
     /**
      * @var Db

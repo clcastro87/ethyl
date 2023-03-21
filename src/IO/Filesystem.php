@@ -8,7 +8,6 @@ use League\Flysystem\AdapterInterface;
 use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem as LeagueFilesystem;
 
-
 class Filesystem
 {
     /**
