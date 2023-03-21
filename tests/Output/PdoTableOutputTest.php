@@ -46,8 +46,13 @@ class PdoTableOutputTest extends AbstractTestCase
     {
         list($tmpFilePath, $db) = $this->getTestDb();
 
-        $input    = new PdoTableOutput($db, 'test_table', 100,
-                                       PdoTableOutput::FLAG_TRANSACTIONAL | PdoTableOutput::FLAG_USE_TEMP, false);
+        $input    = new PdoTableOutput(
+            $db,
+            'test_table',
+            100,
+            PdoTableOutput::FLAG_TRANSACTIONAL | PdoTableOutput::FLAG_USE_TEMP,
+            false
+        );
         $iterator = $input($this->getTestIterator());
 
         $count = iterator_count($iterator);

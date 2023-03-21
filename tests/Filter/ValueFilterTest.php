@@ -2,7 +2,6 @@
 
 namespace Ethyl\Tests\Filter;
 
-
 use Ethyl\Filter\FilterInterface;
 use Ethyl\Tests\AbstractTestCase;
 
@@ -59,19 +58,19 @@ abstract class ValueFilterTest extends AbstractTestCase
      *
      * @return FilterInterface
      */
-    public abstract function getFilter(): FilterInterface;
+    abstract public function getFilter(): FilterInterface;
 
     /**
      * Function to provide test cases.
      *
      * @return array
      */
-    public abstract function getTestData(): array;
+    abstract public function getTestData(): array;
 
     /**
      * Function to provide test cases.
      *
      * @return array
      */
-    public abstract function getFilterTestData(): array;
+    abstract public function getFilterTestData(): array;
 }
