@@ -22,7 +22,7 @@ abstract class AbstractMapperTest extends AbstractTestCase
     public function testTransform($input, $result)
     {
         $mapper = $this->getMapper();
-        $output = $mapper->transform($input);
+        $output = $mapper->map($input);
 
         $this->assertEquals($result, $output);
     }

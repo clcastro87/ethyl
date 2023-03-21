@@ -37,7 +37,7 @@ abstract class IteratorStage extends Stage
      * @param Iterator $iterator
      * @return Iterator
      */
-    public function iterate(Iterator $iterator): Iterator
+    protected function iterate(Iterator $iterator): Iterator
     {
         return $iterator;
     }

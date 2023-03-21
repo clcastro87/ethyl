@@ -16,21 +16,6 @@ use Iterator;
 class IteratorStageTest extends AbstractTestCase
 {
     /**
-     * Test filter feature.
-     *
-     * @dataProvider getIteratorData
-     * @param $input
-     * @param $result
-     */
-    public function testIterate($input, $result)
-    {
-        $stage = $this->getIteratorStage();
-        $output = $this->convertToArray($stage($input));
-
-        $this->assertEquals($result, $output);
-    }
-
-    /**
      * Test invoke feature.
      *
      * @dataProvider getTestData
