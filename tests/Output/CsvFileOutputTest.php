@@ -25,15 +25,15 @@ class CsvFileOutputTest extends AbstractTestCase
 
         $input = new CsvFileOutput($tmpFilePath, CsvFileOutput::CSV_DELIMITER_COMMA);
         $input([
-                   [
-                       'id'   => 1,
-                       'name' => 'Test 1',
-                   ],
-                   [
-                       'id'   => 2,
-                       'name' => 'Test 2',
-                   ]
-               ]);
+            [
+                'id'   => 1,
+                'name' => 'Test 1',
+            ],
+            [
+                'id'   => 2,
+                'name' => 'Test 2',
+            ],
+        ]);
 
         $this->assertNotEmpty(file_get_contents($tmpFilePath));
 
@@ -51,15 +51,15 @@ class CsvFileOutputTest extends AbstractTestCase
 
         $input    = new CsvFileOutput($tmpFilePath, CsvFileOutput::CSV_DELIMITER_COMMA, 'w+', false);
         $iterator = $input([
-                               [
-                                   'id'   => 1,
-                                   'name' => 'Test 1',
-                               ],
-                               [
-                                   'id'   => 2,
-                                   'name' => 'Test 2',
-                               ]
-                           ]);
+            [
+                'id'   => 1,
+                'name' => 'Test 1',
+            ],
+            [
+                'id'   => 2,
+                'name' => 'Test 2',
+            ],
+        ]);
 
         $count = iterator_count($iterator);
         $this->assertEquals(2, $count);
@@ -110,6 +110,6 @@ class CsvFileOutputTest extends AbstractTestCase
      */
     private function getTempFilePath(): string
     {
-        return tempnam("/tmp", "TEST");
+        return tempnam('/tmp', 'TEST');
     }
 }

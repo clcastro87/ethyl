@@ -24,15 +24,15 @@ class CsvStreamOutputTest extends AbstractTestCase
         $stream = fopen('php://temp', 'w');
         $input  = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA);
         $input([
-                   [
-                       'id'   => 1,
-                       'name' => 'Test 1',
-                   ],
-                   [
-                       'id'   => 2,
-                       'name' => 'Test 2',
-                   ]
-               ]);
+            [
+                'id'   => 1,
+                'name' => 'Test 1',
+            ],
+            [
+                'id'   => 2,
+                'name' => 'Test 2',
+            ],
+        ]);
 
         $this->assertNotEmpty($stream);
     }
@@ -47,15 +47,15 @@ class CsvStreamOutputTest extends AbstractTestCase
         $stream   = fopen('php://temp', 'w');
         $input    = new CsvStreamOutput($stream, CsvStreamOutput::CSV_DELIMITER_COMMA, false);
         $iterator = $input([
-                               [
-                                   'id'   => 1,
-                                   'name' => 'Test 1',
-                               ],
-                               [
-                                   'id'   => 2,
-                                   'name' => 'Test 2',
-                               ]
-                           ]);
+            [
+                'id'   => 1,
+                'name' => 'Test 1',
+            ],
+            [
+                'id'   => 2,
+                'name' => 'Test 2',
+            ],
+        ]);
 
         $this->assertNotEmpty($stream);
         $count = iterator_count($iterator);

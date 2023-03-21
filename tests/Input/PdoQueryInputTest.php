@@ -48,7 +48,7 @@ class PdoQueryInputTest extends AbstractTestCase
         $query = 'SELECT * from Artist WHERE ArtistId = :id';
         $input = $this->getPdoInput();
         $this->expectException(InvalidArgumentException::class);
-        $input(array($query, ['id' => 1]));
+        $input([$query, ['id' => 1]]);
     }
 
     /**

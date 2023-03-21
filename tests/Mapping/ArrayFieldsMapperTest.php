@@ -19,10 +19,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     protected function getMapper(): MapperInterface
     {
         return new ArrayFieldsMapper([
-                                         'id'      => 'id',
-                                         'name'    => 'title',
-                                         'missing' => 'missed',
-                                     ]);
+            'id'      => 'id',
+            'name'    => 'title',
+            'missing' => 'missed',
+        ]);
     }
 
     /**
@@ -42,7 +42,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
                     'title'  => 'lola',
                     'missed' => '',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -52,10 +52,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     public function getReverseMapper(): MapperInterface
     {
         return new ArrayFieldsMapper([
-                                         'id'      => 'id',
-                                         'name'    => 'title',
-                                         'missing' => 'missed',
-                                     ], ArrayFieldsMapper::MAP_FILL_WITH_NULL, true);
+            'id'      => 'id',
+            'name'    => 'title',
+            'missing' => 'missed',
+        ], ArrayFieldsMapper::MAP_FILL_WITH_NULL, true);
     }
 
     /**
@@ -90,7 +90,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
                     'name'    => 'lola',
                     'missing' => '',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -126,10 +126,10 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
     public function testIgnoreMissing($input, $result)
     {
         $mapper = new ArrayFieldsMapper([
-                                            'id'      => 'id',
-                                            'name'    => 'title',
-                                            'missing' => 'missed',
-                                        ], ArrayFieldsMapper::MAP_IGNORE_MISSING);
+            'id'      => 'id',
+            'name'    => 'title',
+            'missing' => 'missed',
+        ], ArrayFieldsMapper::MAP_IGNORE_MISSING);
         $output = $mapper->map($input);
 
         $this->assertEquals($result, $output);
@@ -151,7 +151,7 @@ class ArrayFieldsMapperTest extends AbstractMapperTest
                     'id'    => 1,
                     'title' => 'lola',
                 ],
-            ]
+            ],
         ];
     }
 }

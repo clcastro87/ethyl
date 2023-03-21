@@ -41,8 +41,8 @@ class FunctionMapperTest extends AbstractMapperTest
                     'age'   => 4,
                     'size'  => 1.80,
                     'class' => 44,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

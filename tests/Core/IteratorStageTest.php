@@ -52,7 +52,7 @@ class IteratorStageTest extends AbstractTestCase
     public function testDebug()
     {
         $filter     = $this->getIteratorStage();
-        $debugInfo = $filter->debug();
+        $debugInfo  = $filter->debug();
 
         $this->assertNotEmpty($debugInfo);
     }

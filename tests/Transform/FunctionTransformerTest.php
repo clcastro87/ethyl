@@ -30,7 +30,7 @@ class FunctionTransformerTest extends ValueTransformerTest
         return [
             'Test string'  => ['TesT', 'test'],
             'Test url'     => ['https://www.google.com/', 'https://www.google.com/'],
-            'Empty string' => ['', '']
+            'Empty string' => ['', ''],
         ];
     }
 }
