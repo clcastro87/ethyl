@@ -33,7 +33,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
      */
     public function __construct()
     {
-        $this->stageName = $this->getStageName();
+        $this->stageName  = $this->getStageName();
         $this->identifier = uniqid();
     }
 
@@ -53,7 +53,7 @@ abstract class Stage implements StageInterface, DebuggableInterface
     public function debug(): array
     {
         return [
-            'stage'     => $this->stageName,
+            'stage'      => $this->stageName,
             'identifier' => $this->identifier,
         ];
     }

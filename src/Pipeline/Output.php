@@ -32,7 +32,7 @@ class Output
      */
     public function __construct(Stage $output, Stage $formatProcessor = null)
     {
-        $this->output = $output;
+        $this->output          = $output;
         $this->formatProcessor = $formatProcessor;
     }
 

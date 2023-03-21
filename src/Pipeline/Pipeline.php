@@ -45,8 +45,8 @@ class Pipeline
      */
     public function __construct()
     {
-        $this->ran = false;
-        $this->transforms = [];
+        $this->ran             = false;
+        $this->transforms      = [];
         $this->pipelineBuilder = new PipelineBuilder();
     }
 

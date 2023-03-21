@@ -43,8 +43,8 @@ class ArrayFieldsMapper extends AbstractMapper
     public function __construct(array $config, int $policy = self::MAP_FILL_WITH_EMPTY, bool $reverseMapping = false)
     {
         $this->srcDstConfig    = $config;
-        $this->mappingPolicy  = $policy;
-        $this->reverseMapping = $reverseMapping;
+        $this->mappingPolicy   = $policy;
+        $this->reverseMapping  = $reverseMapping;
         $this->mappingConfig   = $this->reverseMapping ? array_flip($this->srcDstConfig) : $this->srcDstConfig;
     }
 
@@ -100,7 +100,7 @@ class ArrayFieldsMapper extends AbstractMapper
      */
     public function debug(): array
     {
-        $info  = parent::debug();
+        $info   = parent::debug();
         $config = [
             'mappings'       => $this->srcDstConfig,
             'policy'         => self::POLICY_NAMES[$this->mappingPolicy],

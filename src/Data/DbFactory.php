@@ -30,7 +30,7 @@ final class DbFactory
          * @var PDO $pdoConn
          */
         $reflector = new ReflectionClass(PDO::class);
-        $pdoConn  = $reflector->newInstanceArgs(array_merge([$dsn], $arguments));
+        $pdoConn   = $reflector->newInstanceArgs(array_merge([$dsn], $arguments));
 
         return new Db($pdoConn, $options);
     }

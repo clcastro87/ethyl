@@ -48,7 +48,7 @@ class TransformerChain extends ValueTransformer
     public function debug(): array
     {
         $debugInfo = parent::debug();
-        $chain = array_map(function ($item) {
+        $chain     = array_map(function ($item) {
             /**
              * @var DebuggableInterface $item
              */

@@ -20,8 +20,7 @@ final class FilesystemBuilder
         }
 
         $adapterClass = self::DRIVERS[$driver];
-        $adapter = new $adapterClass(...$options);
-
+        $adapter      = new $adapterClass(...$options);
 
         return new Filesystem($driver, $adapter, $name);
     }

@@ -34,8 +34,8 @@ class Filesystem
      */
     public function __construct(string $driver, AdapterInterface $adapter, string $name = null)
     {
-        $this->driver = $driver;
-        $this->name = empty($name) ? $this->driver : $name;
+        $this->driver             = $driver;
+        $this->name               = empty($name) ? $this->driver : $name;
         $this->internalFilesystem = new LeagueFilesystem($adapter);
     }
 
