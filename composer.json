@@ -39,6 +39,11 @@
     "scripts": {
         "test": [
             "vendor/bin/phpunit"
+        ],
+        "csfix": [
+            "composer install --working-dir=tools/php-cs-fixer",
+            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
+            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests"
         ]
     },
     "archive": {
