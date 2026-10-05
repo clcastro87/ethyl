@@ -4,6 +4,7 @@ namespace Ethyl\Tests\Flow;
 
 use Ethyl\Flow\DeAggregator;
 use Ethyl\Tests\Core\IteratorStageTest;
+use InvalidArgumentException;
 
 /**
  * DeAggregator Test
@@ -26,8 +27,9 @@ class DeAggregatorTest extends IteratorStageTest
     public function getTestData(): array
     {
         return [
-            'Array' => [[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10]], range(0, 10)],
-            'Empty' => [[], []],
+            'Array'              => [[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10]], range(0, 10)],
+            'Empty'              => [[], []],
+            'Non-iterable batch' => [[1], [], InvalidArgumentException::class],
         ];
     }
 

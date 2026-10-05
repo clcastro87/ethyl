@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ethyl\Flow;
 
 use Ethyl\Core\IteratorStage;
+use InvalidArgumentException;
 use Iterator;
 
 /**
@@ -26,6 +27,10 @@ class BatchAggregator extends IteratorStage
      */
     public function __construct(int $batchSize)
     {
+        if ($batchSize < 1) {
+            throw new InvalidArgumentException('Batch size must be greater than zero.');
+        }
+
         parent::__construct();
 
         $this->batchSize = $batchSize;

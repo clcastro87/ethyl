@@ -4,6 +4,7 @@ namespace Ethyl\Tests\Flow;
 
 use Ethyl\Flow\BatchAggregator;
 use Ethyl\Tests\Core\IteratorStageTest;
+use InvalidArgumentException;
 
 /**
  * BatchAggregator Test
@@ -12,6 +13,24 @@ use Ethyl\Tests\Core\IteratorStageTest;
  */
 class BatchAggregatorTest extends IteratorStageTest
 {
+    /**
+     * @dataProvider getInvalidBatchSizes
+     */
+    public function testConstructorRejectsInvalidBatchSize(int $batchSize): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new BatchAggregator($batchSize);
+    }
+
+    public function getInvalidBatchSizes(): array
+    {
+        return [
+            'zero'     => [0],
+            'negative' => [-1],
+        ];
+    }
+
     /**
      * @inheritDoc
      */

@@ -60,7 +60,7 @@ composer install --working-dir=tools/php-cs-fixer
 
 ### Project Structure
 
-```
+```txt
 ethyl/
 ├── src/                    # Source code (PSR-4: Ethyl\)
 │   ├── Core/              # Core abstractions (Stage, IteratorStage, etc.)
@@ -267,7 +267,7 @@ The project uses GitHub Actions (`.github/workflows/php.yml`):
 
 ### Data Flow
 
-```
+```mermaid
 null → Input → Iterator → Transform → Iterator → Transform → Iterator → Output → void
 ```
 
