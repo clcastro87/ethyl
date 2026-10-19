@@ -74,6 +74,17 @@ Rules:
 - Prefer a real test over `@codeCoverageIgnore`. Use the annotation **only** for genuinely unreachable defensive code (extension-provided behaviour, platform guards) and always add a comment saying why it is unreachable. Never annotate code that a test could reach.
 - Coverage runs through `phpdbg` (bundled in the container), so no extra extension is needed. Do not add Xdebug or pcov just for coverage.
 
+## Security Audits
+
+There are **two** Composer projects and both must audit clean:
+
+```bash
+docker compose exec ethyl composer audit
+docker compose exec ethyl composer audit --working-dir=tools/php-cs-fixer
+```
+
+`tools/php-cs-fixer` has its own `composer.lock`, so a clean audit of the library does not imply a clean audit of the tooling. When an advisory only affects the tooling, fix it with `composer update <package> --working-dir=tools/php-cs-fixer` and commit the updated lock, then re-run `csfix` to confirm the tool still works. A new advisory is a reason to stop and report, not to ignore.
+
 ## How to Work in This Repo (Agentic Workflow)
 
 Short loop that keeps you honest:
@@ -92,6 +103,8 @@ Handy commands:
 | Install deps | `docker compose exec ethyl composer install` |
 | Full test suite | `docker compose exec ethyl composer test` |
 | Coverage report | `docker compose exec ethyl composer coverage` |
+| Security audit | `docker compose exec ethyl composer audit` |
+| Tooling audit | `docker compose exec ethyl composer audit --working-dir=tools/php-cs-fixer` |
 | One test file | `docker compose exec ethyl vendor/bin/phpunit tests/Core/StageTest.php` |
 | Fix style | `docker compose exec ethyl composer csfix` |
 | Check style only | `docker compose exec ethyl tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run` |
