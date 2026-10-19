@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Ethyl\Input;
 
 use InvalidArgumentException;
-use League\Flysystem\AdapterInterface;
-use League\Flysystem\FileNotFoundException;
 use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemAdapter;
+use League\Flysystem\UnableToReadFile;
 use League\Pipeline\StageInterface;
 
 /**
@@ -19,16 +18,16 @@ use League\Pipeline\StageInterface;
 class FlySystemInput implements StageInterface
 {
     /**
-     * @var FilesystemInterface
+     * @var Filesystem
      */
     protected $fileSystem;
 
     /**
      * FlySystemInput constructor.
      *
-     * @param AdapterInterface $adapter
+     * @param FilesystemAdapter $adapter
      */
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(FilesystemAdapter $adapter)
     {
         $this->fileSystem = new Filesystem($adapter);
     }
@@ -36,7 +35,7 @@ class FlySystemInput implements StageInterface
     /**
      * @inheritDoc
      * @throws InvalidArgumentException
-     * @throws FileNotFoundException
+     * @throws UnableToReadFile
      */
     public function __invoke($payload)
     {

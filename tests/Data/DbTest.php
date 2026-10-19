@@ -5,6 +5,8 @@ namespace Ethyl\Tests\Data;
 use Ethyl\Data\Db;
 use Ethyl\Data\DbFactory;
 use Ethyl\Tests\AbstractTestCase;
+use EmptyIterator;
+use PDO;
 
 /**
  * Db Test
@@ -45,6 +47,27 @@ class DbTest extends AbstractTestCase
         $iterator = $conn->getResult('SELECT * from Artist WHERE ArtistId = :id', ['id' => 0]);
         $arr      = iterator_to_array($iterator);
         $this->assertEquals(0, count($arr));
+    }
+
+    /**
+     * Tests get result when the query does not return a statement.
+     */
+    public function testGetResultEmptyIterator()
+    {
+        $db = new class(new PDO('sqlite::memory:')) extends Db {
+            /**
+             * @inheritDoc
+             */
+            public function query(string $query, array $params = [])
+            {
+                return false;
+            }
+        };
+
+        $result = $db->getResult('SELECT * from Artist');
+
+        $this->assertInstanceOf(EmptyIterator::class, $result);
+        $this->assertEquals([], iterator_to_array($result));
     }
 
     /**

@@ -21,8 +21,8 @@ class FunctionStageTest extends AbstractTestCase
             return $payload;
         };
 
-        $stage = new FunctionStage($func);
-        $payload = new stdClass();
+        $stage              = new FunctionStage($func);
+        $payload            = new stdClass();
         $payload->processed = false;
 
         $result = $stage($payload);

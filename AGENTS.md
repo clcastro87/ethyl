@@ -2,6 +2,103 @@
 
 This file contains technical details, build steps, testing instructions, and conventions for AI coding agents working with the Ethyl ETL pipeline library.
 
+## MANDATORY: Always Use Docker
+
+> **Agents MUST run every command inside the Docker container. Never run PHP, Composer, PHPUnit, or php-cs-fixer directly on the host.**
+
+The host machine may not have the correct PHP version or required extensions (`pdo_sqlite`, `simplexml`, etc.). The container is the single source of truth for the toolchain: PHP 8.1, Composer, SQLite, and all extensions.
+
+Rules:
+
+- **Always** prefix commands with `docker compose exec ethyl` (for example `docker compose exec ethyl composer test`).
+- If the container is not running, start it first with `docker compose up -d`. Do not fall back to host PHP.
+- Do not run `php`, `composer`, `vendor/bin/phpunit`, or `tools/php-cs-fixer/vendor/bin/php-cs-fixer` on the host, even if they happen to be installed.
+- Do not "just quickly" run a host command to check something. Start the container instead.
+- File paths are shared through the bind mount (`.:/app`), so edits made on the host are immediately visible inside the container at `/app`. There is no need to copy files in or out.
+- `docker compose down` when finished is optional; leaving the container running is fine.
+
+Quick reference:
+
+```bash
+# Start the environment (once per session)
+docker compose up -d
+
+# Install dependencies
+docker compose exec ethyl composer install
+
+# Run the test suite
+docker compose exec ethyl composer test
+
+# Fix code style
+docker compose exec ethyl composer csfix
+
+# Run an arbitrary command in the container
+docker compose exec ethyl <command>
+```
+
+If `docker compose` (v2) is unavailable, use the legacy `docker-compose` binary with the same arguments.
+
+## MANDATORY: All Tests Must Pass
+
+> **A task is never complete until the full test suite passes. All 119 tests and 146 assertions must be green, with 100% coverage of `src/`.**
+
+Definition of Done for any code change:
+
+1. `docker compose exec ethyl composer test` exits with `OK (119 tests, ...)` and the whole suite passes.
+2. `docker compose exec ethyl composer csfix` has been run and leaves no files fixable (verify with `--dry-run` if unsure).
+3. `docker compose exec ethyl composer coverage` reports **100%** classes, methods and lines.
+4. The exact commands run and their final result are reported back to the user.
+
+Rules:
+
+- **Never** finish a task, hand back code, or open a PR with a failing or skipped test.
+- **Never** silence a failure. Do not delete tests, skip them (`markTestSkipped`, `--exclude-group`), weaken assertions, or add `@group`/`--filter` exclusions just to get a green run.
+- If a test fails, treat it as in-scope and fix the cause (production code or test) before reporting completion.
+- If a failure is genuinely pre-existing and unrelated, verify it is pre-existing (for example with `git stash`), fix it or report it explicitly with evidence — do not ignore it silently.
+- Run the **full** suite, not just the files you touched. Pipeline stages are composed, so unrelated agents can break from a shared change.
+- Re-run the suite **after** any style fix or refactor, since those can change behavior.
+- New code must ship with tests. Adding a feature or agent without a corresponding test does not count as done.
+
+## MANDATORY: Coverage Must Stay at 100%
+
+`src/` is at **100% classes / 100% methods / 100% lines** (322/322). Keep it there.
+
+```bash
+docker compose exec ethyl composer coverage
+```
+
+Rules:
+
+- Every new class, method and line in `src/` needs at least one test that executes it.
+- Do not drop coverage to land a change. If you add code, add the test in the same change.
+- Prefer a real test over `@codeCoverageIgnore`. Use the annotation **only** for genuinely unreachable defensive code (extension-provided behaviour, platform guards) and always add a comment saying why it is unreachable. Never annotate code that a test could reach.
+- Coverage runs through `phpdbg` (bundled in the container), so no extra extension is needed. Do not add Xdebug or pcov just for coverage.
+
+## How to Work in This Repo (Agentic Workflow)
+
+Short loop that keeps you honest:
+
+1. **Orient** — read the relevant `src/` class and its mirrored test in `tests/` before editing.
+2. **Change** — make the smallest edit that satisfies the request, matching surrounding style.
+3. **Verify** — run the suite in Docker (see above). Add or update tests alongside the change.
+4. **Format** — run `csfix`, then re-run the suite.
+5. **Report** — state what changed, the command you ran, and the exact test result.
+
+Handy commands:
+
+| Goal | Command |
+| --- | --- |
+| Start environment | `docker compose up -d` |
+| Install deps | `docker compose exec ethyl composer install` |
+| Full test suite | `docker compose exec ethyl composer test` |
+| Coverage report | `docker compose exec ethyl composer coverage` |
+| One test file | `docker compose exec ethyl vendor/bin/phpunit tests/Core/StageTest.php` |
+| Fix style | `docker compose exec ethyl composer csfix` |
+| Check style only | `docker compose exec ethyl tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run` |
+| Shell in container | `docker compose exec ethyl bash` |
+
+Baseline at time of writing: **119 tests, 146 assertions, 100% coverage** (45/45 classes, 101/101 methods, 322/322 lines) under PHPUnit 9.6.34 (PHP 8.1 in the container's `php:8.1-cli` image), measured with `phpdbg`. Update these numbers when tests are added.
+
 ## Project Overview
 
 **Ethyl** is an ETL (Extract, Transform, Load) pipeline library for PHP that provides a modular, composable approach to data processing. The library uses a pipeline pattern where data flows through stages: Input → Transforms → Output.
@@ -10,53 +107,46 @@ This file contains technical details, build steps, testing instructions, and con
 
 ### Prerequisites
 
-- PHP 8.1 or higher
-- Composer
-- Required PHP extensions:
+- Docker (with Compose). Everything else is provided by the container.
+- Inside the container: PHP 8.1+, Composer, and the extensions declared in `composer.json`:
   - `ext-json`
   - `ext-pdo`
   - `ext-simplexml`
   - `ext-libxml`
 
-### Docker Development Setup
+### Docker Development Setup (Required)
 
-You can use Docker to run the environment instead of installing PHP locally.
+All work happens in the `ethyl` service defined by `docker-compose.yml` (built from `Dockerfile`: `php:8.1-cli` with `pdo`, `pdo_sqlite`, Composer, and SQLite dev libraries; the repo is bind-mounted at `/app`).
 
 1. **Build and start the container:**
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 2. **Install dependencies (inside container):**
 
    ```bash
-   docker-compose exec ethyl composer install
+   docker compose exec ethyl composer install
    ```
 
-   *Note: This might take a moment. You can verify it finished by checking if `vendor/` exists.*
+   *This takes a moment. Verify it finished by checking that `vendor/` exists.*
 
 3. **Run tests:**
 
    ```bash
-   docker-compose exec ethyl composer test
+   docker compose exec ethyl composer test
    ```
 
-4. **Stop the environment:**
+4. **Stop the environment (optional):**
 
    ```bash
-   docker-compose down
+   docker compose down
    ```
 
-### Installation (Local)
+### Installation (Local) — Not Allowed for Agents
 
-```bash
-# Install dependencies
-composer install
-
-# Install code style fixer dependencies (for csfix script)
-composer install --working-dir=tools/php-cs-fixer
-```
+Installing or running the toolchain on the host is prohibited (see [MANDATORY: Always Use Docker](#mandatory-always-use-docker)). For reference only, `composer install` and `composer install --working-dir=tools/php-cs-fixer` are what the container already runs for you; do not execute them on the host.
 
 ### Project Structure
 
@@ -85,13 +175,18 @@ ethyl/
 ### Running Tests
 
 ```bash
-# Run all tests
-composer test
+# Run all tests (always inside Docker)
+docker compose exec ethyl composer test
 # or
-vendor/bin/phpunit
+docker compose exec ethyl vendor/bin/phpunit
+
+# Run a single test file
+docker compose exec ethyl vendor/bin/phpunit tests/Input/CsvFileInputTest.php
 
 # Run with coverage
-vendor/bin/phpunit --coverage-html coverage
+docker compose exec ethyl composer coverage
+# or
+docker compose exec ethyl phpdbg -qrr vendor/bin/phpunit --coverage-html coverage
 ```
 
 ### Test Configuration
@@ -100,7 +195,7 @@ vendor/bin/phpunit --coverage-html coverage
 - **Bootstrap:** `vendor/autoload.php`
 - **Test Directory:** `tests/`
 - **Test Base Class:** `Ethyl\Tests\AbstractTestCase` (extends `PHPUnit\Framework\TestCase`)
-- **Coverage:** Includes `src/` directory
+- **Coverage:** Includes `src/` directory, reported by `phpdbg` via `composer coverage`; must stay at 100%
 
 ### Test Structure
 
@@ -114,6 +209,9 @@ Tests mirror the source structure:
 - `tests/Mapping/` - Mapping agent tests
 - `tests/Flow/` - Flow control tests
 - `tests/Data/` - Database utility tests
+- `tests/IO/` - Filesystem/IO tests
+- `tests/Helper/` - Helper utility tests
+- `tests/Pipeline/` - Pipeline, Input and Output wrapper tests
 
 ### Test Resources
 
@@ -158,10 +256,10 @@ The project uses PHP-CS-Fixer with specific rules (see `.php-cs-fixer.php`):
 ### Applying Code Style
 
 ```bash
-# Fix code style
-composer csfix
+# Fix code style (always inside Docker)
+docker compose exec ethyl composer csfix
 
-# This runs:
+# This runs, inside the container:
 # 1. composer install --working-dir=tools/php-cs-fixer
 # 2. tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
 # 3. tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests
@@ -228,7 +326,7 @@ Most components process data as iterators to handle large datasets efficiently w
 ### Production Dependencies
 
 - `league/csv: ^9.7` - CSV handling
-- `league/flysystem: ^1.1` - Filesystem abstraction
+- `league/flysystem: ^3.35.3` - Filesystem abstraction (v1 is EOL; 3.35.3+ is required for CVE-2026-102601)
 - `league/pipeline: ^1.0` - Pipeline pattern implementation
 - `prewk/xml-string-streamer: ^0.13.0` - XML streaming
 
@@ -250,6 +348,8 @@ The project uses GitHub Actions (`.github/workflows/php.yml`):
   3. Install dependencies
   4. Run test suite (`composer test`)
   5. Run Composer audit (security scan)
+
+CI uses a host PHP runner, but this does **not** relax the Docker rule above: local agent commands must still go through `docker compose exec ethyl`.
 
 ## Key Architectural Patterns
 
@@ -273,6 +373,15 @@ null → Input → Iterator → Transform → Iterator → Transform → Iterato
 
 The pipeline is **single-use**: once `run()` is called, it cannot be executed again.
 
+### Filesystem Integration (Flysystem 3)
+
+Flysystem v3 is installed (`^3.35.3`). The v1 API (`AdapterInterface`, `League\Flysystem\Adapter\Local`, `FileNotFoundException`) no longer exists. When touching IO/input code, use:
+
+- `League\Flysystem\FilesystemAdapter` as the adapter type-hint (`src/Input/FlySystemInput.php`, `src/IO/Filesystem.php`).
+- `League\Flysystem\Local\LocalFilesystemAdapter` for local paths, registered in `src/IO/FilesystemBuilder.php`.
+- `League\Flysystem\UnableToReadFile` (not `FileNotFoundException`) for read failures; an unknown driver throws `InvalidArgumentException`.
+- `src/IO/Filesystem::readStream()` returns a resource, which is what `StreamInput` expects.
+
 ## Development Workflow
 
 ### Adding New Components
@@ -283,8 +392,8 @@ The pipeline is **single-use**: once `run()` is called, it cannot be executed ag
 4. Add `declare(strict_types=1);`
 5. Write PHPDoc blocks
 6. Create corresponding test in `tests/`
-7. Run tests: `composer test`
-8. Fix code style: `composer csfix`
+7. Run tests (inside Docker): `docker compose exec ethyl composer test`
+8. Fix code style (inside Docker): `docker compose exec ethyl composer csfix`
 
 ### Creating Tests
 
@@ -299,8 +408,9 @@ The pipeline is **single-use**: once `run()` is called, it cannot be executed ag
 - [ ] PSR-12 compliant
 - [ ] Type hints on all parameters and returns
 - [ ] PHPDoc blocks for classes and public methods
-- [ ] Tests written and passing
-- [ ] Code style fixed (`composer csfix`)
+- [ ] Tests written and passing (`docker compose exec ethyl composer test`)
+- [ ] Coverage still at 100% (`docker compose exec ethyl composer coverage`)
+- [ ] Code style fixed (`docker compose exec ethyl composer csfix`)
 - [ ] No linter errors
 
 ## Common Tasks
@@ -339,33 +449,36 @@ The pipeline is **single-use**: once `run()` is called, it cannot be executed ag
 
 ### Tests Failing
 
-- Ensure all dependencies are installed: `composer install`
-- Check PHP version: `php -v` (requires 8.1+)
-- Verify test database files exist in `tests/Resources/`
+- Ensure the container is running: `docker compose up -d`
+- Ensure dependencies are installed inside the container: `docker compose exec ethyl composer install`
+- Check the container's PHP version: `docker compose exec ethyl php -v` (requires 8.1+)
+- Verify test database files exist in `tests/Resources/` (visible at `/app/tests/Resources` in the container)
 
 ### Code Style Issues
 
-- Run `composer csfix` to auto-fix most issues
+- Run `docker compose exec ethyl composer csfix` to auto-fix most issues
 - Check `.php-cs-fixer.php` for specific rules
 - Ensure `.editorconfig` is respected by your editor
 
 ### Autoloading Issues
 
-- Run `composer dump-autoload` to regenerate autoloader
+- Run `docker compose exec ethyl composer dump-autoload` to regenerate the autoloader
 - Verify namespace matches directory structure (PSR-4)
 
 ## Agent Usage Tips
 
 ### Efficient Exploration
 
-- Use `view_file_outline` on `src/` to understand class structures quickly without reading full content.
-- Check `composer.json` scripts to see available shortcuts (e.g., `composer csfix`).
+- Use `grep`/`glob` or read source files directly to understand class structures before editing.
+- Check `composer.json` scripts to see available shortcuts (`test`, `csfix`).
+- Remember that container commands run from `/app`, which is the repository root.
 
 ### Code Generation
 
-- **Always** run `composer csfix` after creating or modifying PHP files to ensure PSR compliance.
+- **Always** run `docker compose exec ethyl composer csfix` after creating or modifying PHP files to ensure PSR compliance.
 - When creating new tests, copy the structure from `tests/Core/IteratorStageTest.php` as a template for data providers.
 - If you need to debug a pipeline, remember that all stages implement `debug()`. You can call `$stage->debug()` to inspect its configuration.
+- Do not commit generated artifacts such as `.php-cs-fixer.cache` or `.phpunit.result.cache` unless the project already tracks them.
 
 ### Common Pitfalls
 

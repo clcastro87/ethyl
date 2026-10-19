@@ -31,7 +31,10 @@ final class IteratorTools
         }
 
         if (!$iterable instanceof \Iterator) {
+            // @codeCoverageIgnoreStart
+            // Only reachable for Traversable objects provided by extensions that do not implement Iterator or IteratorAggregate.
             $iterable = new \IteratorIterator($iterable);
+            // @codeCoverageIgnoreEnd
         }
 
         return $iterable;

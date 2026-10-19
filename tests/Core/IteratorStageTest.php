@@ -58,6 +58,17 @@ class IteratorStageTest extends AbstractTestCase
     }
 
     /**
+     * Test the default iteration, which returns the same iterator.
+     */
+    public function testDefaultIterate()
+    {
+        $stage = new DefaultIteratorStage();
+        $input = new ArrayIterator(range(0, 10));
+
+        $this->assertSame($input, $stage->iterate($input));
+    }
+
+    /**
      * Gets the IteratorStage to test.
      *
      * @return IteratorStage

@@ -4,19 +4,28 @@ declare(strict_types=1);
 
 namespace Ethyl\IO;
 
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\FilesystemNotFoundException;
+use InvalidArgumentException;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 final class FilesystemBuilder
 {
     private const DRIVERS = [
-        'local' => Local::class,
+        'local' => LocalFilesystemAdapter::class,
     ];
 
+    /**
+     * Builds a filesystem for the given driver.
+     *
+     * @param string $driver
+     * @param string $name
+     * @param mixed ...$options
+     * @return Filesystem
+     * @throws InvalidArgumentException
+     */
     public static function build(string $driver, string $name, ...$options): Filesystem
     {
         if (!isset(self::DRIVERS[$driver])) {
-            throw new FilesystemNotFoundException("The filesystem driver {$driver} was not found!");
+            throw new InvalidArgumentException("The filesystem driver {$driver} was not found!");
         }
 
         $adapterClass = self::DRIVERS[$driver];

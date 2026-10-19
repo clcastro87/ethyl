@@ -29,7 +29,7 @@ class MappingIterator extends IteratorIterator
     /**
      * @inheritDoc
      */
-    public function current()
+    public function current(): mixed
     {
         return ($this->callable)(parent::current(), parent::key());
     }

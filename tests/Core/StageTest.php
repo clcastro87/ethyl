@@ -17,7 +17,7 @@ class StageTest extends AbstractTestCase
     {
         $stage = $this->getMockForAbstractClass(Stage::class);
         $stage->method('__invoke')->willReturn(true);
-        
+
         $this->assertTrue($stage(null));
     }
 }

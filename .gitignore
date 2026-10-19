@@ -5,6 +5,7 @@ vendor/
 composer.phar
 test.php
 coverage
+coverage-clover.xml
 
 test/*
 

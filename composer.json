@@ -5,11 +5,11 @@
     "description": "Easy ETL Pipelines done right.",
     "require": {
         "ext-json": "*",
+        "ext-libxml": "*",
         "ext-pdo": "*",
         "ext-simplexml": "*",
-        "ext-libxml": "*",
         "league/csv": "^9.7",
-        "league/flysystem": "^1.1",
+        "league/flysystem": "^3.35.3",
         "league/pipeline": "^1.0",
         "prewk/xml-string-streamer": "^0.13.0"
     },
@@ -39,6 +39,9 @@
     "scripts": {
         "test": [
             "vendor/bin/phpunit"
+        ],
+        "coverage": [
+            "phpdbg -qrr vendor/bin/phpunit --coverage-text"
         ],
         "csfix": [
             "composer install --working-dir=tools/php-cs-fixer",

@@ -8,7 +8,7 @@ use Ethyl\Input\FlySystemInput;
 use Ethyl\Tests\AbstractTestCase;
 use Exception;
 use InvalidArgumentException;
-use League\Flysystem\Adapter\Local;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 /**
  * CsvStreamInput Test
@@ -24,7 +24,7 @@ class FlySystemInputTest extends AbstractTestCase
      */
     public function testInputFilePath()
     {
-        $adapter     = new Local('/');
+        $adapter     = new LocalFilesystemAdapter('/');
         $streamInput = new FlySystemInput($adapter);
         $input       = new CsvStreamInput(CsvFileInput::CSV_DELIMITER_COMMA);
         $iterator    = $input($streamInput($this->getFilePath()));
@@ -39,7 +39,7 @@ class FlySystemInputTest extends AbstractTestCase
      */
     public function testInputInvalidInput()
     {
-        $adapter     = new Local('/');
+        $adapter     = new LocalFilesystemAdapter('/');
         $streamInput = new FlySystemInput($adapter);
         $this->expectException(InvalidArgumentException::class);
         $streamInput([$this->getFilePath()]);
